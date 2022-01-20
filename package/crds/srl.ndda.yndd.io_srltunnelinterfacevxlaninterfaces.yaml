@@ -1,0 +1,229 @@
+
+
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.4.1
+  creationTimestamp: null
+  name: srltunnelinterfacevxlaninterfaces.srl.ndda.yndd.io
+spec:
+  group: srl.ndda.yndd.io
+  names:
+    kind: SrlTunnelinterfaceVxlaninterface
+    listKind: SrlTunnelinterfaceVxlaninterfaceList
+    plural: srltunnelinterfacevxlaninterfaces
+    singular: srltunnelinterfacevxlaninterface
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.conditions[?(@.kind=='Ready')].status
+      name: STATUS
+      type: string
+    - jsonPath: .status.conditions[?(@.kind=='Synced')].status
+      name: SYNC
+      type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: AGE
+      type: date
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: SrlTunnelinterfaceVxlaninterface is the Schema for the TunnelinterfaceVxlaninterface
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: A TunnelinterfaceVxlaninterfaceSpec defines the desired state
+              of a TunnelinterfaceVxlaninterface.
+            properties:
+              tunnel-interface-name:
+                type: string
+              vxlan-interface:
+                description: TunnelinterfaceVxlaninterface struct
+                properties:
+                  bridge-table:
+                    description: VxlaninterfaceBridgetable
+                    items:
+                      description: TunnelinterfaceVxlaninterfaceBridgetable struct
+                      type: object
+                    type: array
+                  egress:
+                    description: VxlaninterfaceEgress
+                    items:
+                      description: TunnelinterfaceVxlaninterfaceEgress struct
+                      properties:
+                        destination-groups:
+                          description: VxlaninterfaceEgressDestinationgroups
+                          items:
+                            description: TunnelinterfaceVxlaninterfaceEgressDestinationgroups
+                              struct
+                            properties:
+                              group:
+                                description: VxlaninterfaceEgressDestinationgroupsGroup
+                                items:
+                                  description: TunnelinterfaceVxlaninterfaceEgressDestinationgroupsGroup
+                                    struct
+                                  properties:
+                                    admin-state:
+                                      default: enable
+                                      enum:
+                                      - disable
+                                      - enable
+                                      type: string
+                                    destination:
+                                      description: VxlaninterfaceEgressDestinationgroupsGroupDestination
+                                      items:
+                                        description: TunnelinterfaceVxlaninterfaceEgressDestinationgroupsGroupDestination
+                                          struct
+                                        properties:
+                                          admin-state:
+                                            default: enable
+                                            enum:
+                                            - disable
+                                            - enable
+                                            type: string
+                                          index:
+                                            description: kubebuilder:validation:Minimum=0
+                                              kubebuilder:validation:Maximum=65535
+                                            type: integer
+                                          inner-ethernet-header:
+                                            description: VxlaninterfaceEgressDestinationgroupsGroupDestinationInnerethernetheader
+                                            items:
+                                              description: TunnelinterfaceVxlaninterfaceEgressDestinationgroupsGroupDestinationInnerethernetheader
+                                                struct
+                                              properties:
+                                                destination-mac:
+                                                  pattern: '[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'
+                                                  type: string
+                                              type: object
+                                            type: array
+                                          vni:
+                                            description: kubebuilder:validation:Minimum=1
+                                              kubebuilder:validation:Maximum=16777215
+                                            format: int32
+                                            type: integer
+                                        required:
+                                        - index
+                                        type: object
+                                      maxItems: 128
+                                      minItems: 0
+                                      type: array
+                                    esi:
+                                      pattern: '[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){9}'
+                                      type: string
+                                    name:
+                                      description: kubebuilder:validation:MinLength=1
+                                        kubebuilder:validation:MaxLength=255
+                                      pattern: '[A-Za-z0-9 !@#$^&()|+=`~.,''/_:;?-]*'
+                                      type: string
+                                  required:
+                                  - name
+                                  type: object
+                                maxItems: 1024
+                                minItems: 0
+                                type: array
+                            type: object
+                          type: array
+                        inner-ethernet-header:
+                          description: VxlaninterfaceEgressInnerethernetheader
+                          items:
+                            description: TunnelinterfaceVxlaninterfaceEgressInnerethernetheader
+                              struct
+                            properties:
+                              source-mac:
+                                default: use-system-mac
+                                type: string
+                            type: object
+                          type: array
+                        source-ip:
+                          default: use-system-ipv4-address
+                          type: string
+                      type: object
+                    type: array
+                  index:
+                    description: kubebuilder:validation:Minimum=0 kubebuilder:validation:Maximum=99999999
+                    format: int32
+                    type: integer
+                  ingress:
+                    description: VxlaninterfaceIngress
+                    items:
+                      description: TunnelinterfaceVxlaninterfaceIngress struct
+                      properties:
+                        vni:
+                          description: kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=16777215
+                          format: int32
+                          type: integer
+                      required:
+                      - vni
+                      type: object
+                    type: array
+                  type:
+                    type: string
+                required:
+                - index
+                - type
+                type: object
+            required:
+            - tunnel-interface-name
+            type: object
+          status:
+            description: A TunnelinterfaceVxlaninterfaceStatus represents the observed
+              state of a TunnelinterfaceVxlaninterface.
+            properties:
+              conditions:
+                description: Conditions of the resource.
+                items:
+                  description: A Condition that may apply to a resource
+                  properties:
+                    kind:
+                      description: Type of this condition. At most one of each condition
+                        type may apply to a resource at any point in time.
+                      type: string
+                    lastTransitionTime:
+                      description: LastTransitionTime is the last time this condition
+                        transitioned from one status to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A Message containing details about this condition's
+                        last transition from one status to another, if any.
+                      type: string
+                    reason:
+                      description: A Reason for this condition's last transition from
+                        one status to another.
+                      type: string
+                    status:
+                      description: Status of this condition; is it currently True,
+                        False, or Unknown?
+                      type: string
+                  required:
+                  - kind
+                  - lastTransitionTime
+                  - reason
+                  - status
+                  type: object
+                type: array
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

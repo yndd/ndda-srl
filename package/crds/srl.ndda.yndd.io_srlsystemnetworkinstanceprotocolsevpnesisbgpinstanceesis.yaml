@@ -1,0 +1,230 @@
+
+
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.4.1
+  creationTimestamp: null
+  name: srlsystemnetworkinstanceprotocolsevpnesisbgpinstanceesis.srl.ndda.yndd.io
+spec:
+  group: srl.ndda.yndd.io
+  names:
+    kind: SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi
+    listKind: SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiList
+    plural: srlsystemnetworkinstanceprotocolsevpnesisbgpinstanceesis
+    singular: srlsystemnetworkinstanceprotocolsevpnesisbgpinstanceesi
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.conditions[?(@.kind=='Ready')].status
+      name: STATUS
+      type: string
+    - jsonPath: .status.conditions[?(@.kind=='Synced')].status
+      name: SYNC
+      type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: AGE
+      type: date
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi is the
+          Schema for the SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: A SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiSpec
+              defines the desired state of a SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.
+            properties:
+              bgp-instance-id:
+                type: string
+              ethernet-segment:
+                description: SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi
+                  struct
+                properties:
+                  admin-state:
+                    default: disable
+                    enum:
+                    - disable
+                    - enable
+                    type: string
+                  df-election:
+                    description: EthernetsegmentDfelection
+                    items:
+                      description: SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelection
+                        struct
+                      properties:
+                        algorithm:
+                          description: EthernetsegmentDfelectionAlgorithm
+                          items:
+                            description: SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithm
+                              struct
+                            properties:
+                              preference-alg:
+                                description: EthernetsegmentDfelectionAlgorithmPreferencealg
+                                items:
+                                  description: SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmPreferencealg
+                                    struct
+                                  properties:
+                                    capabilities:
+                                      description: EthernetsegmentDfelectionAlgorithmPreferencealgCapabilities
+                                      items:
+                                        description: SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmPreferencealgCapabilities
+                                          struct
+                                        properties:
+                                          ac-df:
+                                            default: include
+                                            enum:
+                                            - exclude
+                                            - include
+                                            type: string
+                                          non-revertive:
+                                            default: false
+                                            type: boolean
+                                        type: object
+                                      type: array
+                                    preference-value:
+                                      default: 32767
+                                      description: kubebuilder:validation:Minimum=0
+                                        kubebuilder:validation:Maximum=65535
+                                      format: int32
+                                      type: integer
+                                  type: object
+                                type: array
+                              type:
+                                default: default
+                                enum:
+                                - default
+                                - preference
+                                type: string
+                            type: object
+                          type: array
+                        interface-standby-signaling-on-non-df:
+                          description: EthernetsegmentDfelectionInterfacestandbysignalingonnondf
+                          items:
+                            description: SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionInterfacestandbysignalingonnondf
+                              struct
+                            type: object
+                          type: array
+                        timers:
+                          description: EthernetsegmentDfelectionTimers
+                          items:
+                            description: SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionTimers
+                              struct
+                            properties:
+                              activation-timer:
+                                description: kubebuilder:validation:Minimum=0 kubebuilder:validation:Maximum=100
+                                format: int32
+                                type: integer
+                            type: object
+                          type: array
+                      type: object
+                    type: array
+                  esi:
+                    pattern: '[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){9}'
+                    type: string
+                  interface:
+                    type: string
+                  multi-homing-mode:
+                    default: all-active
+                    enum:
+                    - all-active
+                    - single-active
+                    type: string
+                  name:
+                    description: kubebuilder:validation:MinLength=1 kubebuilder:validation:MaxLength=255
+                    pattern: '[A-Za-z0-9 !@#$^&()|+=`~.,''/_:;?-]*'
+                    type: string
+                  routes:
+                    description: EthernetsegmentRoutes
+                    items:
+                      description: SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutes
+                        struct
+                      properties:
+                        esi:
+                          description: EthernetsegmentRoutesEthernetsegment
+                          items:
+                            description: SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutesEthernetsegment
+                              struct
+                            properties:
+                              originating-ip:
+                                default: use-system-ipv4-address
+                                enum:
+                                - use-system-ipv4-address
+                                type: string
+                            type: object
+                          type: array
+                        next-hop:
+                          default: use-system-ipv4-address
+                          enum:
+                          - use-system-ipv4-address
+                          type: string
+                      type: object
+                    type: array
+                required:
+                - name
+                type: object
+            required:
+            - bgp-instance-id
+            type: object
+          status:
+            description: A SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiStatus
+              represents the observed state of a SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.
+            properties:
+              conditions:
+                description: Conditions of the resource.
+                items:
+                  description: A Condition that may apply to a resource
+                  properties:
+                    kind:
+                      description: Type of this condition. At most one of each condition
+                        type may apply to a resource at any point in time.
+                      type: string
+                    lastTransitionTime:
+                      description: LastTransitionTime is the last time this condition
+                        transitioned from one status to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A Message containing details about this condition's
+                        last transition from one status to another, if any.
+                      type: string
+                    reason:
+                      description: A Reason for this condition's last transition from
+                        one status to another.
+                      type: string
+                    status:
+                      description: Status of this condition; is it currently True,
+                        False, or Unknown?
+                      type: string
+                  required:
+                  - kind
+                  - lastTransitionTime
+                  - reason
+                  - status
+                  type: object
+                type: array
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

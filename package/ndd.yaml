@@ -1,0 +1,8 @@
+
+apiVersion: meta.pkg.ndd.yndd.io/v1
+kind: Intent
+metadata:
+  name: ndda-srl
+spec:
+  controller:
+    image: yndd/ndda-srl-controller:latest

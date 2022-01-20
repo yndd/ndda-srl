@@ -1,0 +1,479 @@
+
+
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.4.1
+  creationTimestamp: null
+  name: srlroutingpolicypolicies.srl.ndda.yndd.io
+spec:
+  group: srl.ndda.yndd.io
+  names:
+    kind: SrlRoutingpolicyPolicy
+    listKind: SrlRoutingpolicyPolicyList
+    plural: srlroutingpolicypolicies
+    singular: srlroutingpolicypolicy
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.conditions[?(@.kind=='Ready')].status
+      name: STATUS
+      type: string
+    - jsonPath: .status.conditions[?(@.kind=='Synced')].status
+      name: SYNC
+      type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: AGE
+      type: date
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: SrlRoutingpolicyPolicy is the Schema for the RoutingpolicyPolicy
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: A RoutingpolicyPolicySpec defines the desired state of a
+              RoutingpolicyPolicy.
+            properties:
+              policy:
+                description: RoutingpolicyPolicy struct
+                properties:
+                  default-action:
+                    description: PolicyDefaultaction
+                    items:
+                      description: RoutingpolicyPolicyDefaultaction struct
+                      properties:
+                        accept:
+                          description: PolicyDefaultactionAccept
+                          items:
+                            description: RoutingpolicyPolicyDefaultactionAccept struct
+                            properties:
+                              bgp:
+                                description: PolicyDefaultactionAcceptBgp
+                                items:
+                                  description: RoutingpolicyPolicyDefaultactionAcceptBgp
+                                    struct
+                                  properties:
+                                    as-path:
+                                      description: PolicyDefaultactionAcceptBgpAspath
+                                      items:
+                                        description: RoutingpolicyPolicyDefaultactionAcceptBgpAspath
+                                          struct
+                                        properties:
+                                          prepend:
+                                            description: PolicyDefaultactionAcceptBgpAspathPrepend
+                                            items:
+                                              description: RoutingpolicyPolicyDefaultactionAcceptBgpAspathPrepend
+                                                struct
+                                              properties:
+                                                as-number:
+                                                  type: string
+                                                repeat-n:
+                                                  default: 1
+                                                  description: kubebuilder:validation:Minimum=1
+                                                    kubebuilder:validation:Maximum=50
+                                                  type: integer
+                                              type: object
+                                            type: array
+                                          remove:
+                                            type: boolean
+                                          replace:
+                                            description: PolicyDefaultactionAcceptBgpAspathReplace
+                                            items:
+                                              description: RoutingpolicyPolicyDefaultactionAcceptBgpAspathReplace
+                                                struct
+                                              properties:
+                                                replace:
+                                                  description: kubebuilder:validation:Minimum=1
+                                                    kubebuilder:validation:Maximum=4294967295
+                                                  format: int32
+                                                  type: integer
+                                              type: object
+                                            maxItems: 1024
+                                            minItems: 0
+                                            type: array
+                                        type: object
+                                      type: array
+                                    communities:
+                                      description: PolicyDefaultactionAcceptBgpCommunities
+                                      items:
+                                        description: RoutingpolicyPolicyDefaultactionAcceptBgpCommunities
+                                          struct
+                                        properties:
+                                          add:
+                                            type: string
+                                          remove:
+                                            type: string
+                                          replace:
+                                            type: string
+                                        type: object
+                                      type: array
+                                    local-preference:
+                                      description: PolicyDefaultactionAcceptBgpLocalpreference
+                                      items:
+                                        description: RoutingpolicyPolicyDefaultactionAcceptBgpLocalpreference
+                                          struct
+                                        properties:
+                                          set:
+                                            description: kubebuilder:validation:Minimum=0
+                                              kubebuilder:validation:Maximum=4294967295
+                                            format: int32
+                                            type: integer
+                                        type: object
+                                      type: array
+                                    origin:
+                                      description: PolicyDefaultactionAcceptBgpOrigin
+                                      items:
+                                        description: RoutingpolicyPolicyDefaultactionAcceptBgpOrigin
+                                          struct
+                                        properties:
+                                          set:
+                                            enum:
+                                            - egp
+                                            - igp
+                                            - incomplete
+                                            type: string
+                                        type: object
+                                      type: array
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
+                        next-entry:
+                          description: PolicyDefaultactionNextentry
+                          items:
+                            description: RoutingpolicyPolicyDefaultactionNextentry
+                              struct
+                            type: object
+                          type: array
+                        next-policy:
+                          description: PolicyDefaultactionNextpolicy
+                          items:
+                            description: RoutingpolicyPolicyDefaultactionNextpolicy
+                              struct
+                            type: object
+                          type: array
+                        reject:
+                          description: PolicyDefaultactionReject
+                          items:
+                            description: RoutingpolicyPolicyDefaultactionReject struct
+                            type: object
+                          type: array
+                      type: object
+                    type: array
+                  name:
+                    description: kubebuilder:validation:MinLength=1 kubebuilder:validation:MaxLength=255
+                    pattern: '[A-Za-z0-9 !@#$^&()|+=`~.,''/_:;?-]*'
+                    type: string
+                  statement:
+                    description: PolicyStatement
+                    items:
+                      description: RoutingpolicyPolicyStatement struct
+                      properties:
+                        action:
+                          description: PolicyStatementAction
+                          items:
+                            description: RoutingpolicyPolicyStatementAction struct
+                            properties:
+                              accept:
+                                description: PolicyStatementActionAccept
+                                items:
+                                  description: RoutingpolicyPolicyStatementActionAccept
+                                    struct
+                                  properties:
+                                    bgp:
+                                      description: PolicyStatementActionAcceptBgp
+                                      items:
+                                        description: RoutingpolicyPolicyStatementActionAcceptBgp
+                                          struct
+                                        properties:
+                                          as-path:
+                                            description: PolicyStatementActionAcceptBgpAspath
+                                            items:
+                                              description: RoutingpolicyPolicyStatementActionAcceptBgpAspath
+                                                struct
+                                              properties:
+                                                prepend:
+                                                  description: PolicyStatementActionAcceptBgpAspathPrepend
+                                                  items:
+                                                    description: RoutingpolicyPolicyStatementActionAcceptBgpAspathPrepend
+                                                      struct
+                                                    properties:
+                                                      as-number:
+                                                        type: string
+                                                      repeat-n:
+                                                        default: 1
+                                                        description: kubebuilder:validation:Minimum=1
+                                                          kubebuilder:validation:Maximum=50
+                                                        type: integer
+                                                    type: object
+                                                  type: array
+                                                remove:
+                                                  type: boolean
+                                                replace:
+                                                  description: PolicyStatementActionAcceptBgpAspathReplace
+                                                  items:
+                                                    description: RoutingpolicyPolicyStatementActionAcceptBgpAspathReplace
+                                                      struct
+                                                    properties:
+                                                      replace:
+                                                        description: kubebuilder:validation:Minimum=1
+                                                          kubebuilder:validation:Maximum=4294967295
+                                                        format: int32
+                                                        type: integer
+                                                    type: object
+                                                  maxItems: 1024
+                                                  minItems: 0
+                                                  type: array
+                                              type: object
+                                            type: array
+                                          communities:
+                                            description: PolicyStatementActionAcceptBgpCommunities
+                                            items:
+                                              description: RoutingpolicyPolicyStatementActionAcceptBgpCommunities
+                                                struct
+                                              properties:
+                                                add:
+                                                  type: string
+                                                remove:
+                                                  type: string
+                                                replace:
+                                                  type: string
+                                              type: object
+                                            type: array
+                                          local-preference:
+                                            description: PolicyStatementActionAcceptBgpLocalpreference
+                                            items:
+                                              description: RoutingpolicyPolicyStatementActionAcceptBgpLocalpreference
+                                                struct
+                                              properties:
+                                                set:
+                                                  description: kubebuilder:validation:Minimum=0
+                                                    kubebuilder:validation:Maximum=4294967295
+                                                  format: int32
+                                                  type: integer
+                                              type: object
+                                            type: array
+                                          origin:
+                                            description: PolicyStatementActionAcceptBgpOrigin
+                                            items:
+                                              description: RoutingpolicyPolicyStatementActionAcceptBgpOrigin
+                                                struct
+                                              properties:
+                                                set:
+                                                  enum:
+                                                  - egp
+                                                  - igp
+                                                  - incomplete
+                                                  type: string
+                                              type: object
+                                            type: array
+                                        type: object
+                                      type: array
+                                  type: object
+                                type: array
+                              next-entry:
+                                description: PolicyStatementActionNextentry
+                                items:
+                                  description: RoutingpolicyPolicyStatementActionNextentry
+                                    struct
+                                  type: object
+                                type: array
+                              next-policy:
+                                description: PolicyStatementActionNextpolicy
+                                items:
+                                  description: RoutingpolicyPolicyStatementActionNextpolicy
+                                    struct
+                                  type: object
+                                type: array
+                              reject:
+                                description: PolicyStatementActionReject
+                                items:
+                                  description: RoutingpolicyPolicyStatementActionReject
+                                    struct
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
+                        match:
+                          description: PolicyStatementMatch
+                          items:
+                            description: RoutingpolicyPolicyStatementMatch struct
+                            properties:
+                              bgp:
+                                description: PolicyStatementMatchBgp
+                                items:
+                                  description: RoutingpolicyPolicyStatementMatchBgp
+                                    struct
+                                  properties:
+                                    as-path-length:
+                                      description: PolicyStatementMatchBgpAspathlength
+                                      items:
+                                        description: RoutingpolicyPolicyStatementMatchBgpAspathlength
+                                          struct
+                                        properties:
+                                          operator:
+                                            default: eq
+                                            enum:
+                                            - eq
+                                            - ge
+                                            - le
+                                            type: string
+                                          unique:
+                                            default: false
+                                            type: boolean
+                                          value:
+                                            description: kubebuilder:validation:Minimum=0
+                                              kubebuilder:validation:Maximum=255
+                                            type: integer
+                                        required:
+                                        - value
+                                        type: object
+                                      type: array
+                                    as-path-set:
+                                      type: string
+                                    community-set:
+                                      type: string
+                                    evpn:
+                                      description: PolicyStatementMatchBgpEvpn
+                                      items:
+                                        description: RoutingpolicyPolicyStatementMatchBgpEvpn
+                                          struct
+                                        properties:
+                                          route-type:
+                                            description: PolicyStatementMatchBgpEvpnRoutetype
+                                            items:
+                                              description: RoutingpolicyPolicyStatementMatchBgpEvpnRoutetype
+                                                struct
+                                              properties:
+                                                route-type:
+                                                  description: kubebuilder:validation:Minimum=1
+                                                    kubebuilder:validation:Maximum=5
+                                                  type: integer
+                                              type: object
+                                            maxItems: 1
+                                            minItems: 0
+                                            type: array
+                                        type: object
+                                      type: array
+                                  type: object
+                                type: array
+                              family:
+                                type: string
+                              isis:
+                                description: PolicyStatementMatchIsis
+                                items:
+                                  description: RoutingpolicyPolicyStatementMatchIsis
+                                    struct
+                                  properties:
+                                    level:
+                                      description: kubebuilder:validation:Minimum=1
+                                        kubebuilder:validation:Maximum=2
+                                      type: integer
+                                    route-type:
+                                      enum:
+                                      - external
+                                      - internal
+                                      type: string
+                                  type: object
+                                type: array
+                              ospf:
+                                description: PolicyStatementMatchOspf
+                                items:
+                                  description: RoutingpolicyPolicyStatementMatchOspf
+                                    struct
+                                  properties:
+                                    area-id:
+                                      pattern: (([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])|[0-9\.]*|(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])([\p{N}\p{L}]+)?
+                                      type: string
+                                    instance-id:
+                                      description: kubebuilder:validation:Minimum=0
+                                        kubebuilder:validation:Maximum=255
+                                      format: int32
+                                      type: integer
+                                    route-type:
+                                      type: string
+                                  type: object
+                                type: array
+                              prefix-set:
+                                type: string
+                              protocol:
+                                type: string
+                            type: object
+                          type: array
+                        sequence-id:
+                          description: kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=4294967295
+                          format: int32
+                          type: integer
+                      required:
+                      - sequence-id
+                      type: object
+                    maxItems: 1024
+                    minItems: 0
+                    type: array
+                required:
+                - name
+                type: object
+            type: object
+          status:
+            description: A RoutingpolicyPolicyStatus represents the observed state
+              of a RoutingpolicyPolicy.
+            properties:
+              conditions:
+                description: Conditions of the resource.
+                items:
+                  description: A Condition that may apply to a resource
+                  properties:
+                    kind:
+                      description: Type of this condition. At most one of each condition
+                        type may apply to a resource at any point in time.
+                      type: string
+                    lastTransitionTime:
+                      description: LastTransitionTime is the last time this condition
+                        transitioned from one status to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A Message containing details about this condition's
+                        last transition from one status to another, if any.
+                      type: string
+                    reason:
+                      description: A Reason for this condition's last transition from
+                        one status to another.
+                      type: string
+                    status:
+                      description: Status of this condition; is it currently True,
+                        False, or Unknown?
+                      type: string
+                  required:
+                  - kind
+                  - lastTransitionTime
+                  - reason
+                  - status
+                  type: object
+                type: array
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
