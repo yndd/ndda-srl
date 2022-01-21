@@ -45,6 +45,7 @@ type Bfd interface {
 	Get() *srlv1alpha1.Bfd
 	Update(x *srlv1alpha1.Bfd)
 	AddBfdMicrobfdsessions(ai *srlv1alpha1.BfdMicrobfdsessions)
+	AddBfdSubinterface(ai *srlv1alpha1.BfdSubinterface)
 	// methods schema
 	Print(key string, n int)
 	DeploySchema(ctx context.Context, mg resource.Managed, deviceName string, labels map[string]string) error
@@ -119,6 +120,11 @@ func (x *bfd) GetKey() []string {
 // Bfd micro-bfd-sessions bfd Bfd [bfd]
 func (x *bfd) AddBfdMicrobfdsessions(ai *srlv1alpha1.BfdMicrobfdsessions) {
 	x.Bfd.Microbfdsessions = append(x.Bfd.Microbfdsessions, ai)
+}
+
+// Bfd subinterface bfd Bfd [bfd]
+func (x *bfd) AddBfdSubinterface(ai *srlv1alpha1.BfdSubinterface) {
+	x.Bfd.Subinterface = append(x.Bfd.Subinterface, ai)
 }
 
 // methods schema

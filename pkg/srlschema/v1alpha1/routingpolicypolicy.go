@@ -45,6 +45,7 @@ type RoutingpolicyPolicy interface {
 	Get() *srlv1alpha1.RoutingpolicyPolicy
 	Update(x *srlv1alpha1.RoutingpolicyPolicy)
 	AddRoutingpolicyPolicyDefaultaction(ai *srlv1alpha1.RoutingpolicyPolicyDefaultaction)
+	AddRoutingpolicyPolicyStatement(ai *srlv1alpha1.RoutingpolicyPolicyStatement)
 	// methods schema
 	Print(key string, n int)
 	DeploySchema(ctx context.Context, mg resource.Managed, deviceName string, labels map[string]string) error
@@ -120,6 +121,11 @@ func (x *routingpolicypolicy) GetKey() []string {
 // RoutingpolicyPolicy default-action policy Policy [policy]
 func (x *routingpolicypolicy) AddRoutingpolicyPolicyDefaultaction(ai *srlv1alpha1.RoutingpolicyPolicyDefaultaction) {
 	x.RoutingpolicyPolicy.Defaultaction = append(x.RoutingpolicyPolicy.Defaultaction, ai)
+}
+
+// RoutingpolicyPolicy statement policy Policy [policy]
+func (x *routingpolicypolicy) AddRoutingpolicyPolicyStatement(ai *srlv1alpha1.RoutingpolicyPolicyStatement) {
+	x.RoutingpolicyPolicy.Statement = append(x.RoutingpolicyPolicy.Statement, ai)
 }
 
 // methods schema

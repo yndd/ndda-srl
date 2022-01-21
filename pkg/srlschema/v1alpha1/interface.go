@@ -47,6 +47,11 @@ type Interface interface {
 	Get() *srlv1alpha1.Interface
 	Update(x *srlv1alpha1.Interface)
 	AddInterfaceBreakoutmode(ai *srlv1alpha1.InterfaceBreakoutmode)
+	AddInterfaceEthernet(ai *srlv1alpha1.InterfaceEthernet)
+	AddInterfaceLag(ai *srlv1alpha1.InterfaceLag)
+	AddInterfaceQos(ai *srlv1alpha1.InterfaceQos)
+	AddInterfaceSflow(ai *srlv1alpha1.InterfaceSflow)
+	AddInterfaceTransceiver(ai *srlv1alpha1.InterfaceTransceiver)
 	// methods schema
 	Print(key string, n int)
 	DeploySchema(ctx context.Context, mg resource.Managed, deviceName string, labels map[string]string) error
@@ -134,6 +139,31 @@ func (x *itfce) GetKey() []string {
 // Interface breakout-mode interface Interface [interface]
 func (x *itfce) AddInterfaceBreakoutmode(ai *srlv1alpha1.InterfaceBreakoutmode) {
 	x.Interface.Breakoutmode = append(x.Interface.Breakoutmode, ai)
+}
+
+// Interface ethernet interface Interface [interface]
+func (x *itfce) AddInterfaceEthernet(ai *srlv1alpha1.InterfaceEthernet) {
+	x.Interface.Ethernet = append(x.Interface.Ethernet, ai)
+}
+
+// Interface lag interface Interface [interface]
+func (x *itfce) AddInterfaceLag(ai *srlv1alpha1.InterfaceLag) {
+	x.Interface.Lag = append(x.Interface.Lag, ai)
+}
+
+// Interface qos interface Interface [interface]
+func (x *itfce) AddInterfaceQos(ai *srlv1alpha1.InterfaceQos) {
+	x.Interface.Qos = append(x.Interface.Qos, ai)
+}
+
+// Interface sflow interface Interface [interface]
+func (x *itfce) AddInterfaceSflow(ai *srlv1alpha1.InterfaceSflow) {
+	x.Interface.Sflow = append(x.Interface.Sflow, ai)
+}
+
+// Interface transceiver interface Interface [interface]
+func (x *itfce) AddInterfaceTransceiver(ai *srlv1alpha1.InterfaceTransceiver) {
+	x.Interface.Transceiver = append(x.Interface.Transceiver, ai)
 }
 
 // methods schema

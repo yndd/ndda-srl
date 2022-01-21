@@ -46,6 +46,8 @@ type TunnelinterfaceVxlaninterface interface {
 	Get() *srlv1alpha1.TunnelinterfaceVxlaninterface
 	Update(x *srlv1alpha1.TunnelinterfaceVxlaninterface)
 	AddTunnelinterfaceVxlaninterfaceBridgetable(ai *srlv1alpha1.TunnelinterfaceVxlaninterfaceBridgetable)
+	AddTunnelinterfaceVxlaninterfaceEgress(ai *srlv1alpha1.TunnelinterfaceVxlaninterfaceEgress)
+	AddTunnelinterfaceVxlaninterfaceIngress(ai *srlv1alpha1.TunnelinterfaceVxlaninterfaceIngress)
 	// methods schema
 	Print(key string, n int)
 	DeploySchema(ctx context.Context, mg resource.Managed, deviceName string, labels map[string]string) error
@@ -123,6 +125,16 @@ func (x *tunnelinterfacevxlaninterface) GetKey() []string {
 // TunnelinterfaceVxlaninterface bridge-table vxlaninterface Vxlaninterface [vxlan-interface]
 func (x *tunnelinterfacevxlaninterface) AddTunnelinterfaceVxlaninterfaceBridgetable(ai *srlv1alpha1.TunnelinterfaceVxlaninterfaceBridgetable) {
 	x.TunnelinterfaceVxlaninterface.Bridgetable = append(x.TunnelinterfaceVxlaninterface.Bridgetable, ai)
+}
+
+// TunnelinterfaceVxlaninterface egress vxlaninterface Vxlaninterface [vxlan-interface]
+func (x *tunnelinterfacevxlaninterface) AddTunnelinterfaceVxlaninterfaceEgress(ai *srlv1alpha1.TunnelinterfaceVxlaninterfaceEgress) {
+	x.TunnelinterfaceVxlaninterface.Egress = append(x.TunnelinterfaceVxlaninterface.Egress, ai)
+}
+
+// TunnelinterfaceVxlaninterface ingress vxlaninterface Vxlaninterface [vxlan-interface]
+func (x *tunnelinterfacevxlaninterface) AddTunnelinterfaceVxlaninterfaceIngress(ai *srlv1alpha1.TunnelinterfaceVxlaninterfaceIngress) {
+	x.TunnelinterfaceVxlaninterface.Ingress = append(x.TunnelinterfaceVxlaninterface.Ingress, ai)
 }
 
 // methods schema

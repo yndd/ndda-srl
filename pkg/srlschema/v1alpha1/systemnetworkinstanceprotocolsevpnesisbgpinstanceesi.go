@@ -45,6 +45,7 @@ type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi interface {
 	Get() *srlv1alpha1.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi
 	Update(x *srlv1alpha1.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi)
 	AddSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelection(ai *srlv1alpha1.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelection)
+	AddSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutes(ai *srlv1alpha1.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutes)
 	// methods schema
 	Print(key string, n int)
 	DeploySchema(ctx context.Context, mg resource.Managed, deviceName string, labels map[string]string) error
@@ -122,6 +123,11 @@ func (x *systemnetworkinstanceprotocolsevpnesisbgpinstanceesi) GetKey() []string
 // SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi df-election ethernetsegment Ethernetsegment [ethernet-segment]
 func (x *systemnetworkinstanceprotocolsevpnesisbgpinstanceesi) AddSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelection(ai *srlv1alpha1.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelection) {
 	x.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Dfelection = append(x.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Dfelection, ai)
+}
+
+// SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi routes ethernetsegment Ethernetsegment [ethernet-segment]
+func (x *systemnetworkinstanceprotocolsevpnesisbgpinstanceesi) AddSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutes(ai *srlv1alpha1.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutes) {
+	x.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Routes = append(x.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Routes, ai)
 }
 
 // methods schema

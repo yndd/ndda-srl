@@ -45,6 +45,23 @@ type NetworkinstanceProtocolsBgp interface {
 	Get() *srlv1alpha1.NetworkinstanceProtocolsBgp
 	Update(x *srlv1alpha1.NetworkinstanceProtocolsBgp)
 	AddNetworkinstanceProtocolsBgpAspathoptions(ai *srlv1alpha1.NetworkinstanceProtocolsBgpAspathoptions)
+	AddNetworkinstanceProtocolsBgpAuthentication(ai *srlv1alpha1.NetworkinstanceProtocolsBgpAuthentication)
+	AddNetworkinstanceProtocolsBgpConvergence(ai *srlv1alpha1.NetworkinstanceProtocolsBgpConvergence)
+	AddNetworkinstanceProtocolsBgpDynamicneighbors(ai *srlv1alpha1.NetworkinstanceProtocolsBgpDynamicneighbors)
+	AddNetworkinstanceProtocolsBgpEbgpdefaultpolicy(ai *srlv1alpha1.NetworkinstanceProtocolsBgpEbgpdefaultpolicy)
+	AddNetworkinstanceProtocolsBgpEvpn(ai *srlv1alpha1.NetworkinstanceProtocolsBgpEvpn)
+	AddNetworkinstanceProtocolsBgpFailuredetection(ai *srlv1alpha1.NetworkinstanceProtocolsBgpFailuredetection)
+	AddNetworkinstanceProtocolsBgpGracefulrestart(ai *srlv1alpha1.NetworkinstanceProtocolsBgpGracefulrestart)
+	AddNetworkinstanceProtocolsBgpGroup(ai *srlv1alpha1.NetworkinstanceProtocolsBgpGroup)
+	AddNetworkinstanceProtocolsBgpIpv4unicast(ai *srlv1alpha1.NetworkinstanceProtocolsBgpIpv4unicast)
+	AddNetworkinstanceProtocolsBgpIpv6unicast(ai *srlv1alpha1.NetworkinstanceProtocolsBgpIpv6unicast)
+	AddNetworkinstanceProtocolsBgpNeighbor(ai *srlv1alpha1.NetworkinstanceProtocolsBgpNeighbor)
+	AddNetworkinstanceProtocolsBgpPreference(ai *srlv1alpha1.NetworkinstanceProtocolsBgpPreference)
+	AddNetworkinstanceProtocolsBgpRouteadvertisement(ai *srlv1alpha1.NetworkinstanceProtocolsBgpRouteadvertisement)
+	AddNetworkinstanceProtocolsBgpRoutereflector(ai *srlv1alpha1.NetworkinstanceProtocolsBgpRoutereflector)
+	AddNetworkinstanceProtocolsBgpSendcommunity(ai *srlv1alpha1.NetworkinstanceProtocolsBgpSendcommunity)
+	AddNetworkinstanceProtocolsBgpTraceoptions(ai *srlv1alpha1.NetworkinstanceProtocolsBgpTraceoptions)
+	AddNetworkinstanceProtocolsBgpTransport(ai *srlv1alpha1.NetworkinstanceProtocolsBgpTransport)
 	// methods schema
 	Print(key string, n int)
 	DeploySchema(ctx context.Context, mg resource.Managed, deviceName string, labels map[string]string) error
@@ -121,6 +138,91 @@ func (x *networkinstanceprotocolsbgp) GetKey() []string {
 // NetworkinstanceProtocolsBgp as-path-options bgp Bgp [bgp]
 func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpAspathoptions(ai *srlv1alpha1.NetworkinstanceProtocolsBgpAspathoptions) {
 	x.NetworkinstanceProtocolsBgp.Aspathoptions = append(x.NetworkinstanceProtocolsBgp.Aspathoptions, ai)
+}
+
+// NetworkinstanceProtocolsBgp authentication bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpAuthentication(ai *srlv1alpha1.NetworkinstanceProtocolsBgpAuthentication) {
+	x.NetworkinstanceProtocolsBgp.Authentication = append(x.NetworkinstanceProtocolsBgp.Authentication, ai)
+}
+
+// NetworkinstanceProtocolsBgp convergence bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpConvergence(ai *srlv1alpha1.NetworkinstanceProtocolsBgpConvergence) {
+	x.NetworkinstanceProtocolsBgp.Convergence = append(x.NetworkinstanceProtocolsBgp.Convergence, ai)
+}
+
+// NetworkinstanceProtocolsBgp dynamic-neighbors bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpDynamicneighbors(ai *srlv1alpha1.NetworkinstanceProtocolsBgpDynamicneighbors) {
+	x.NetworkinstanceProtocolsBgp.Dynamicneighbors = append(x.NetworkinstanceProtocolsBgp.Dynamicneighbors, ai)
+}
+
+// NetworkinstanceProtocolsBgp ebgp-default-policy bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpEbgpdefaultpolicy(ai *srlv1alpha1.NetworkinstanceProtocolsBgpEbgpdefaultpolicy) {
+	x.NetworkinstanceProtocolsBgp.Ebgpdefaultpolicy = append(x.NetworkinstanceProtocolsBgp.Ebgpdefaultpolicy, ai)
+}
+
+// NetworkinstanceProtocolsBgp evpn bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpEvpn(ai *srlv1alpha1.NetworkinstanceProtocolsBgpEvpn) {
+	x.NetworkinstanceProtocolsBgp.Evpn = append(x.NetworkinstanceProtocolsBgp.Evpn, ai)
+}
+
+// NetworkinstanceProtocolsBgp failure-detection bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpFailuredetection(ai *srlv1alpha1.NetworkinstanceProtocolsBgpFailuredetection) {
+	x.NetworkinstanceProtocolsBgp.Failuredetection = append(x.NetworkinstanceProtocolsBgp.Failuredetection, ai)
+}
+
+// NetworkinstanceProtocolsBgp graceful-restart bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpGracefulrestart(ai *srlv1alpha1.NetworkinstanceProtocolsBgpGracefulrestart) {
+	x.NetworkinstanceProtocolsBgp.Gracefulrestart = append(x.NetworkinstanceProtocolsBgp.Gracefulrestart, ai)
+}
+
+// NetworkinstanceProtocolsBgp group bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpGroup(ai *srlv1alpha1.NetworkinstanceProtocolsBgpGroup) {
+	x.NetworkinstanceProtocolsBgp.Group = append(x.NetworkinstanceProtocolsBgp.Group, ai)
+}
+
+// NetworkinstanceProtocolsBgp ipv4-unicast bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpIpv4unicast(ai *srlv1alpha1.NetworkinstanceProtocolsBgpIpv4unicast) {
+	x.NetworkinstanceProtocolsBgp.Ipv4unicast = append(x.NetworkinstanceProtocolsBgp.Ipv4unicast, ai)
+}
+
+// NetworkinstanceProtocolsBgp ipv6-unicast bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpIpv6unicast(ai *srlv1alpha1.NetworkinstanceProtocolsBgpIpv6unicast) {
+	x.NetworkinstanceProtocolsBgp.Ipv6unicast = append(x.NetworkinstanceProtocolsBgp.Ipv6unicast, ai)
+}
+
+// NetworkinstanceProtocolsBgp neighbor bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpNeighbor(ai *srlv1alpha1.NetworkinstanceProtocolsBgpNeighbor) {
+	x.NetworkinstanceProtocolsBgp.Neighbor = append(x.NetworkinstanceProtocolsBgp.Neighbor, ai)
+}
+
+// NetworkinstanceProtocolsBgp preference bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpPreference(ai *srlv1alpha1.NetworkinstanceProtocolsBgpPreference) {
+	x.NetworkinstanceProtocolsBgp.Preference = append(x.NetworkinstanceProtocolsBgp.Preference, ai)
+}
+
+// NetworkinstanceProtocolsBgp route-advertisement bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpRouteadvertisement(ai *srlv1alpha1.NetworkinstanceProtocolsBgpRouteadvertisement) {
+	x.NetworkinstanceProtocolsBgp.Routeadvertisement = append(x.NetworkinstanceProtocolsBgp.Routeadvertisement, ai)
+}
+
+// NetworkinstanceProtocolsBgp route-reflector bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpRoutereflector(ai *srlv1alpha1.NetworkinstanceProtocolsBgpRoutereflector) {
+	x.NetworkinstanceProtocolsBgp.Routereflector = append(x.NetworkinstanceProtocolsBgp.Routereflector, ai)
+}
+
+// NetworkinstanceProtocolsBgp send-community bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpSendcommunity(ai *srlv1alpha1.NetworkinstanceProtocolsBgpSendcommunity) {
+	x.NetworkinstanceProtocolsBgp.Sendcommunity = append(x.NetworkinstanceProtocolsBgp.Sendcommunity, ai)
+}
+
+// NetworkinstanceProtocolsBgp trace-options bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpTraceoptions(ai *srlv1alpha1.NetworkinstanceProtocolsBgpTraceoptions) {
+	x.NetworkinstanceProtocolsBgp.Traceoptions = append(x.NetworkinstanceProtocolsBgp.Traceoptions, ai)
+}
+
+// NetworkinstanceProtocolsBgp transport bgp Bgp [bgp]
+func (x *networkinstanceprotocolsbgp) AddNetworkinstanceProtocolsBgpTransport(ai *srlv1alpha1.NetworkinstanceProtocolsBgpTransport) {
+	x.NetworkinstanceProtocolsBgp.Transport = append(x.NetworkinstanceProtocolsBgp.Transport, ai)
 }
 
 // methods schema

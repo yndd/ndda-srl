@@ -46,6 +46,14 @@ type InterfaceSubinterface interface {
 	Get() *srlv1alpha1.InterfaceSubinterface
 	Update(x *srlv1alpha1.InterfaceSubinterface)
 	AddInterfaceSubinterfaceAcl(ai *srlv1alpha1.InterfaceSubinterfaceAcl)
+	AddInterfaceSubinterfaceAnycastgw(ai *srlv1alpha1.InterfaceSubinterfaceAnycastgw)
+	AddInterfaceSubinterfaceBridgetable(ai *srlv1alpha1.InterfaceSubinterfaceBridgetable)
+	AddInterfaceSubinterfaceIpv4(ai *srlv1alpha1.InterfaceSubinterfaceIpv4)
+	AddInterfaceSubinterfaceIpv6(ai *srlv1alpha1.InterfaceSubinterfaceIpv6)
+	AddInterfaceSubinterfaceLocalmirrordestination(ai *srlv1alpha1.InterfaceSubinterfaceLocalmirrordestination)
+	AddInterfaceSubinterfaceQos(ai *srlv1alpha1.InterfaceSubinterfaceQos)
+	AddInterfaceSubinterfaceRaguard(ai *srlv1alpha1.InterfaceSubinterfaceRaguard)
+	AddInterfaceSubinterfaceVlan(ai *srlv1alpha1.InterfaceSubinterfaceVlan)
 	// methods schema
 	Print(key string, n int)
 	DeploySchema(ctx context.Context, mg resource.Managed, deviceName string, labels map[string]string) error
@@ -121,6 +129,46 @@ func (x *interfacesubinterface) GetKey() []string {
 // InterfaceSubinterface acl subinterface Subinterface [subinterface]
 func (x *interfacesubinterface) AddInterfaceSubinterfaceAcl(ai *srlv1alpha1.InterfaceSubinterfaceAcl) {
 	x.InterfaceSubinterface.Acl = append(x.InterfaceSubinterface.Acl, ai)
+}
+
+// InterfaceSubinterface anycast-gw subinterface Subinterface [subinterface]
+func (x *interfacesubinterface) AddInterfaceSubinterfaceAnycastgw(ai *srlv1alpha1.InterfaceSubinterfaceAnycastgw) {
+	x.InterfaceSubinterface.Anycastgw = append(x.InterfaceSubinterface.Anycastgw, ai)
+}
+
+// InterfaceSubinterface bridge-table subinterface Subinterface [subinterface]
+func (x *interfacesubinterface) AddInterfaceSubinterfaceBridgetable(ai *srlv1alpha1.InterfaceSubinterfaceBridgetable) {
+	x.InterfaceSubinterface.Bridgetable = append(x.InterfaceSubinterface.Bridgetable, ai)
+}
+
+// InterfaceSubinterface ipv4 subinterface Subinterface [subinterface]
+func (x *interfacesubinterface) AddInterfaceSubinterfaceIpv4(ai *srlv1alpha1.InterfaceSubinterfaceIpv4) {
+	x.InterfaceSubinterface.Ipv4 = append(x.InterfaceSubinterface.Ipv4, ai)
+}
+
+// InterfaceSubinterface ipv6 subinterface Subinterface [subinterface]
+func (x *interfacesubinterface) AddInterfaceSubinterfaceIpv6(ai *srlv1alpha1.InterfaceSubinterfaceIpv6) {
+	x.InterfaceSubinterface.Ipv6 = append(x.InterfaceSubinterface.Ipv6, ai)
+}
+
+// InterfaceSubinterface local-mirror-destination subinterface Subinterface [subinterface]
+func (x *interfacesubinterface) AddInterfaceSubinterfaceLocalmirrordestination(ai *srlv1alpha1.InterfaceSubinterfaceLocalmirrordestination) {
+	x.InterfaceSubinterface.Localmirrordestination = append(x.InterfaceSubinterface.Localmirrordestination, ai)
+}
+
+// InterfaceSubinterface qos subinterface Subinterface [subinterface]
+func (x *interfacesubinterface) AddInterfaceSubinterfaceQos(ai *srlv1alpha1.InterfaceSubinterfaceQos) {
+	x.InterfaceSubinterface.Qos = append(x.InterfaceSubinterface.Qos, ai)
+}
+
+// InterfaceSubinterface ra-guard subinterface Subinterface [subinterface]
+func (x *interfacesubinterface) AddInterfaceSubinterfaceRaguard(ai *srlv1alpha1.InterfaceSubinterfaceRaguard) {
+	x.InterfaceSubinterface.Raguard = append(x.InterfaceSubinterface.Raguard, ai)
+}
+
+// InterfaceSubinterface vlan subinterface Subinterface [subinterface]
+func (x *interfacesubinterface) AddInterfaceSubinterfaceVlan(ai *srlv1alpha1.InterfaceSubinterfaceVlan) {
+	x.InterfaceSubinterface.Vlan = append(x.InterfaceSubinterface.Vlan, ai)
 }
 
 // methods schema
