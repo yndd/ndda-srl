@@ -1324,8 +1324,9 @@ github.com/yndd/ndd-yang v0.1.62/go.mod h1:GT/8efIchBH1sQ6J64AM1FZDXXIaWeirkYUpb
 github.com/yndd/ndd-yang v0.1.276/go.mod h1:vcKhP5OU3oJHSEILaE0HEgZKxftcu2GFOGdS6w0TauM=
 github.com/yndd/ndda-network v0.0.6/go.mod h1:xTLmLhhuUvMwQ5wcRvVCsymcq9PDK98RoXDf+X3rC2I=
 github.com/yndd/ndda-network v0.0.9/go.mod h1:xTLmLhhuUvMwQ5wcRvVCsymcq9PDK98RoXDf+X3rC2I=
-github.com/yndd/ndda-network v0.0.10 h1:J5gVhjDAkpywuQvlU2AykJQGAARNPAaYMCZ92YEEV88=
 github.com/yndd/ndda-network v0.0.10/go.mod h1:xTLmLhhuUvMwQ5wcRvVCsymcq9PDK98RoXDf+X3rC2I=
+github.com/yndd/ndda-network v0.1.30 h1:iryDdNWQVLoZZkzUqTUG1LCYgZ+/jZiDOIrg0v8JY/M=
+github.com/yndd/ndda-network v0.1.30/go.mod h1:kTxC7g33D2ULQE7ckxu2erlr6eQQwC+8WPVpSp/cTzU=
 github.com/yndd/nddo-grpc v0.0.11/go.mod h1:EtOPd2XxbxDMLMNheomiDZBQCCtY0DRdOer3MOEsgH0=
 github.com/yndd/nddo-grpc v0.0.16/go.mod h1:EtOPd2XxbxDMLMNheomiDZBQCCtY0DRdOer3MOEsgH0=
 github.com/yndd/nddo-grpc v0.0.17/go.mod h1:EtOPd2XxbxDMLMNheomiDZBQCCtY0DRdOer3MOEsgH0=

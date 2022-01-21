@@ -62,6 +62,8 @@ type IFSrlInterface interface {
 	// getters based on type
 	GetInterfaceAdminState() E_InterfaceAdminstate
 	GetInterfaceBreakoutMode() []*InterfaceBreakoutmode
+	GetInterfaceName() string
+	GetInterfaceLag() []*InterfaceLag
 }
 
 // GetCondition
@@ -140,4 +142,16 @@ func (x *SrlInterface) GetInterfaceBreakoutMode() []*InterfaceBreakoutmode {
 		return nil
 	}
 	return x.Spec.Interface.Breakoutmode
+}
+func (x *SrlInterface) GetInterfaceName() string {
+	if reflect.ValueOf(x.Spec.Interface.Name).IsZero() {
+		return ""
+	}
+	return *x.Spec.Interface.Name
+}
+func (x *SrlInterface) GetInterfaceLag() []*InterfaceLag {
+	if reflect.ValueOf(x.Spec.Interface.Lag).IsZero() {
+		return nil
+	}
+	return x.Spec.Interface.Lag
 }
