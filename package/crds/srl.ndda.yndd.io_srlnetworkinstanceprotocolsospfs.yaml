@@ -269,9 +269,6 @@ spec:
                                                         - ls-request
                                                         - ls-update
                                                         type: string
-                                                    required:
-                                                    - modifier
-                                                    - type
                                                     type: object
                                                   type: array
                                               type: object
@@ -285,10 +282,7 @@ spec:
                                       format: int32
                                       type: integer
                                   required:
-                                  - admin-state
                                   - interface-name
-                                  - interface-type
-                                  - lsa-filter-out
                                   type: object
                                 maxItems: 1024
                                 minItems: 0
@@ -673,8 +667,6 @@ spec:
                                             - router
                                             - summary
                                             type: string
-                                        required:
-                                        - type
                                         type: object
                                       type: array
                                     misc:
@@ -705,9 +697,6 @@ spec:
                                             - ls-request
                                             - ls-update
                                             type: string
-                                        required:
-                                        - modifier
-                                        - type
                                         type: object
                                       type: array
                                     routes:
@@ -753,8 +742,6 @@ spec:
                         version:
                           type: string
                       required:
-                      - admin-state
-                      - advertise-router-capability
                       - name
                       - version
                       type: object

@@ -30,7 +30,7 @@ type InterfaceSubinterface struct {
 	Acl []*InterfaceSubinterfaceAcl `json:"acl,omitempty"`
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_InterfaceSubinterfaceAdminstate `json:"admin-state"`
+	Adminstate E_InterfaceSubinterfaceAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// SubinterfaceAnycastgw
 	Anycastgw []*InterfaceSubinterfaceAnycastgw `json:"anycast-gw,omitempty"`
@@ -115,7 +115,7 @@ type InterfaceSubinterfaceBridgetable struct {
 type InterfaceSubinterfaceBridgetableMacduplication struct {
 	// +kubebuilder:validation:Enum=`blackhole`;`oper-down`;`stop-learning`;`use-net-instance-action`
 	// +kubebuilder:default:="use-net-instance-action"
-	Action E_InterfaceSubinterfaceBridgetableMacduplicationAction `json:"action"`
+	Action E_InterfaceSubinterfaceBridgetableMacduplicationAction `json:"action,omitempty"`
 	//Action *string `json:"action,omitempty"`
 }
 
@@ -123,7 +123,7 @@ type InterfaceSubinterfaceBridgetableMacduplication struct {
 type InterfaceSubinterfaceBridgetableMaclearning struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_InterfaceSubinterfaceBridgetableMaclearningAdminstate `json:"admin-state"`
+	Adminstate E_InterfaceSubinterfaceBridgetableMaclearningAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// SubinterfaceBridgetableMaclearningAging
 	Aging []*InterfaceSubinterfaceBridgetableMaclearningAging `json:"aging,omitempty"`
@@ -133,7 +133,7 @@ type InterfaceSubinterfaceBridgetableMaclearning struct {
 type InterfaceSubinterfaceBridgetableMaclearningAging struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_InterfaceSubinterfaceBridgetableMaclearningAgingAdminstate `json:"admin-state"`
+	Adminstate E_InterfaceSubinterfaceBridgetableMaclearningAgingAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 }
 
@@ -205,7 +205,7 @@ type InterfaceSubinterfaceIpv4Arp struct {
 // InterfaceSubinterfaceIpv4ArpDebug struct
 type InterfaceSubinterfaceIpv4ArpDebug struct {
 	// +kubebuilder:validation:Enum=`messages`
-	Debug E_InterfaceSubinterfaceIpv4ArpDebugDebug `json:"debug"`
+	Debug E_InterfaceSubinterfaceIpv4ArpDebugDebug `json:"debug,omitempty"`
 	//Debug *string `json:"debug,omitempty"`
 }
 
@@ -224,7 +224,7 @@ type InterfaceSubinterfaceIpv4ArpEvpnAdvertise struct {
 	// +kubebuilder:default:=0
 	Admintag *uint32 `json:"admin-tag,omitempty"`
 	// +kubebuilder:validation:Enum=`dynamic`;`static`
-	Routetype E_InterfaceSubinterfaceIpv4ArpEvpnAdvertiseRoutetype `json:"route-type"`
+	Routetype E_InterfaceSubinterfaceIpv4ArpEvpnAdvertiseRoutetype `json:"route-type,omitempty"`
 }
 
 // InterfaceSubinterfaceIpv4ArpHostroute struct
@@ -241,7 +241,7 @@ type InterfaceSubinterfaceIpv4ArpHostroutePopulate struct {
 	// kubebuilder:validation:Maximum=255
 	Admintag *uint32 `json:"admin-tag,omitempty"`
 	// +kubebuilder:validation:Enum=`dynamic`;`evpn`;`static`
-	Routetype E_InterfaceSubinterfaceIpv4ArpHostroutePopulateRoutetype `json:"route-type"`
+	Routetype E_InterfaceSubinterfaceIpv4ArpHostroutePopulateRoutetype `json:"route-type,omitempty"`
 }
 
 // InterfaceSubinterfaceIpv4ArpNeighbor struct
@@ -271,7 +271,7 @@ type InterfaceSubinterfaceIpv4DhcpclientTraceoptions struct {
 // InterfaceSubinterfaceIpv4DhcpclientTraceoptionsTrace struct
 type InterfaceSubinterfaceIpv4DhcpclientTraceoptionsTrace struct {
 	// +kubebuilder:validation:Enum=`messages`
-	Trace E_InterfaceSubinterfaceIpv4DhcpclientTraceoptionsTraceTrace `json:"trace"`
+	Trace E_InterfaceSubinterfaceIpv4DhcpclientTraceoptionsTraceTrace `json:"trace,omitempty"`
 	//Trace *string `json:"trace,omitempty"`
 }
 
@@ -279,7 +279,7 @@ type InterfaceSubinterfaceIpv4DhcpclientTraceoptionsTrace struct {
 type InterfaceSubinterfaceIpv4Dhcprelay struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_InterfaceSubinterfaceIpv4DhcprelayAdminstate `json:"admin-state"`
+	Adminstate E_InterfaceSubinterfaceIpv4DhcprelayAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// +kubebuilder:validation:Required
 	// +kubebuilder:validation:Pattern=`(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])`
@@ -301,7 +301,7 @@ type InterfaceSubinterfaceIpv4Dhcprelay struct {
 // InterfaceSubinterfaceIpv4DhcprelayOption struct
 type InterfaceSubinterfaceIpv4DhcprelayOption struct {
 	// +kubebuilder:validation:Enum=`circuit-id`;`remote-id`
-	Option E_InterfaceSubinterfaceIpv4DhcprelayOptionOption `json:"option"`
+	Option E_InterfaceSubinterfaceIpv4DhcprelayOptionOption `json:"option,omitempty"`
 	//Option *string `json:"option,omitempty"`
 }
 
@@ -323,7 +323,7 @@ type InterfaceSubinterfaceIpv4DhcprelayTraceoptions struct {
 // InterfaceSubinterfaceIpv4DhcprelayTraceoptionsTrace struct
 type InterfaceSubinterfaceIpv4DhcprelayTraceoptionsTrace struct {
 	// +kubebuilder:validation:Enum=`messages`
-	Trace E_InterfaceSubinterfaceIpv4DhcprelayTraceoptionsTraceTrace `json:"trace"`
+	Trace E_InterfaceSubinterfaceIpv4DhcprelayTraceoptionsTraceTrace `json:"trace,omitempty"`
 	//Trace *string `json:"trace,omitempty"`
 }
 
@@ -331,7 +331,7 @@ type InterfaceSubinterfaceIpv4DhcprelayTraceoptionsTrace struct {
 type InterfaceSubinterfaceIpv4Dhcpserver struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate E_InterfaceSubinterfaceIpv4DhcpserverAdminstate `json:"admin-state"`
+	Adminstate E_InterfaceSubinterfaceIpv4DhcpserverAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 }
 
@@ -348,7 +348,7 @@ type InterfaceSubinterfaceIpv4VrrpVrrpgroup struct {
 	Acceptmode *bool `json:"accept-mode,omitempty"`
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_InterfaceSubinterfaceIpv4VrrpVrrpgroupAdminstate `json:"admin-state"`
+	Adminstate E_InterfaceSubinterfaceIpv4VrrpVrrpgroupAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=0
 	// kubebuilder:validation:Maximum=65535
@@ -467,7 +467,7 @@ type InterfaceSubinterfaceIpv6DhcpclientTraceoptions struct {
 // InterfaceSubinterfaceIpv6DhcpclientTraceoptionsTrace struct
 type InterfaceSubinterfaceIpv6DhcpclientTraceoptionsTrace struct {
 	// +kubebuilder:validation:Enum=`messages`
-	Trace E_InterfaceSubinterfaceIpv6DhcpclientTraceoptionsTraceTrace `json:"trace"`
+	Trace E_InterfaceSubinterfaceIpv6DhcpclientTraceoptionsTraceTrace `json:"trace,omitempty"`
 	//Trace *string `json:"trace,omitempty"`
 }
 
@@ -475,7 +475,7 @@ type InterfaceSubinterfaceIpv6DhcpclientTraceoptionsTrace struct {
 type InterfaceSubinterfaceIpv6Dhcprelay struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_InterfaceSubinterfaceIpv6DhcprelayAdminstate `json:"admin-state"`
+	Adminstate E_InterfaceSubinterfaceIpv6DhcprelayAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	//+kubebuilder:validation:MinItems=0
 	//+kubebuilder:validation:MaxItems=1024
@@ -495,7 +495,7 @@ type InterfaceSubinterfaceIpv6Dhcprelay struct {
 // InterfaceSubinterfaceIpv6DhcprelayOption struct
 type InterfaceSubinterfaceIpv6DhcprelayOption struct {
 	// +kubebuilder:validation:Enum=`interface-id`;`remote-id`
-	Option E_InterfaceSubinterfaceIpv6DhcprelayOptionOption `json:"option"`
+	Option E_InterfaceSubinterfaceIpv6DhcprelayOptionOption `json:"option,omitempty"`
 	//Option *string `json:"option,omitempty"`
 }
 
@@ -517,7 +517,7 @@ type InterfaceSubinterfaceIpv6DhcprelayTraceoptions struct {
 // InterfaceSubinterfaceIpv6DhcprelayTraceoptionsTrace struct
 type InterfaceSubinterfaceIpv6DhcprelayTraceoptionsTrace struct {
 	// +kubebuilder:validation:Enum=`messages`
-	Trace E_InterfaceSubinterfaceIpv6DhcprelayTraceoptionsTraceTrace `json:"trace"`
+	Trace E_InterfaceSubinterfaceIpv6DhcprelayTraceoptionsTraceTrace `json:"trace,omitempty"`
 	//Trace *string `json:"trace,omitempty"`
 }
 
@@ -525,7 +525,7 @@ type InterfaceSubinterfaceIpv6DhcprelayTraceoptionsTrace struct {
 type InterfaceSubinterfaceIpv6Dhcpv6server struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate E_InterfaceSubinterfaceIpv6Dhcpv6serverAdminstate `json:"admin-state"`
+	Adminstate E_InterfaceSubinterfaceIpv6Dhcpv6serverAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 }
 
@@ -543,7 +543,7 @@ type InterfaceSubinterfaceIpv6Neighbordiscovery struct {
 	Hostroute []*InterfaceSubinterfaceIpv6NeighbordiscoveryHostroute `json:"host-route,omitempty"`
 	// +kubebuilder:validation:Enum=`both`;`global`;`link-local`;`none`
 	// +kubebuilder:default:="none"
-	Learnunsolicited E_InterfaceSubinterfaceIpv6NeighbordiscoveryLearnunsolicited `json:"learn-unsolicited"`
+	Learnunsolicited E_InterfaceSubinterfaceIpv6NeighbordiscoveryLearnunsolicited `json:"learn-unsolicited,omitempty"`
 	//Learnunsolicited *string `json:"learn-unsolicited,omitempty"`
 	//+kubebuilder:validation:MinItems=0
 	//+kubebuilder:validation:MaxItems=1024
@@ -562,7 +562,7 @@ type InterfaceSubinterfaceIpv6Neighbordiscovery struct {
 // InterfaceSubinterfaceIpv6NeighbordiscoveryDebug struct
 type InterfaceSubinterfaceIpv6NeighbordiscoveryDebug struct {
 	// +kubebuilder:validation:Enum=`messages`
-	Debug E_InterfaceSubinterfaceIpv6NeighbordiscoveryDebugDebug `json:"debug"`
+	Debug E_InterfaceSubinterfaceIpv6NeighbordiscoveryDebugDebug `json:"debug,omitempty"`
 	//Debug *string `json:"debug,omitempty"`
 }
 
@@ -581,7 +581,7 @@ type InterfaceSubinterfaceIpv6NeighbordiscoveryEvpnAdvertise struct {
 	// +kubebuilder:default:=0
 	Admintag *uint32 `json:"admin-tag,omitempty"`
 	// +kubebuilder:validation:Enum=`dynamic`;`static`
-	Routetype E_InterfaceSubinterfaceIpv6NeighbordiscoveryEvpnAdvertiseRoutetype `json:"route-type"`
+	Routetype E_InterfaceSubinterfaceIpv6NeighbordiscoveryEvpnAdvertiseRoutetype `json:"route-type,omitempty"`
 }
 
 // InterfaceSubinterfaceIpv6NeighbordiscoveryHostroute struct
@@ -598,7 +598,7 @@ type InterfaceSubinterfaceIpv6NeighbordiscoveryHostroutePopulate struct {
 	// kubebuilder:validation:Maximum=255
 	Admintag *uint32 `json:"admin-tag,omitempty"`
 	// +kubebuilder:validation:Enum=`dynamic`;`evpn`;`static`
-	Routetype E_InterfaceSubinterfaceIpv6NeighbordiscoveryHostroutePopulateRoutetype `json:"route-type"`
+	Routetype E_InterfaceSubinterfaceIpv6NeighbordiscoveryHostroutePopulateRoutetype `json:"route-type,omitempty"`
 }
 
 // InterfaceSubinterfaceIpv6NeighbordiscoveryNeighbor struct
@@ -624,14 +624,14 @@ type InterfaceSubinterfaceIpv6Routeradvertisement struct {
 // InterfaceSubinterfaceIpv6RouteradvertisementDebug struct
 type InterfaceSubinterfaceIpv6RouteradvertisementDebug struct {
 	// +kubebuilder:validation:Enum=`messages`
-	Debug E_InterfaceSubinterfaceIpv6RouteradvertisementDebugDebug `json:"debug"`
+	Debug E_InterfaceSubinterfaceIpv6RouteradvertisementDebugDebug `json:"debug,omitempty"`
 	//Debug *string `json:"debug,omitempty"`
 }
 
 // InterfaceSubinterfaceIpv6RouteradvertisementRouterrole struct
 type InterfaceSubinterfaceIpv6RouteradvertisementRouterrole struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate E_InterfaceSubinterfaceIpv6RouteradvertisementRouterroleAdminstate `json:"admin-state"`
+	Adminstate E_InterfaceSubinterfaceIpv6RouteradvertisementRouterroleAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=0
 	// kubebuilder:validation:Maximum=255
@@ -698,7 +698,7 @@ type InterfaceSubinterfaceIpv6VrrpVrrpgroup struct {
 	Acceptmode *bool `json:"accept-mode,omitempty"`
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_InterfaceSubinterfaceIpv6VrrpVrrpgroupAdminstate `json:"admin-state"`
+	Adminstate E_InterfaceSubinterfaceIpv6VrrpVrrpgroupAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=0
 	// kubebuilder:validation:Maximum=65535
@@ -775,7 +775,7 @@ type InterfaceSubinterfaceIpv6VrrpVrrpgroupVirtualaddress struct {
 type InterfaceSubinterfaceLocalmirrordestination struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_InterfaceSubinterfaceLocalmirrordestinationAdminstate `json:"admin-state"`
+	Adminstate E_InterfaceSubinterfaceLocalmirrordestinationAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 }
 

@@ -36,7 +36,7 @@ type NetworkinstanceStaticroutes struct {
 type NetworkinstanceStaticroutesRoute struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceStaticroutesRouteAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceStaticroutesRouteAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=0
 	// kubebuilder:validation:Maximum=4294967295

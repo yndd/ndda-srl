@@ -28,7 +28,7 @@ import (
 type NetworkinstanceProtocolsBgp struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceProtocolsBgpAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// BgpAspathoptions
 	Aspathoptions []*NetworkinstanceProtocolsBgpAspathoptions `json:"as-path-options,omitempty"`
@@ -102,7 +102,7 @@ type NetworkinstanceProtocolsBgpAspathoptionsRemoveprivateas struct {
 	Leadingonly *bool `json:"leading-only,omitempty"`
 	// +kubebuilder:validation:Enum=`delete`;`disabled`;`replace`
 	// +kubebuilder:default:="disabled"
-	Mode E_NetworkinstanceProtocolsBgpAspathoptionsRemoveprivateasMode `json:"mode"`
+	Mode E_NetworkinstanceProtocolsBgpAspathoptionsRemoveprivateasMode `json:"mode,omitempty"`
 	//Mode *string `json:"mode,omitempty"`
 }
 
@@ -168,7 +168,7 @@ type NetworkinstanceProtocolsBgpEbgpdefaultpolicy struct {
 type NetworkinstanceProtocolsBgpEvpn struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate E_NetworkinstanceProtocolsBgpEvpnAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpEvpnAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// +kubebuilder:default:=false
 	Advertiseipv6nexthops *bool `json:"advertise-ipv6-next-hops,omitempty"`
@@ -189,7 +189,7 @@ type NetworkinstanceProtocolsBgpFailuredetection struct {
 type NetworkinstanceProtocolsBgpGracefulrestart struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate E_NetworkinstanceProtocolsBgpGracefulrestartAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpGracefulrestartAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=1
 	// kubebuilder:validation:Maximum=3600
@@ -201,7 +201,7 @@ type NetworkinstanceProtocolsBgpGracefulrestart struct {
 type NetworkinstanceProtocolsBgpGroup struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceProtocolsBgpGroupAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpGroupAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// BgpGroupAspathoptions
 	Aspathoptions []*NetworkinstanceProtocolsBgpGroupAspathoptions `json:"as-path-options,omitempty"`
@@ -272,7 +272,7 @@ type NetworkinstanceProtocolsBgpGroupAspathoptionsRemoveprivateas struct {
 	// +kubebuilder:default:=false
 	Leadingonly *bool `json:"leading-only,omitempty"`
 	// +kubebuilder:validation:Enum=`delete`;`disabled`;`replace`
-	Mode E_NetworkinstanceProtocolsBgpGroupAspathoptionsRemoveprivateasMode `json:"mode"`
+	Mode E_NetworkinstanceProtocolsBgpGroupAspathoptionsRemoveprivateasMode `json:"mode,omitempty"`
 }
 
 // NetworkinstanceProtocolsBgpGroupAuthentication struct
@@ -283,7 +283,7 @@ type NetworkinstanceProtocolsBgpGroupAuthentication struct {
 // NetworkinstanceProtocolsBgpGroupEvpn struct
 type NetworkinstanceProtocolsBgpGroupEvpn struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate E_NetworkinstanceProtocolsBgpGroupEvpnAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpGroupEvpnAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	Advertiseipv6nexthops *bool `json:"advertise-ipv6-next-hops,omitempty"`
 	// BgpGroupEvpnPrefixlimit
@@ -311,7 +311,7 @@ type NetworkinstanceProtocolsBgpGroupFailuredetection struct {
 // NetworkinstanceProtocolsBgpGroupGracefulrestart struct
 type NetworkinstanceProtocolsBgpGroupGracefulrestart struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate E_NetworkinstanceProtocolsBgpGroupGracefulrestartAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpGroupGracefulrestartAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=1
 	// kubebuilder:validation:Maximum=3600
@@ -321,7 +321,7 @@ type NetworkinstanceProtocolsBgpGroupGracefulrestart struct {
 // NetworkinstanceProtocolsBgpGroupIpv4unicast struct
 type NetworkinstanceProtocolsBgpGroupIpv4unicast struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate E_NetworkinstanceProtocolsBgpGroupIpv4unicastAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpGroupIpv4unicastAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	Advertiseipv6nexthops *bool `json:"advertise-ipv6-next-hops,omitempty"`
 	// BgpGroupIpv4unicastPrefixlimit
@@ -344,7 +344,7 @@ type NetworkinstanceProtocolsBgpGroupIpv4unicastPrefixlimit struct {
 // NetworkinstanceProtocolsBgpGroupIpv6unicast struct
 type NetworkinstanceProtocolsBgpGroupIpv6unicast struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate E_NetworkinstanceProtocolsBgpGroupIpv6unicastAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpGroupIpv6unicastAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// BgpGroupIpv6unicastPrefixlimit
 	Prefixlimit []*NetworkinstanceProtocolsBgpGroupIpv6unicastPrefixlimit `json:"prefix-limit,omitempty"`
@@ -426,10 +426,10 @@ type NetworkinstanceProtocolsBgpGroupTraceoptions struct {
 // NetworkinstanceProtocolsBgpGroupTraceoptionsFlag struct
 type NetworkinstanceProtocolsBgpGroupTraceoptionsFlag struct {
 	// +kubebuilder:validation:Enum=`detail`;`receive`;`send`
-	Modifier E_NetworkinstanceProtocolsBgpGroupTraceoptionsFlagModifier `json:"modifier"`
+	Modifier E_NetworkinstanceProtocolsBgpGroupTraceoptionsFlagModifier `json:"modifier,omitempty"`
 	//Modifier *string `json:"modifier,omitempty"`
 	// +kubebuilder:validation:Enum=`events`;`graceful-restart`;`keepalive`;`notification`;`open`;`packets`;`route`;`socket`;`timers`;`update`
-	Name E_NetworkinstanceProtocolsBgpGroupTraceoptionsFlagName `json:"name"`
+	Name E_NetworkinstanceProtocolsBgpGroupTraceoptionsFlagName `json:"name,omitempty"`
 }
 
 // NetworkinstanceProtocolsBgpGroupTransport struct
@@ -448,7 +448,7 @@ type NetworkinstanceProtocolsBgpGroupTransport struct {
 type NetworkinstanceProtocolsBgpIpv4unicast struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceProtocolsBgpIpv4unicastAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpIpv4unicastAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// +kubebuilder:default:=false
 	Advertiseipv6nexthops *bool `json:"advertise-ipv6-next-hops,omitempty"`
@@ -504,7 +504,7 @@ type NetworkinstanceProtocolsBgpIpv4unicastNexthopresolutionIpv4nexthopsTunnelre
 	Allowedtunneltypes []*NetworkinstanceProtocolsBgpIpv4unicastNexthopresolutionIpv4nexthopsTunnelresolutionAllowedtunneltypes `json:"allowed-tunnel-types,omitempty"`
 	// +kubebuilder:validation:Enum=`disabled`;`prefer`;`require`
 	// +kubebuilder:default:="disabled"
-	Mode E_NetworkinstanceProtocolsBgpIpv4unicastNexthopresolutionIpv4nexthopsTunnelresolutionMode `json:"mode"`
+	Mode E_NetworkinstanceProtocolsBgpIpv4unicastNexthopresolutionIpv4nexthopsTunnelresolutionMode `json:"mode,omitempty"`
 	//Mode *string `json:"mode,omitempty"`
 }
 
@@ -517,7 +517,7 @@ type NetworkinstanceProtocolsBgpIpv4unicastNexthopresolutionIpv4nexthopsTunnelre
 type NetworkinstanceProtocolsBgpIpv6unicast struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate E_NetworkinstanceProtocolsBgpIpv6unicastAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpIpv6unicastAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// BgpIpv6unicastConvergence
 	Convergence []*NetworkinstanceProtocolsBgpIpv6unicastConvergence `json:"convergence,omitempty"`
@@ -569,7 +569,7 @@ type NetworkinstanceProtocolsBgpIpv6unicastNexthopresolutionIpv4nexthopsTunnelre
 	Allowedtunneltypes []*NetworkinstanceProtocolsBgpIpv6unicastNexthopresolutionIpv4nexthopsTunnelresolutionAllowedtunneltypes `json:"allowed-tunnel-types,omitempty"`
 	// +kubebuilder:validation:Enum=`disabled`;`prefer`;`require`
 	// +kubebuilder:default:="disabled"
-	Mode E_NetworkinstanceProtocolsBgpIpv6unicastNexthopresolutionIpv4nexthopsTunnelresolutionMode `json:"mode"`
+	Mode E_NetworkinstanceProtocolsBgpIpv6unicastNexthopresolutionIpv4nexthopsTunnelresolutionMode `json:"mode,omitempty"`
 	//Mode *string `json:"mode,omitempty"`
 }
 
@@ -582,7 +582,7 @@ type NetworkinstanceProtocolsBgpIpv6unicastNexthopresolutionIpv4nexthopsTunnelre
 type NetworkinstanceProtocolsBgpNeighbor struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceProtocolsBgpNeighborAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpNeighborAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// BgpNeighborAspathoptions
 	Aspathoptions []*NetworkinstanceProtocolsBgpNeighborAspathoptions `json:"as-path-options,omitempty"`
@@ -651,7 +651,7 @@ type NetworkinstanceProtocolsBgpNeighborAspathoptionsRemoveprivateas struct {
 	// +kubebuilder:default:=false
 	Leadingonly *bool `json:"leading-only,omitempty"`
 	// +kubebuilder:validation:Enum=`delete`;`disabled`;`replace`
-	Mode E_NetworkinstanceProtocolsBgpNeighborAspathoptionsRemoveprivateasMode `json:"mode"`
+	Mode E_NetworkinstanceProtocolsBgpNeighborAspathoptionsRemoveprivateasMode `json:"mode,omitempty"`
 }
 
 // NetworkinstanceProtocolsBgpNeighborAuthentication struct
@@ -662,7 +662,7 @@ type NetworkinstanceProtocolsBgpNeighborAuthentication struct {
 // NetworkinstanceProtocolsBgpNeighborEvpn struct
 type NetworkinstanceProtocolsBgpNeighborEvpn struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate E_NetworkinstanceProtocolsBgpNeighborEvpnAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpNeighborEvpnAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	Advertiseipv6nexthops *bool `json:"advertise-ipv6-next-hops,omitempty"`
 	// BgpNeighborEvpnPrefixlimit
@@ -688,7 +688,7 @@ type NetworkinstanceProtocolsBgpNeighborFailuredetection struct {
 // NetworkinstanceProtocolsBgpNeighborGracefulrestart struct
 type NetworkinstanceProtocolsBgpNeighborGracefulrestart struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate E_NetworkinstanceProtocolsBgpNeighborGracefulrestartAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpNeighborGracefulrestartAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=1
 	// kubebuilder:validation:Maximum=3600
@@ -698,7 +698,7 @@ type NetworkinstanceProtocolsBgpNeighborGracefulrestart struct {
 // NetworkinstanceProtocolsBgpNeighborIpv4unicast struct
 type NetworkinstanceProtocolsBgpNeighborIpv4unicast struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate E_NetworkinstanceProtocolsBgpNeighborIpv4unicastAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpNeighborIpv4unicastAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	Advertiseipv6nexthops *bool `json:"advertise-ipv6-next-hops,omitempty"`
 	// BgpNeighborIpv4unicastPrefixlimit
@@ -719,7 +719,7 @@ type NetworkinstanceProtocolsBgpNeighborIpv4unicastPrefixlimit struct {
 // NetworkinstanceProtocolsBgpNeighborIpv6unicast struct
 type NetworkinstanceProtocolsBgpNeighborIpv6unicast struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate E_NetworkinstanceProtocolsBgpNeighborIpv6unicastAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpNeighborIpv6unicastAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// BgpNeighborIpv6unicastPrefixlimit
 	Prefixlimit []*NetworkinstanceProtocolsBgpNeighborIpv6unicastPrefixlimit `json:"prefix-limit,omitempty"`
@@ -792,10 +792,10 @@ type NetworkinstanceProtocolsBgpNeighborTraceoptions struct {
 // NetworkinstanceProtocolsBgpNeighborTraceoptionsFlag struct
 type NetworkinstanceProtocolsBgpNeighborTraceoptionsFlag struct {
 	// +kubebuilder:validation:Enum=`detail`;`receive`;`send`
-	Modifier E_NetworkinstanceProtocolsBgpNeighborTraceoptionsFlagModifier `json:"modifier"`
+	Modifier E_NetworkinstanceProtocolsBgpNeighborTraceoptionsFlagModifier `json:"modifier,omitempty"`
 	//Modifier *string `json:"modifier,omitempty"`
 	// +kubebuilder:validation:Enum=`events`;`graceful-restart`;`keepalive`;`notification`;`open`;`packets`;`route`;`socket`;`timers`;`update`
-	Name E_NetworkinstanceProtocolsBgpNeighborTraceoptionsFlagName `json:"name"`
+	Name E_NetworkinstanceProtocolsBgpNeighborTraceoptionsFlagName `json:"name,omitempty"`
 }
 
 // NetworkinstanceProtocolsBgpNeighborTransport struct
@@ -857,10 +857,10 @@ type NetworkinstanceProtocolsBgpTraceoptions struct {
 // NetworkinstanceProtocolsBgpTraceoptionsFlag struct
 type NetworkinstanceProtocolsBgpTraceoptionsFlag struct {
 	// +kubebuilder:validation:Enum=`detail`;`receive`;`send`
-	Modifier E_NetworkinstanceProtocolsBgpTraceoptionsFlagModifier `json:"modifier"`
+	Modifier E_NetworkinstanceProtocolsBgpTraceoptionsFlagModifier `json:"modifier,omitempty"`
 	//Modifier *string `json:"modifier,omitempty"`
 	// +kubebuilder:validation:Enum=`events`;`graceful-restart`;`keepalive`;`notification`;`open`;`packets`;`route`;`socket`;`timers`;`update`
-	Name E_NetworkinstanceProtocolsBgpTraceoptionsFlagName `json:"name"`
+	Name E_NetworkinstanceProtocolsBgpTraceoptionsFlagName `json:"name,omitempty"`
 }
 
 // NetworkinstanceProtocolsBgpTransport struct

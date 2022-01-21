@@ -27,7 +27,7 @@ import (
 // SystemNtp struct
 type SystemNtp struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate E_SystemNtpAdminstate `json:"admin-state"`
+	Adminstate E_SystemNtpAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	Networkinstance *string `json:"network-instance"`
 	//+kubebuilder:validation:MinItems=0

@@ -157,8 +157,6 @@ spec:
                         vxlan-interface:
                           type: string
                       required:
-                      - admin-state
-                      - encapsulation-type
                       - evi
                       - id
                       type: object

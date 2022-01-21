@@ -125,7 +125,6 @@ spec:
                                             format: int32
                                             type: integer
                                         required:
-                                        - admin-state
                                         - index
                                         type: object
                                       maxItems: 128
@@ -140,7 +139,6 @@ spec:
                                       pattern: '[A-Za-z0-9 !@#$^&()|+=`~.,''/_:;?-]*'
                                       type: string
                                   required:
-                                  - admin-state
                                   - name
                                   type: object
                                 maxItems: 1024

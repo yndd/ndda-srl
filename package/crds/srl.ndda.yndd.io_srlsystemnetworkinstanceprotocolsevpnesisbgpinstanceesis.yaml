@@ -102,8 +102,6 @@ spec:
                                             default: false
                                             description: Acdf *string `json:"ac-df,omitempty"`
                                             type: boolean
-                                        required:
-                                        - ac-df
                                         type: object
                                       type: array
                                     preference-value:
@@ -121,8 +119,6 @@ spec:
                                 - default
                                 - preference
                                 type: string
-                            required:
-                            - type
                             type: object
                           type: array
                         interface-standby-signaling-on-non-df:
@@ -181,8 +177,6 @@ spec:
                                 enum:
                                 - use-system-ipv4-address
                                 type: string
-                            required:
-                            - originating-ip
                             type: object
                           type: array
                         next-hop:
@@ -191,13 +185,9 @@ spec:
                           enum:
                           - use-system-ipv4-address
                           type: string
-                      required:
-                      - next-hop
                       type: object
                     type: array
                 required:
-                - admin-state
-                - multi-homing-mode
                 - name
                 type: object
             required:

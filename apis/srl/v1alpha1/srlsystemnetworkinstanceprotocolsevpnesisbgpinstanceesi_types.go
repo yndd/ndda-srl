@@ -28,7 +28,7 @@ import (
 type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiAdminstate `json:"admin-state"`
+	Adminstate E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// EthernetsegmentDfelection
 	Dfelection []*SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelection `json:"df-election,omitempty"`
@@ -38,7 +38,7 @@ type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi struct {
 	Interface *string `json:"interface,omitempty"`
 	// +kubebuilder:validation:Enum=`all-active`;`single-active`
 	// +kubebuilder:default:="all-active"
-	Multihomingmode E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiMultihomingmode `json:"multi-homing-mode"`
+	Multihomingmode E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiMultihomingmode `json:"multi-homing-mode,omitempty"`
 	//Multihomingmode *string `json:"multi-homing-mode,omitempty"`
 	// kubebuilder:validation:MinLength=1
 	// kubebuilder:validation:MaxLength=255
@@ -65,7 +65,7 @@ type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithm str
 	Preferencealg []*SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmPreferencealg `json:"preference-alg,omitempty"`
 	// +kubebuilder:validation:Enum=`default`;`preference`
 	// +kubebuilder:default:="default"
-	Type E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmType `json:"type"`
+	Type E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmType `json:"type,omitempty"`
 	//Type *string `json:"type,omitempty"`
 }
 
@@ -83,7 +83,7 @@ type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmPref
 type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmPreferencealgCapabilities struct {
 	// +kubebuilder:validation:Enum=`exclude`;`include`
 	// +kubebuilder:default:="include"
-	Acdf E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmPreferencealgCapabilitiesAcdf `json:"ac-df"`
+	Acdf E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmPreferencealgCapabilitiesAcdf `json:"ac-df,omitempty"`
 	//Acdf *string `json:"ac-df,omitempty"`
 	// +kubebuilder:default:=false
 	Nonrevertive *bool `json:"non-revertive,omitempty"`
@@ -106,7 +106,7 @@ type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutes struct {
 	Esi []*SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutesEthernetsegment `json:"esi,omitempty"`
 	// +kubebuilder:validation:Enum=`use-system-ipv4-address`
 	// +kubebuilder:default:="use-system-ipv4-address"
-	Nexthop E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutesNexthop `json:"next-hop"`
+	Nexthop E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutesNexthop `json:"next-hop,omitempty"`
 	//Nexthop *string `json:"next-hop,omitempty"`
 }
 
@@ -114,7 +114,7 @@ type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutes struct {
 type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutesEthernetsegment struct {
 	// +kubebuilder:validation:Enum=`use-system-ipv4-address`
 	// +kubebuilder:default:="use-system-ipv4-address"
-	Originatingip E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutesEthernetsegmentOriginatingip `json:"originating-ip"`
+	Originatingip E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutesEthernetsegmentOriginatingip `json:"originating-ip,omitempty"`
 	//Originatingip *string `json:"originating-ip,omitempty"`
 }
 

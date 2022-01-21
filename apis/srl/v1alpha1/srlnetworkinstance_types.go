@@ -28,7 +28,7 @@ import (
 type Networkinstance struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// NetworkinstanceBridgetable
 	Bridgetable []*NetworkinstanceBridgetable `json:"bridge-table,omitempty"`
@@ -93,11 +93,11 @@ type NetworkinstanceBridgetable struct {
 type NetworkinstanceBridgetableMacduplication struct {
 	// +kubebuilder:validation:Enum=`blackhole`;`oper-down`;`stop-learning`
 	// +kubebuilder:default:="stop-learning"
-	Action E_NetworkinstanceBridgetableMacduplicationAction `json:"action"`
+	Action E_NetworkinstanceBridgetableMacduplicationAction `json:"action,omitempty"`
 	//Action *string `json:"action,omitempty"`
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceBridgetableMacduplicationAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceBridgetableMacduplicationAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// +kubebuilder:default:=9
 	Holddowntime *uint32 `json:"hold-down-time,omitempty"`
@@ -115,7 +115,7 @@ type NetworkinstanceBridgetableMacduplication struct {
 type NetworkinstanceBridgetableMaclearning struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceBridgetableMaclearningAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceBridgetableMaclearningAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// NetworkinstanceBridgetableMaclearningAging
 	Aging []*NetworkinstanceBridgetableMaclearningAging `json:"aging,omitempty"`
@@ -125,7 +125,7 @@ type NetworkinstanceBridgetableMaclearning struct {
 type NetworkinstanceBridgetableMaclearningAging struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceBridgetableMaclearningAgingAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceBridgetableMaclearningAgingAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=60
 	// kubebuilder:validation:Maximum=86400
@@ -203,7 +203,7 @@ type NetworkinstanceIploadbalancingResilienthashprefix struct {
 type NetworkinstanceMpls struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate E_NetworkinstanceMplsAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceMplsAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	//+kubebuilder:validation:MinItems=0
 	//+kubebuilder:validation:MaxItems=1024
@@ -216,14 +216,14 @@ type NetworkinstanceMpls struct {
 type NetworkinstanceMplsStaticentry struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceMplsStaticentryAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceMplsStaticentryAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// +kubebuilder:default:=false
 	Collectstats *bool   `json:"collect-stats,omitempty"`
 	Nexthopgroup *string `json:"next-hop-group,omitempty"`
 	// +kubebuilder:validation:Enum=`pop`;`swap`
 	// +kubebuilder:default:="swap"
-	Operation E_NetworkinstanceMplsStaticentryOperation `json:"operation"`
+	Operation E_NetworkinstanceMplsStaticentryOperation `json:"operation,omitempty"`
 	//Operation *string `json:"operation,omitempty"`
 	// kubebuilder:validation:Minimum=0
 	// kubebuilder:validation:Maximum=255
@@ -270,7 +270,7 @@ type NetworkinstanceProtocolsDirectlyconnectedTedatabaseinstallBgpls struct {
 type NetworkinstanceProtocolsLdp struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate E_NetworkinstanceProtocolsLdpAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsLdpAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// NetworkinstanceProtocolsLdpDiscovery
 	Discovery         []*NetworkinstanceProtocolsLdpDiscovery `json:"discovery,omitempty"`
@@ -331,7 +331,7 @@ type NetworkinstanceProtocolsLdpDiscoveryInterfacesInterface struct {
 // NetworkinstanceProtocolsLdpDiscoveryInterfacesInterfaceIpv4 struct
 type NetworkinstanceProtocolsLdpDiscoveryInterfacesInterfaceIpv4 struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate E_NetworkinstanceProtocolsLdpDiscoveryInterfacesInterfaceIpv4Adminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsLdpDiscoveryInterfacesInterfaceIpv4Adminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// NetworkinstanceProtocolsLdpDiscoveryInterfacesInterfaceIpv4Statistics
 	Statistics []*NetworkinstanceProtocolsLdpDiscoveryInterfacesInterfaceIpv4Statistics `json:"statistics,omitempty"`
@@ -564,7 +564,7 @@ type NetworkinstanceTepolicies struct {
 type NetworkinstanceTepoliciesStaticpolicy struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceTepoliciesStaticpolicyAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceTepoliciesStaticpolicyAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=1
 	// kubebuilder:validation:Maximum=4294967295
@@ -611,7 +611,7 @@ type NetworkinstanceTepoliciesStaticpolicySegmentlistSegment struct {
 	// NetworkinstanceTepoliciesStaticpolicySegmentlistSegmentSegmenttype1
 	Segmenttype1 []*NetworkinstanceTepoliciesStaticpolicySegmentlistSegmentSegmenttype1 `json:"segment-type-1,omitempty"`
 	// +kubebuilder:validation:Enum=`segment-type-1`;`segment-type-10`;`segment-type-11`;`segment-type-2`;`segment-type-3`;`segment-type-4`;`segment-type-5`;`segment-type-6`;`segment-type-7`;`segment-type-8`;`segment-type-9`
-	Type E_NetworkinstanceTepoliciesStaticpolicySegmentlistSegmentType `json:"type"`
+	Type E_NetworkinstanceTepoliciesStaticpolicySegmentlistSegmentType `json:"type,omitempty"`
 	//Type *string `json:"type,omitempty"`
 }
 

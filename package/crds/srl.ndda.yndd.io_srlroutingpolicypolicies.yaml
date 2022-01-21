@@ -154,8 +154,6 @@ spec:
                                             - igp
                                             - incomplete
                                             type: string
-                                        required:
-                                        - set
                                         type: object
                                       type: array
                                   type: object
@@ -290,8 +288,6 @@ spec:
                                                   - igp
                                                   - incomplete
                                                   type: string
-                                              required:
-                                              - set
                                               type: object
                                             type: array
                                         type: object
@@ -355,7 +351,6 @@ spec:
                                               kubebuilder:validation:Maximum=255
                                             type: integer
                                         required:
-                                        - operator
                                         - value
                                         type: object
                                       type: array
@@ -405,8 +400,6 @@ spec:
                                       - external
                                       - internal
                                       type: string
-                                  required:
-                                  - route-type
                                   type: object
                                 type: array
                               ospf:

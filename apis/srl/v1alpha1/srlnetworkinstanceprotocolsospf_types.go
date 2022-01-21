@@ -37,10 +37,10 @@ type NetworkinstanceProtocolsOspfInstance struct {
 	Addressfamily *string `json:"address-family,omitempty"`
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate E_NetworkinstanceProtocolsOspfInstanceAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsOspfInstanceAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// +kubebuilder:validation:Enum=`area`;`as`;`false`;`link`
-	Advertiseroutercapability E_NetworkinstanceProtocolsOspfInstanceAdvertiseroutercapability `json:"advertise-router-capability"`
+	Advertiseroutercapability E_NetworkinstanceProtocolsOspfInstanceAdvertiseroutercapability `json:"advertise-router-capability,omitempty"`
 	//Advertiseroutercapability *string `json:"advertise-router-capability,omitempty"`
 	//+kubebuilder:validation:MinItems=0
 	//+kubebuilder:validation:MaxItems=1024
@@ -136,7 +136,7 @@ type NetworkinstanceProtocolsOspfInstanceAreaArearange struct {
 type NetworkinstanceProtocolsOspfInstanceAreaInterface struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceProtocolsOspfInstanceAreaInterfaceAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsOspfInstanceAreaInterfaceAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// +kubebuilder:default:=true
 	Advertiseroutercapability *bool `json:"advertise-router-capability,omitempty"`
@@ -156,13 +156,13 @@ type NetworkinstanceProtocolsOspfInstanceAreaInterface struct {
 	Hellointerval *uint32 `json:"hello-interval,omitempty"`
 	Interfacename *string `json:"interface-name"`
 	// +kubebuilder:validation:Enum=`broadcast`;`point-to-point`
-	Interfacetype E_NetworkinstanceProtocolsOspfInstanceAreaInterfaceInterfacetype `json:"interface-type"`
+	Interfacetype E_NetworkinstanceProtocolsOspfInstanceAreaInterfaceInterfacetype `json:"interface-type,omitempty"`
 	//Interfacetype *string `json:"interface-type,omitempty"`
 	// OspfInstanceAreaInterfaceLdpsynchronization
 	Ldpsynchronization []*NetworkinstanceProtocolsOspfInstanceAreaInterfaceLdpsynchronization `json:"ldp-synchronization,omitempty"`
 	// +kubebuilder:validation:Enum=`all`;`except-own-rtrlsa`;`except-own-rtrlsa-and-defaults`;`none`
 	// +kubebuilder:default:="none"
-	Lsafilterout E_NetworkinstanceProtocolsOspfInstanceAreaInterfaceLsafilterout `json:"lsa-filter-out"`
+	Lsafilterout E_NetworkinstanceProtocolsOspfInstanceAreaInterfaceLsafilterout `json:"lsa-filter-out,omitempty"`
 	//Lsafilterout *string `json:"lsa-filter-out,omitempty"`
 	// kubebuilder:validation:Minimum=0
 	// kubebuilder:validation:Maximum=65535
@@ -225,10 +225,10 @@ type NetworkinstanceProtocolsOspfInstanceAreaInterfaceTraceoptionsTrace struct {
 type NetworkinstanceProtocolsOspfInstanceAreaInterfaceTraceoptionsTracePacket struct {
 	Detail *string `json:"detail,omitempty"`
 	// +kubebuilder:validation:Enum=`drop`;`egress`;`in-and-egress`;`ingress`
-	Modifier E_NetworkinstanceProtocolsOspfInstanceAreaInterfaceTraceoptionsTracePacketModifier `json:"modifier"`
+	Modifier E_NetworkinstanceProtocolsOspfInstanceAreaInterfaceTraceoptionsTracePacketModifier `json:"modifier,omitempty"`
 	//Modifier *string `json:"modifier,omitempty"`
 	// +kubebuilder:validation:Enum=`all`;`dbdescr`;`hello`;`ls-ack`;`ls-request`;`ls-update`
-	Type E_NetworkinstanceProtocolsOspfInstanceAreaInterfaceTraceoptionsTracePacketType `json:"type"`
+	Type E_NetworkinstanceProtocolsOspfInstanceAreaInterfaceTraceoptionsTracePacketType `json:"type,omitempty"`
 	//Type *string `json:"type,omitempty"`
 }
 
@@ -461,7 +461,7 @@ type NetworkinstanceProtocolsOspfInstanceTraceoptionsTraceLsdb struct {
 	// +kubebuilder:validation:Pattern=`(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])`
 	Routerid *string `json:"router-id,omitempty"`
 	// +kubebuilder:validation:Enum=`all`;`external`;`inter-area-prefix`;`inter-area-router`;`intra-area-prefix`;`network`;`nssa`;`opaque`;`router`;`summary`
-	Type E_NetworkinstanceProtocolsOspfInstanceTraceoptionsTraceLsdbType `json:"type"`
+	Type E_NetworkinstanceProtocolsOspfInstanceTraceoptionsTraceLsdbType `json:"type,omitempty"`
 	//Type *string `json:"type,omitempty"`
 }
 
@@ -469,10 +469,10 @@ type NetworkinstanceProtocolsOspfInstanceTraceoptionsTraceLsdb struct {
 type NetworkinstanceProtocolsOspfInstanceTraceoptionsTracePacket struct {
 	Detail *string `json:"detail,omitempty"`
 	// +kubebuilder:validation:Enum=`drop`;`egress`;`in-and-egress`;`ingress`
-	Modifier E_NetworkinstanceProtocolsOspfInstanceTraceoptionsTracePacketModifier `json:"modifier"`
+	Modifier E_NetworkinstanceProtocolsOspfInstanceTraceoptionsTracePacketModifier `json:"modifier,omitempty"`
 	//Modifier *string `json:"modifier,omitempty"`
 	// +kubebuilder:validation:Enum=`all`;`dbdescr`;`hello`;`ls-ack`;`ls-request`;`ls-update`
-	Type E_NetworkinstanceProtocolsOspfInstanceTraceoptionsTracePacketType `json:"type"`
+	Type E_NetworkinstanceProtocolsOspfInstanceTraceoptionsTracePacketType `json:"type,omitempty"`
 	//Type *string `json:"type,omitempty"`
 }
 

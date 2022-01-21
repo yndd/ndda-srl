@@ -36,7 +36,7 @@ type NetworkinstanceAggregateroutes struct {
 type NetworkinstanceAggregateroutesRoute struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceAggregateroutesRouteAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceAggregateroutesRouteAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// AggregateroutesRouteAggregator
 	Aggregator []*NetworkinstanceAggregateroutesRouteAggregator `json:"aggregator,omitempty"`

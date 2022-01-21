@@ -64,7 +64,7 @@ type TunnelinterfaceVxlaninterfaceEgressDestinationgroups struct {
 type TunnelinterfaceVxlaninterfaceEgressDestinationgroupsGroup struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_TunnelinterfaceVxlaninterfaceEgressDestinationgroupsGroupAdminstate `json:"admin-state"`
+	Adminstate E_TunnelinterfaceVxlaninterfaceEgressDestinationgroupsGroupAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	//+kubebuilder:validation:MinItems=0
 	//+kubebuilder:validation:MaxItems=128
@@ -84,7 +84,7 @@ type TunnelinterfaceVxlaninterfaceEgressDestinationgroupsGroup struct {
 type TunnelinterfaceVxlaninterfaceEgressDestinationgroupsGroupDestination struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_TunnelinterfaceVxlaninterfaceEgressDestinationgroupsGroupDestinationAdminstate `json:"admin-state"`
+	Adminstate E_TunnelinterfaceVxlaninterfaceEgressDestinationgroupsGroupDestinationAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=0
 	// kubebuilder:validation:Maximum=65535

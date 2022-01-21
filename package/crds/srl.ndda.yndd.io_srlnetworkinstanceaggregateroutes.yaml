@@ -113,8 +113,6 @@ spec:
                         summary-only:
                           default: false
                           type: boolean
-                      required:
-                      - admin-state
                       type: object
                     maxItems: 16384
                     minItems: 0

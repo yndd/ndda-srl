@@ -36,7 +36,7 @@ type NetworkinstanceProtocolsBgpevpn struct {
 type NetworkinstanceProtocolsBgpevpnBgpinstance struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceProtocolsBgpevpnBgpinstanceAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceProtocolsBgpevpnBgpinstanceAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=0
 	// kubebuilder:validation:Maximum=4294967295
@@ -48,7 +48,7 @@ type NetworkinstanceProtocolsBgpevpnBgpinstance struct {
 	Ecmp *uint8 `json:"ecmp,omitempty"`
 	// +kubebuilder:validation:Enum=`vxlan`
 	// +kubebuilder:default:="vxlan"
-	Encapsulationtype E_NetworkinstanceProtocolsBgpevpnBgpinstanceEncapsulationtype `json:"encapsulation-type"`
+	Encapsulationtype E_NetworkinstanceProtocolsBgpevpnBgpinstanceEncapsulationtype `json:"encapsulation-type,omitempty"`
 	//Encapsulationtype *string `json:"encapsulation-type,omitempty"`
 	// kubebuilder:validation:Minimum=1
 	// kubebuilder:validation:Maximum=65535

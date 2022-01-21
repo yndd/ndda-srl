@@ -93,8 +93,6 @@ spec:
                                 - disabled
                                 - replace
                                 type: string
-                            required:
-                            - mode
                             type: object
                           type: array
                       type: object
@@ -206,8 +204,6 @@ spec:
                         rapid-update:
                           default: false
                           type: boolean
-                      required:
-                      - admin-state
                       type: object
                     type: array
                   export-policy:
@@ -242,8 +238,6 @@ spec:
                           description: Adminstate *string `json:"admin-state,omitempty"`
                             kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=3600
                           type: integer
-                      required:
-                      - admin-state
                       type: object
                     type: array
                   group:
@@ -287,8 +281,6 @@ spec:
                                       - disabled
                                       - replace
                                       type: string
-                                  required:
-                                  - mode
                                   type: object
                                 type: array
                               replace-peer-as:
@@ -342,8 +334,6 @@ spec:
                                       type: integer
                                   type: object
                                 type: array
-                            required:
-                            - admin-state
                             type: object
                           type: array
                         export-policy:
@@ -376,8 +366,6 @@ spec:
                                 description: Adminstate *string `json:"admin-state,omitempty"`
                                   kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=3600
                                 type: integer
-                            required:
-                            - admin-state
                             type: object
                           type: array
                         group-name:
@@ -422,8 +410,6 @@ spec:
                                 type: array
                               receive-ipv6-next-hops:
                                 type: boolean
-                            required:
-                            - admin-state
                             type: object
                           type: array
                         ipv6-unicast:
@@ -458,8 +444,6 @@ spec:
                                       type: integer
                                   type: object
                                 type: array
-                            required:
-                            - admin-state
                             type: object
                           type: array
                         local-as:
@@ -590,9 +574,6 @@ spec:
                                       - timers
                                       - update
                                       type: string
-                                  required:
-                                  - modifier
-                                  - name
                                   type: object
                                 maxItems: 1024
                                 minItems: 0
@@ -617,7 +598,6 @@ spec:
                             type: object
                           type: array
                       required:
-                      - admin-state
                       - group-name
                       type: object
                     maxItems: 1024
@@ -712,8 +692,6 @@ spec:
                                             - prefer
                                             - require
                                             type: string
-                                        required:
-                                        - mode
                                         type: object
                                       type: array
                                   type: object
@@ -723,8 +701,6 @@ spec:
                         receive-ipv6-next-hops:
                           default: false
                           type: boolean
-                      required:
-                      - admin-state
                       type: object
                     type: array
                   ipv6-unicast:
@@ -811,16 +787,12 @@ spec:
                                             - prefer
                                             - require
                                             type: string
-                                        required:
-                                        - mode
                                         type: object
                                       type: array
                                   type: object
                                 type: array
                             type: object
                           type: array
-                      required:
-                      - admin-state
                       type: object
                     type: array
                   local-preference:
@@ -869,8 +841,6 @@ spec:
                                       - disabled
                                       - replace
                                       type: string
-                                  required:
-                                  - mode
                                   type: object
                                 type: array
                               replace-peer-as:
@@ -922,8 +892,6 @@ spec:
                                       type: integer
                                   type: object
                                 type: array
-                            required:
-                            - admin-state
                             type: object
                           type: array
                         export-policy:
@@ -956,8 +924,6 @@ spec:
                                 description: Adminstate *string `json:"admin-state,omitempty"`
                                   kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=3600
                                 type: integer
-                            required:
-                            - admin-state
                             type: object
                           type: array
                         import-policy:
@@ -996,8 +962,6 @@ spec:
                                 type: array
                               receive-ipv6-next-hops:
                                 type: boolean
-                            required:
-                            - admin-state
                             type: object
                           type: array
                         ipv6-unicast:
@@ -1030,8 +994,6 @@ spec:
                                       type: integer
                                   type: object
                                 type: array
-                            required:
-                            - admin-state
                             type: object
                           type: array
                         local-as:
@@ -1161,9 +1123,6 @@ spec:
                                       - timers
                                       - update
                                       type: string
-                                  required:
-                                  - modifier
-                                  - name
                                   type: object
                                 maxItems: 1024
                                 minItems: 0
@@ -1187,7 +1146,6 @@ spec:
                             type: object
                           type: array
                       required:
-                      - admin-state
                       - peer-group
                       type: object
                     maxItems: 1024
@@ -1282,9 +1240,6 @@ spec:
                                 - timers
                                 - update
                                 type: string
-                            required:
-                            - modifier
-                            - name
                             type: object
                           maxItems: 1024
                           minItems: 0
@@ -1303,7 +1258,6 @@ spec:
                       type: object
                     type: array
                 required:
-                - admin-state
                 - autonomous-system
                 type: object
               network-instance-name:

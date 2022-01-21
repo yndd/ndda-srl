@@ -97,7 +97,6 @@ spec:
                                 format: int32
                                 type: integer
                             required:
-                            - admin-state
                             - name
                             type: object
                           maxItems: 1024
@@ -142,7 +141,6 @@ spec:
                           format: int32
                           type: integer
                       required:
-                      - admin-state
                       - id
                       type: object
                     maxItems: 1024

@@ -36,7 +36,7 @@ type NetworkinstanceNexthopgroups struct {
 type NetworkinstanceNexthopgroupsGroup struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceNexthopgroupsGroupAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceNexthopgroupsGroupAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// NexthopgroupsGroupBlackhole
 	Blackhole []*NetworkinstanceNexthopgroupsGroupBlackhole `json:"blackhole,omitempty"`
@@ -61,7 +61,7 @@ type NetworkinstanceNexthopgroupsGroupBlackhole struct {
 type NetworkinstanceNexthopgroupsGroupNexthop struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate E_NetworkinstanceNexthopgroupsGroupNexthopAdminstate `json:"admin-state"`
+	Adminstate E_NetworkinstanceNexthopgroupsGroupNexthopAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// NexthopgroupsGroupNexthopFailuredetection
 	Failuredetection []*NetworkinstanceNexthopgroupsGroupNexthopFailuredetection `json:"failure-detection,omitempty"`

@@ -113,7 +113,7 @@ type RoutingpolicyPolicyDefaultactionAcceptBgpLocalpreference struct {
 // RoutingpolicyPolicyDefaultactionAcceptBgpOrigin struct
 type RoutingpolicyPolicyDefaultactionAcceptBgpOrigin struct {
 	// +kubebuilder:validation:Enum=`egp`;`igp`;`incomplete`
-	Set E_RoutingpolicyPolicyDefaultactionAcceptBgpOriginSet `json:"set"`
+	Set E_RoutingpolicyPolicyDefaultactionAcceptBgpOriginSet `json:"set,omitempty"`
 	//Set *string `json:"set,omitempty"`
 }
 
@@ -214,7 +214,7 @@ type RoutingpolicyPolicyStatementActionAcceptBgpLocalpreference struct {
 // RoutingpolicyPolicyStatementActionAcceptBgpOrigin struct
 type RoutingpolicyPolicyStatementActionAcceptBgpOrigin struct {
 	// +kubebuilder:validation:Enum=`egp`;`igp`;`incomplete`
-	Set E_RoutingpolicyPolicyStatementActionAcceptBgpOriginSet `json:"set"`
+	Set E_RoutingpolicyPolicyStatementActionAcceptBgpOriginSet `json:"set,omitempty"`
 	//Set *string `json:"set,omitempty"`
 }
 
@@ -257,7 +257,7 @@ type RoutingpolicyPolicyStatementMatchBgp struct {
 type RoutingpolicyPolicyStatementMatchBgpAspathlength struct {
 	// +kubebuilder:validation:Enum=`eq`;`ge`;`le`
 	// +kubebuilder:default:="eq"
-	Operator E_RoutingpolicyPolicyStatementMatchBgpAspathlengthOperator `json:"operator"`
+	Operator E_RoutingpolicyPolicyStatementMatchBgpAspathlengthOperator `json:"operator,omitempty"`
 	//Operator *string `json:"operator,omitempty"`
 	// +kubebuilder:default:=false
 	Unique *bool `json:"unique,omitempty"`
@@ -287,7 +287,7 @@ type RoutingpolicyPolicyStatementMatchIsis struct {
 	// kubebuilder:validation:Maximum=2
 	Level *uint8 `json:"level,omitempty"`
 	// +kubebuilder:validation:Enum=`external`;`internal`
-	Routetype E_RoutingpolicyPolicyStatementMatchIsisRoutetype `json:"route-type"`
+	Routetype E_RoutingpolicyPolicyStatementMatchIsisRoutetype `json:"route-type,omitempty"`
 	//Routetype *string `json:"route-type,omitempty"`
 }
 

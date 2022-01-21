@@ -151,14 +151,12 @@ spec:
                                 default: true
                                 type: boolean
                             required:
-                            - admin-state
                             - index
                             type: object
                           maxItems: 128
                           minItems: 0
                           type: array
                       required:
-                      - admin-state
                       - name
                       type: object
                     maxItems: 1024

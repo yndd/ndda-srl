@@ -106,9 +106,6 @@ spec:
                                 description: kubebuilder:validation:Minimum=3 kubebuilder:validation:Maximum=10
                                 format: int32
                                 type: integer
-                            required:
-                            - action
-                            - admin-state
                             type: object
                           type: array
                         mac-learning:
@@ -143,12 +140,8 @@ spec:
                                         kubebuilder:validation:Minimum=60 kubebuilder:validation:Maximum=86400
                                       format: int32
                                       type: integer
-                                  required:
-                                  - admin-state
                                   type: object
                                 type: array
-                            required:
-                            - admin-state
                             type: object
                           type: array
                         mac-limit:
@@ -301,8 +294,6 @@ spec:
                               top-label:
                                 type: string
                             required:
-                            - admin-state
-                            - operation
                             - preference
                             - top-label
                             type: object
@@ -311,8 +302,6 @@ spec:
                           type: array
                         static-label-block:
                           type: string
-                      required:
-                      - admin-state
                       type: object
                     type: array
                   mtu:
@@ -478,8 +467,6 @@ spec:
                                                               type: integer
                                                           type: object
                                                         type: array
-                                                    required:
-                                                    - admin-state
                                                     type: object
                                                   type: array
                                                 name:
@@ -727,7 +714,6 @@ spec:
                                   type: object
                                 type: array
                             required:
-                            - admin-state
                             - dynamic-label-block
                             type: object
                           type: array
@@ -873,7 +859,6 @@ spec:
                                             type: string
                                         required:
                                         - segment-index
-                                        - type
                                         type: object
                                       maxItems: 1024
                                       minItems: 0
@@ -889,7 +874,6 @@ spec:
                                 minItems: 0
                                 type: array
                             required:
-                            - admin-state
                             - name
                             type: object
                           maxItems: 1024
@@ -1071,7 +1055,6 @@ spec:
                     minItems: 0
                     type: array
                 required:
-                - admin-state
                 - name
                 type: object
             type: object

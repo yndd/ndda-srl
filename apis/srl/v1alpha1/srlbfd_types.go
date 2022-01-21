@@ -46,7 +46,7 @@ type BfdMicrobfdsessions struct {
 type BfdMicrobfdsessionsLaginterface struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate E_BfdMicrobfdsessionsLaginterfaceAdminstate `json:"admin-state"`
+	Adminstate E_BfdMicrobfdsessionsLaginterfaceAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=10000
 	// kubebuilder:validation:Maximum=100000000
@@ -73,7 +73,7 @@ type BfdMicrobfdsessionsLaginterface struct {
 type BfdSubinterface struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate E_BfdSubinterfaceAdminstate `json:"admin-state"`
+	Adminstate E_BfdSubinterfaceAdminstate `json:"admin-state,omitempty"`
 	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=10000
 	// kubebuilder:validation:Maximum=100000000

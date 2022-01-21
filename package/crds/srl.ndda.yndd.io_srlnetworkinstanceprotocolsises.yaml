@@ -224,8 +224,6 @@ spec:
                                     include-bfd-tlv:
                                       default: false
                                       type: boolean
-                                  required:
-                                  - admin-state
                                   type: object
                                 type: array
                               ipv6-unicast:
@@ -248,8 +246,6 @@ spec:
                                     include-bfd-tlv:
                                       default: false
                                       type: boolean
-                                  required:
-                                  - admin-state
                                   type: object
                                 type: array
                               ldp-synchronization:
@@ -424,8 +420,6 @@ spec:
                                             - packets-l2-psnp
                                             - packets-p2p-hello
                                             type: string
-                                        required:
-                                        - trace
                                         type: object
                                       maxItems: 1024
                                       minItems: 0
@@ -433,9 +427,6 @@ spec:
                                   type: object
                                 type: array
                             required:
-                            - admin-state
-                            - circuit-type
-                            - hello-padding
                             - interface-name
                             type: object
                           maxItems: 1024
@@ -454,8 +445,6 @@ spec:
                                 - disable
                                 - enable
                                 type: string
-                            required:
-                            - admin-state
                             type: object
                           type: array
                         ipv6-unicast:
@@ -475,8 +464,6 @@ spec:
                                 default: false
                                 description: Adminstate *string `json:"admin-state,omitempty"`
                                 type: boolean
-                            required:
-                            - admin-state
                             type: object
                           type: array
                         ldp-synchronization:
@@ -566,8 +553,6 @@ spec:
                                             - routes
                                             - spf
                                             type: string
-                                        required:
-                                        - trace
                                         type: object
                                       maxItems: 1024
                                       minItems: 0
@@ -576,7 +561,6 @@ spec:
                                 type: array
                             required:
                             - level-number
-                            - metric-style
                             type: object
                           maxItems: 2
                           minItems: 0
@@ -815,8 +799,6 @@ spec:
                                       - routes
                                       - summary-addresses
                                       type: string
-                                  required:
-                                  - trace
                                   type: object
                                 maxItems: 1024
                                 minItems: 0
@@ -850,8 +832,6 @@ spec:
                             type: object
                           type: array
                       required:
-                      - admin-state
-                      - level-capability
                       - name
                       type: object
                     maxItems: 1

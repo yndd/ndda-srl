@@ -82,7 +82,6 @@ spec:
                     minItems: 0
                     type: array
                 required:
-                - admin-state
                 - network-instance
                 type: object
             type: object
