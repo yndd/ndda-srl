@@ -5,6 +5,7 @@ import (
 
 	"github.com/yndd/ndda-network/pkg/ndda/itfceinfo"
 	srlv1alpha1 "github.com/yndd/ndda-srl/apis/srl/v1alpha1"
+	networkv1alpha1 "github.com/yndd/ndda-network/apis/network/v1alpha1"
 	nddov1 "github.com/yndd/nddo-runtime/apis/common/v1"
 	"github.com/yndd/nddo-runtime/pkg/odns"
 	"github.com/yndd/nddo-runtime/pkg/resource"
@@ -94,7 +95,7 @@ func (x *selectedNodeItfces) GetNodeItfcesByEpgSelector(epgSelectors []*nddov1.E
 					x.addNodeItfce(nddaItfce.GetDeviceName(), nddaItfce.GetInterfaceName(), itfceinfo.NewItfceInfo(
 						itfceinfo.WithInnerVlanId(epgSelector.InnerVlanId),
 						itfceinfo.WithOuterVlanId(epgSelector.OuterVlanId),
-						//itfceinfo.WithItfceKind(networkv1alpha1.E_InterfaceKind_INTERFACE),
+						itfceinfo.WithItfceKind(networkv1alpha1.E_InterfaceKind_INTERFACE),
 						itfceinfo.WithIpv4Prefixes(epgSelector.Ipv4Prefixes),
 						itfceinfo.WithIpv6Prefixes(epgSelector.Ipv6Prefixes),
 					))
@@ -114,7 +115,7 @@ func (x *selectedNodeItfces) GetNodeItfcesByNodeItfceSelector(nodeItfceSelectors
 				x.addNodeItfce(nddaItfce.GetDeviceName(), nddaItfce.GetInterfaceName(), itfceinfo.NewItfceInfo(
 					itfceinfo.WithInnerVlanId(itfceInfo.InnerVlanId),
 					itfceinfo.WithOuterVlanId(itfceInfo.OuterVlanId),
-					//itfceinfo.WithItfceKind(networkv1alpha1.E_InterfaceKind_INTERFACE),
+					itfceinfo.WithItfceKind(networkv1alpha1.E_InterfaceKind_INTERFACE),
 					itfceinfo.WithIpv4Prefixes(itfceInfo.Ipv4Prefixes),
 					itfceinfo.WithIpv6Prefixes(itfceInfo.Ipv6Prefixes),
 				))
