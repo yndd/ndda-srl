@@ -61,6 +61,14 @@ type IFSrlTunnelinterfaceVxlaninterface interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetVxlaninterfaceBridgeTable() []*TunnelinterfaceVxlaninterfaceBridgetable
+	GetVxlaninterfaceEgress() []*TunnelinterfaceVxlaninterfaceEgress
+	GetVxlaninterfaceIndex() uint32
+	GetVxlaninterfaceIngress() []*TunnelinterfaceVxlaninterfaceIngress
+	GetVxlaninterfaceType() string
+	// add based on type
+	AddVxlaninterfaceBridgeTable(a *TunnelinterfaceVxlaninterfaceBridgetable)
+	AddVxlaninterfaceEgress(a *TunnelinterfaceVxlaninterfaceEgress)
+	AddVxlaninterfaceIngress(a *TunnelinterfaceVxlaninterfaceIngress)
 }
 
 // GetCondition
@@ -133,4 +141,37 @@ func (x *SrlTunnelinterfaceVxlaninterface) GetVxlaninterfaceBridgeTable() []*Tun
 		return nil
 	}
 	return x.Spec.TunnelinterfaceVxlaninterface.Bridgetable
+}
+func (x *SrlTunnelinterfaceVxlaninterface) GetVxlaninterfaceEgress() []*TunnelinterfaceVxlaninterfaceEgress {
+	if reflect.ValueOf(x.Spec.TunnelinterfaceVxlaninterface.Egress).IsZero() {
+		return nil
+	}
+	return x.Spec.TunnelinterfaceVxlaninterface.Egress
+}
+func (x *SrlTunnelinterfaceVxlaninterface) GetVxlaninterfaceIndex() uint32 {
+	if reflect.ValueOf(x.Spec.TunnelinterfaceVxlaninterface.Index).IsZero() {
+		return 0
+	}
+	return *x.Spec.TunnelinterfaceVxlaninterface.Index
+}
+func (x *SrlTunnelinterfaceVxlaninterface) GetVxlaninterfaceIngress() []*TunnelinterfaceVxlaninterfaceIngress {
+	if reflect.ValueOf(x.Spec.TunnelinterfaceVxlaninterface.Ingress).IsZero() {
+		return nil
+	}
+	return x.Spec.TunnelinterfaceVxlaninterface.Ingress
+}
+func (x *SrlTunnelinterfaceVxlaninterface) GetVxlaninterfaceType() string {
+	if reflect.ValueOf(x.Spec.TunnelinterfaceVxlaninterface.Type).IsZero() {
+		return ""
+	}
+	return *x.Spec.TunnelinterfaceVxlaninterface.Type
+}
+func (x *SrlTunnelinterfaceVxlaninterface) AddVxlaninterfaceBridgeTable(a *TunnelinterfaceVxlaninterfaceBridgetable) {
+	x.Spec.TunnelinterfaceVxlaninterface.Bridgetable = append(x.Spec.TunnelinterfaceVxlaninterface.Bridgetable, a)
+}
+func (x *SrlTunnelinterfaceVxlaninterface) AddVxlaninterfaceEgress(a *TunnelinterfaceVxlaninterfaceEgress) {
+	x.Spec.TunnelinterfaceVxlaninterface.Egress = append(x.Spec.TunnelinterfaceVxlaninterface.Egress, a)
+}
+func (x *SrlTunnelinterfaceVxlaninterface) AddVxlaninterfaceIngress(a *TunnelinterfaceVxlaninterfaceIngress) {
+	x.Spec.TunnelinterfaceVxlaninterface.Ingress = append(x.Spec.TunnelinterfaceVxlaninterface.Ingress, a)
 }

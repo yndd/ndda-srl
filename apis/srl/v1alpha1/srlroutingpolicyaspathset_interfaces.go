@@ -62,6 +62,7 @@ type IFSrlRoutingpolicyAspathset interface {
 	// getters based on type
 	GetAspathsetExpression() string
 	GetAspathsetName() string
+	// add based on type
 }
 
 // GetCondition

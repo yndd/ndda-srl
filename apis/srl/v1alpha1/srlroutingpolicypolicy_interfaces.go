@@ -61,6 +61,11 @@ type IFSrlRoutingpolicyPolicy interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetPolicyDefaultAction() []*RoutingpolicyPolicyDefaultaction
+	GetPolicyName() string
+	GetPolicyStatement() []*RoutingpolicyPolicyStatement
+	// add based on type
+	AddPolicyDefaultAction(a *RoutingpolicyPolicyDefaultaction)
+	AddPolicyStatement(a *RoutingpolicyPolicyStatement)
 }
 
 // GetCondition
@@ -133,4 +138,22 @@ func (x *SrlRoutingpolicyPolicy) GetPolicyDefaultAction() []*RoutingpolicyPolicy
 		return nil
 	}
 	return x.Spec.RoutingpolicyPolicy.Defaultaction
+}
+func (x *SrlRoutingpolicyPolicy) GetPolicyName() string {
+	if reflect.ValueOf(x.Spec.RoutingpolicyPolicy.Name).IsZero() {
+		return ""
+	}
+	return *x.Spec.RoutingpolicyPolicy.Name
+}
+func (x *SrlRoutingpolicyPolicy) GetPolicyStatement() []*RoutingpolicyPolicyStatement {
+	if reflect.ValueOf(x.Spec.RoutingpolicyPolicy.Statement).IsZero() {
+		return nil
+	}
+	return x.Spec.RoutingpolicyPolicy.Statement
+}
+func (x *SrlRoutingpolicyPolicy) AddPolicyDefaultAction(a *RoutingpolicyPolicyDefaultaction) {
+	x.Spec.RoutingpolicyPolicy.Defaultaction = append(x.Spec.RoutingpolicyPolicy.Defaultaction, a)
+}
+func (x *SrlRoutingpolicyPolicy) AddPolicyStatement(a *RoutingpolicyPolicyStatement) {
+	x.Spec.RoutingpolicyPolicy.Statement = append(x.Spec.RoutingpolicyPolicy.Statement, a)
 }

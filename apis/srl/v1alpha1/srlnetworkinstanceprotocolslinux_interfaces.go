@@ -63,6 +63,7 @@ type IFSrlNetworkinstanceProtocolsLinux interface {
 	GetLinuxExportNeighbors() bool
 	GetLinuxExportRoutes() bool
 	GetLinuxImportRoutes() bool
+	// add based on type
 }
 
 // GetCondition

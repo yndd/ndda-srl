@@ -61,6 +61,8 @@ type IFSrlSystemNetworkinstanceProtocolsBgpvpn interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetBgpvpnBgpInstance() []*SystemNetworkinstanceProtocolsBgpvpnBgpinstance
+	// add based on type
+	AddBgpvpnBgpInstance(a *SystemNetworkinstanceProtocolsBgpvpnBgpinstance)
 }
 
 // GetCondition
@@ -133,4 +135,7 @@ func (x *SrlSystemNetworkinstanceProtocolsBgpvpn) GetBgpvpnBgpInstance() []*Syst
 		return nil
 	}
 	return x.Spec.SystemNetworkinstanceProtocolsBgpvpn.Bgpinstance
+}
+func (x *SrlSystemNetworkinstanceProtocolsBgpvpn) AddBgpvpnBgpInstance(a *SystemNetworkinstanceProtocolsBgpvpnBgpinstance) {
+	x.Spec.SystemNetworkinstanceProtocolsBgpvpn.Bgpinstance = append(x.Spec.SystemNetworkinstanceProtocolsBgpvpn.Bgpinstance, a)
 }

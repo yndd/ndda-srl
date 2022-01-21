@@ -62,6 +62,14 @@ type IFSrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi interface {
 	// getters based on type
 	GetEthernetsegmentAdminState() E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiAdminstate
 	GetEthernetsegmentDfElection() []*SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelection
+	GetEthernetsegmentEsi() string
+	GetEthernetsegmentInterface() string
+	GetEthernetsegmentMultiHomingMode() E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiMultihomingmode
+	GetEthernetsegmentName() string
+	GetEthernetsegmentRoutes() []*SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutes
+	// add based on type
+	AddEthernetsegmentDfElection(a *SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelection)
+	AddEthernetsegmentRoutes(a *SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutes)
 }
 
 // GetCondition
@@ -140,4 +148,40 @@ func (x *SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi) GetEthernetseg
 		return nil
 	}
 	return x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Dfelection
+}
+func (x *SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi) GetEthernetsegmentEsi() string {
+	if reflect.ValueOf(x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Esi).IsZero() {
+		return ""
+	}
+	return *x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Esi
+}
+func (x *SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi) GetEthernetsegmentInterface() string {
+	if reflect.ValueOf(x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Interface).IsZero() {
+		return ""
+	}
+	return *x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Interface
+}
+func (x *SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi) GetEthernetsegmentMultiHomingMode() E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiMultihomingmode {
+	if reflect.ValueOf(x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Multihomingmode).IsZero() {
+		return ""
+	}
+	return E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiMultihomingmode(x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Multihomingmode)
+}
+func (x *SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi) GetEthernetsegmentName() string {
+	if reflect.ValueOf(x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Name).IsZero() {
+		return ""
+	}
+	return *x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Name
+}
+func (x *SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi) GetEthernetsegmentRoutes() []*SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutes {
+	if reflect.ValueOf(x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Routes).IsZero() {
+		return nil
+	}
+	return x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Routes
+}
+func (x *SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi) AddEthernetsegmentDfElection(a *SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelection) {
+	x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Dfelection = append(x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Dfelection, a)
+}
+func (x *SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi) AddEthernetsegmentRoutes(a *SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutes) {
+	x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Routes = append(x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Routes, a)
 }

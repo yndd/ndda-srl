@@ -61,6 +61,7 @@ type IFSrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstance interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetBgpinstanceId() string
+	// add based on type
 }
 
 // GetCondition

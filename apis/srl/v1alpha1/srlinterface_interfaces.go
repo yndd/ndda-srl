@@ -62,8 +62,23 @@ type IFSrlInterface interface {
 	// getters based on type
 	GetInterfaceAdminState() E_InterfaceAdminstate
 	GetInterfaceBreakoutMode() []*InterfaceBreakoutmode
-	GetInterfaceName() string
+	GetInterfaceDescription() string
+	GetInterfaceEthernet() []*InterfaceEthernet
 	GetInterfaceLag() []*InterfaceLag
+	GetInterfaceLoopbackMode() bool
+	GetInterfaceMtu() uint16
+	GetInterfaceName() string
+	GetInterfaceQos() []*InterfaceQos
+	GetInterfaceSflow() []*InterfaceSflow
+	GetInterfaceTransceiver() []*InterfaceTransceiver
+	GetInterfaceVlanTagging() bool
+	// add based on type
+	AddInterfaceBreakoutMode(a *InterfaceBreakoutmode)
+	AddInterfaceEthernet(a *InterfaceEthernet)
+	AddInterfaceLag(a *InterfaceLag)
+	AddInterfaceQos(a *InterfaceQos)
+	AddInterfaceSflow(a *InterfaceSflow)
+	AddInterfaceTransceiver(a *InterfaceTransceiver)
 }
 
 // GetCondition
@@ -143,15 +158,81 @@ func (x *SrlInterface) GetInterfaceBreakoutMode() []*InterfaceBreakoutmode {
 	}
 	return x.Spec.Interface.Breakoutmode
 }
-func (x *SrlInterface) GetInterfaceName() string {
-	if reflect.ValueOf(x.Spec.Interface.Name).IsZero() {
+func (x *SrlInterface) GetInterfaceDescription() string {
+	if reflect.ValueOf(x.Spec.Interface.Description).IsZero() {
 		return ""
 	}
-	return *x.Spec.Interface.Name
+	return *x.Spec.Interface.Description
+}
+func (x *SrlInterface) GetInterfaceEthernet() []*InterfaceEthernet {
+	if reflect.ValueOf(x.Spec.Interface.Ethernet).IsZero() {
+		return nil
+	}
+	return x.Spec.Interface.Ethernet
 }
 func (x *SrlInterface) GetInterfaceLag() []*InterfaceLag {
 	if reflect.ValueOf(x.Spec.Interface.Lag).IsZero() {
 		return nil
 	}
 	return x.Spec.Interface.Lag
+}
+func (x *SrlInterface) GetInterfaceLoopbackMode() bool {
+	if reflect.ValueOf(x.Spec.Interface.Loopbackmode).IsZero() {
+		return false
+	}
+	return *x.Spec.Interface.Loopbackmode
+}
+func (x *SrlInterface) GetInterfaceMtu() uint16 {
+	if reflect.ValueOf(x.Spec.Interface.Mtu).IsZero() {
+		return 0
+	}
+	return *x.Spec.Interface.Mtu
+}
+func (x *SrlInterface) GetInterfaceName() string {
+	if reflect.ValueOf(x.Spec.Interface.Name).IsZero() {
+		return ""
+	}
+	return *x.Spec.Interface.Name
+}
+func (x *SrlInterface) GetInterfaceQos() []*InterfaceQos {
+	if reflect.ValueOf(x.Spec.Interface.Qos).IsZero() {
+		return nil
+	}
+	return x.Spec.Interface.Qos
+}
+func (x *SrlInterface) GetInterfaceSflow() []*InterfaceSflow {
+	if reflect.ValueOf(x.Spec.Interface.Sflow).IsZero() {
+		return nil
+	}
+	return x.Spec.Interface.Sflow
+}
+func (x *SrlInterface) GetInterfaceTransceiver() []*InterfaceTransceiver {
+	if reflect.ValueOf(x.Spec.Interface.Transceiver).IsZero() {
+		return nil
+	}
+	return x.Spec.Interface.Transceiver
+}
+func (x *SrlInterface) GetInterfaceVlanTagging() bool {
+	if reflect.ValueOf(x.Spec.Interface.Vlantagging).IsZero() {
+		return false
+	}
+	return *x.Spec.Interface.Vlantagging
+}
+func (x *SrlInterface) AddInterfaceBreakoutMode(a *InterfaceBreakoutmode) {
+	x.Spec.Interface.Breakoutmode = append(x.Spec.Interface.Breakoutmode, a)
+}
+func (x *SrlInterface) AddInterfaceEthernet(a *InterfaceEthernet) {
+	x.Spec.Interface.Ethernet = append(x.Spec.Interface.Ethernet, a)
+}
+func (x *SrlInterface) AddInterfaceLag(a *InterfaceLag) {
+	x.Spec.Interface.Lag = append(x.Spec.Interface.Lag, a)
+}
+func (x *SrlInterface) AddInterfaceQos(a *InterfaceQos) {
+	x.Spec.Interface.Qos = append(x.Spec.Interface.Qos, a)
+}
+func (x *SrlInterface) AddInterfaceSflow(a *InterfaceSflow) {
+	x.Spec.Interface.Sflow = append(x.Spec.Interface.Sflow, a)
+}
+func (x *SrlInterface) AddInterfaceTransceiver(a *InterfaceTransceiver) {
+	x.Spec.Interface.Transceiver = append(x.Spec.Interface.Transceiver, a)
 }

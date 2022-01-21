@@ -62,6 +62,7 @@ type IFSrlSystemName interface {
 	// getters based on type
 	GetNameDomainName() string
 	GetNameHostName() string
+	// add based on type
 }
 
 // GetCondition

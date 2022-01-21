@@ -63,6 +63,8 @@ type IFSrlSystemNtp interface {
 	GetNtpAdminState() E_SystemNtpAdminstate
 	GetNtpNetworkInstance() string
 	GetNtpServer() []*SystemNtpServer
+	// add based on type
+	AddNtpServer(a *SystemNtpServer)
 }
 
 // GetCondition
@@ -147,4 +149,7 @@ func (x *SrlSystemNtp) GetNtpServer() []*SystemNtpServer {
 		return nil
 	}
 	return x.Spec.SystemNtp.Server
+}
+func (x *SrlSystemNtp) AddNtpServer(a *SystemNtpServer) {
+	x.Spec.SystemNtp.Server = append(x.Spec.SystemNtp.Server, a)
 }

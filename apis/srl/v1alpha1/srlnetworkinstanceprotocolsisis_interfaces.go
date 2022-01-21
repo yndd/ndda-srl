@@ -62,6 +62,8 @@ type IFSrlNetworkinstanceProtocolsIsis interface {
 	// getters based on type
 	GetIsisDynamicLabelBlock() string
 	GetIsisInstance() []*NetworkinstanceProtocolsIsisInstance
+	// add based on type
+	AddIsisInstance(a *NetworkinstanceProtocolsIsisInstance)
 }
 
 // GetCondition
@@ -140,4 +142,7 @@ func (x *SrlNetworkinstanceProtocolsIsis) GetIsisInstance() []*NetworkinstancePr
 		return nil
 	}
 	return x.Spec.NetworkinstanceProtocolsIsis.Instance
+}
+func (x *SrlNetworkinstanceProtocolsIsis) AddIsisInstance(a *NetworkinstanceProtocolsIsisInstance) {
+	x.Spec.NetworkinstanceProtocolsIsis.Instance = append(x.Spec.NetworkinstanceProtocolsIsis.Instance, a)
 }

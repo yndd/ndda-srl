@@ -61,6 +61,8 @@ type IFSrlNetworkinstanceNexthopgroups interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetNexthopgroupsGroup() []*NetworkinstanceNexthopgroupsGroup
+	// add based on type
+	AddNexthopgroupsGroup(a *NetworkinstanceNexthopgroupsGroup)
 }
 
 // GetCondition
@@ -133,4 +135,7 @@ func (x *SrlNetworkinstanceNexthopgroups) GetNexthopgroupsGroup() []*Networkinst
 		return nil
 	}
 	return x.Spec.NetworkinstanceNexthopgroups.Group
+}
+func (x *SrlNetworkinstanceNexthopgroups) AddNexthopgroupsGroup(a *NetworkinstanceNexthopgroupsGroup) {
+	x.Spec.NetworkinstanceNexthopgroups.Group = append(x.Spec.NetworkinstanceNexthopgroups.Group, a)
 }

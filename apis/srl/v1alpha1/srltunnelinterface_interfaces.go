@@ -61,6 +61,7 @@ type IFSrlTunnelinterface interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetTunnelinterfaceName() string
+	// add based on type
 }
 
 // GetCondition

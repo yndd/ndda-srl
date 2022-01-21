@@ -61,6 +61,9 @@ type IFSrlRoutingpolicyCommunityset interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetCommunitysetMember() []*RoutingpolicyCommunitysetMember
+	GetCommunitysetName() string
+	// add based on type
+	AddCommunitysetMember(a *RoutingpolicyCommunitysetMember)
 }
 
 // GetCondition
@@ -133,4 +136,13 @@ func (x *SrlRoutingpolicyCommunityset) GetCommunitysetMember() []*RoutingpolicyC
 		return nil
 	}
 	return x.Spec.RoutingpolicyCommunityset.Member
+}
+func (x *SrlRoutingpolicyCommunityset) GetCommunitysetName() string {
+	if reflect.ValueOf(x.Spec.RoutingpolicyCommunityset.Name).IsZero() {
+		return ""
+	}
+	return *x.Spec.RoutingpolicyCommunityset.Name
+}
+func (x *SrlRoutingpolicyCommunityset) AddCommunitysetMember(a *RoutingpolicyCommunitysetMember) {
+	x.Spec.RoutingpolicyCommunityset.Member = append(x.Spec.RoutingpolicyCommunityset.Member, a)
 }

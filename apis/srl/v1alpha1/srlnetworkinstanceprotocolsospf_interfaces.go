@@ -61,6 +61,8 @@ type IFSrlNetworkinstanceProtocolsOspf interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetOspfInstance() []*NetworkinstanceProtocolsOspfInstance
+	// add based on type
+	AddOspfInstance(a *NetworkinstanceProtocolsOspfInstance)
 }
 
 // GetCondition
@@ -133,4 +135,7 @@ func (x *SrlNetworkinstanceProtocolsOspf) GetOspfInstance() []*NetworkinstancePr
 		return nil
 	}
 	return x.Spec.NetworkinstanceProtocolsOspf.Instance
+}
+func (x *SrlNetworkinstanceProtocolsOspf) AddOspfInstance(a *NetworkinstanceProtocolsOspfInstance) {
+	x.Spec.NetworkinstanceProtocolsOspf.Instance = append(x.Spec.NetworkinstanceProtocolsOspf.Instance, a)
 }

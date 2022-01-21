@@ -61,6 +61,8 @@ type IFSrlSystemNetworkinstanceProtocolsEvpn interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetEvpnEthernetSegments() []*SystemNetworkinstanceProtocolsEvpnEthernetsegments
+	// add based on type
+	AddEvpnEthernetSegments(a *SystemNetworkinstanceProtocolsEvpnEthernetsegments)
 }
 
 // GetCondition
@@ -133,4 +135,7 @@ func (x *SrlSystemNetworkinstanceProtocolsEvpn) GetEvpnEthernetSegments() []*Sys
 		return nil
 	}
 	return x.Spec.SystemNetworkinstanceProtocolsEvpn.Ethernetsegments
+}
+func (x *SrlSystemNetworkinstanceProtocolsEvpn) AddEvpnEthernetSegments(a *SystemNetworkinstanceProtocolsEvpnEthernetsegments) {
+	x.Spec.SystemNetworkinstanceProtocolsEvpn.Ethernetsegments = append(x.Spec.SystemNetworkinstanceProtocolsEvpn.Ethernetsegments, a)
 }

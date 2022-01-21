@@ -61,6 +61,8 @@ type IFSrlNetworkinstanceStaticroutes interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetStaticroutesRoute() []*NetworkinstanceStaticroutesRoute
+	// add based on type
+	AddStaticroutesRoute(a *NetworkinstanceStaticroutesRoute)
 }
 
 // GetCondition
@@ -133,4 +135,7 @@ func (x *SrlNetworkinstanceStaticroutes) GetStaticroutesRoute() []*Networkinstan
 		return nil
 	}
 	return x.Spec.NetworkinstanceStaticroutes.Route
+}
+func (x *SrlNetworkinstanceStaticroutes) AddStaticroutesRoute(a *NetworkinstanceStaticroutesRoute) {
+	x.Spec.NetworkinstanceStaticroutes.Route = append(x.Spec.NetworkinstanceStaticroutes.Route, a)
 }

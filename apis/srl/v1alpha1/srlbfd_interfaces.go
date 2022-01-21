@@ -61,6 +61,10 @@ type IFSrlBfd interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetBfdMicroBfdSessions() []*BfdMicrobfdsessions
+	GetBfdSubinterface() []*BfdSubinterface
+	// add based on type
+	AddBfdMicroBfdSessions(a *BfdMicrobfdsessions)
+	AddBfdSubinterface(a *BfdSubinterface)
 }
 
 // GetCondition
@@ -133,4 +137,16 @@ func (x *SrlBfd) GetBfdMicroBfdSessions() []*BfdMicrobfdsessions {
 		return nil
 	}
 	return x.Spec.Bfd.Microbfdsessions
+}
+func (x *SrlBfd) GetBfdSubinterface() []*BfdSubinterface {
+	if reflect.ValueOf(x.Spec.Bfd.Subinterface).IsZero() {
+		return nil
+	}
+	return x.Spec.Bfd.Subinterface
+}
+func (x *SrlBfd) AddBfdMicroBfdSessions(a *BfdMicrobfdsessions) {
+	x.Spec.Bfd.Microbfdsessions = append(x.Spec.Bfd.Microbfdsessions, a)
+}
+func (x *SrlBfd) AddBfdSubinterface(a *BfdSubinterface) {
+	x.Spec.Bfd.Subinterface = append(x.Spec.Bfd.Subinterface, a)
 }

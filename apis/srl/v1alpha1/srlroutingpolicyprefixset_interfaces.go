@@ -62,6 +62,8 @@ type IFSrlRoutingpolicyPrefixset interface {
 	// getters based on type
 	GetPrefixsetName() string
 	GetPrefixsetPrefix() []*RoutingpolicyPrefixsetPrefix
+	// add based on type
+	AddPrefixsetPrefix(a *RoutingpolicyPrefixsetPrefix)
 }
 
 // GetCondition
@@ -140,4 +142,7 @@ func (x *SrlRoutingpolicyPrefixset) GetPrefixsetPrefix() []*RoutingpolicyPrefixs
 		return nil
 	}
 	return x.Spec.RoutingpolicyPrefixset.Prefix
+}
+func (x *SrlRoutingpolicyPrefixset) AddPrefixsetPrefix(a *RoutingpolicyPrefixsetPrefix) {
+	x.Spec.RoutingpolicyPrefixset.Prefix = append(x.Spec.RoutingpolicyPrefixset.Prefix, a)
 }

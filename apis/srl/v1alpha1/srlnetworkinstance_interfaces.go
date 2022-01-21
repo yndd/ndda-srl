@@ -62,6 +62,32 @@ type IFSrlNetworkinstance interface {
 	// getters based on type
 	GetNetworkinstanceAdminState() E_NetworkinstanceAdminstate
 	GetNetworkinstanceBridgeTable() []*NetworkinstanceBridgetable
+	GetNetworkinstanceDescription() string
+	GetNetworkinstanceInterface() []*NetworkinstanceInterface
+	GetNetworkinstanceIpForwarding() []*NetworkinstanceIpforwarding
+	GetNetworkinstanceIpLoadBalancing() []*NetworkinstanceIploadbalancing
+	GetNetworkinstanceMpls() []*NetworkinstanceMpls
+	GetNetworkinstanceMtu() []*NetworkinstanceMtu
+	GetNetworkinstanceName() string
+	GetNetworkinstanceProtocols() []*NetworkinstanceProtocols
+	GetNetworkinstanceRouterId() string
+	GetNetworkinstanceSegmentRouting() []*NetworkinstanceSegmentrouting
+	GetNetworkinstanceTePolicies() []*NetworkinstanceTepolicies
+	GetNetworkinstanceTrafficEngineering() []*NetworkinstanceTrafficengineering
+	GetNetworkinstanceType() string
+	GetNetworkinstanceVxlanInterface() []*NetworkinstanceVxlaninterface
+	// add based on type
+	AddNetworkinstanceBridgeTable(a *NetworkinstanceBridgetable)
+	AddNetworkinstanceInterface(a *NetworkinstanceInterface)
+	AddNetworkinstanceIpForwarding(a *NetworkinstanceIpforwarding)
+	AddNetworkinstanceIpLoadBalancing(a *NetworkinstanceIploadbalancing)
+	AddNetworkinstanceMpls(a *NetworkinstanceMpls)
+	AddNetworkinstanceMtu(a *NetworkinstanceMtu)
+	AddNetworkinstanceProtocols(a *NetworkinstanceProtocols)
+	AddNetworkinstanceSegmentRouting(a *NetworkinstanceSegmentrouting)
+	AddNetworkinstanceTePolicies(a *NetworkinstanceTepolicies)
+	AddNetworkinstanceTrafficEngineering(a *NetworkinstanceTrafficengineering)
+	AddNetworkinstanceVxlanInterface(a *NetworkinstanceVxlaninterface)
 }
 
 // GetCondition
@@ -140,4 +166,121 @@ func (x *SrlNetworkinstance) GetNetworkinstanceBridgeTable() []*NetworkinstanceB
 		return nil
 	}
 	return x.Spec.Networkinstance.Bridgetable
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceDescription() string {
+	if reflect.ValueOf(x.Spec.Networkinstance.Description).IsZero() {
+		return ""
+	}
+	return *x.Spec.Networkinstance.Description
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceInterface() []*NetworkinstanceInterface {
+	if reflect.ValueOf(x.Spec.Networkinstance.Interface).IsZero() {
+		return nil
+	}
+	return x.Spec.Networkinstance.Interface
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceIpForwarding() []*NetworkinstanceIpforwarding {
+	if reflect.ValueOf(x.Spec.Networkinstance.Ipforwarding).IsZero() {
+		return nil
+	}
+	return x.Spec.Networkinstance.Ipforwarding
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceIpLoadBalancing() []*NetworkinstanceIploadbalancing {
+	if reflect.ValueOf(x.Spec.Networkinstance.Iploadbalancing).IsZero() {
+		return nil
+	}
+	return x.Spec.Networkinstance.Iploadbalancing
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceMpls() []*NetworkinstanceMpls {
+	if reflect.ValueOf(x.Spec.Networkinstance.Mpls).IsZero() {
+		return nil
+	}
+	return x.Spec.Networkinstance.Mpls
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceMtu() []*NetworkinstanceMtu {
+	if reflect.ValueOf(x.Spec.Networkinstance.Mtu).IsZero() {
+		return nil
+	}
+	return x.Spec.Networkinstance.Mtu
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceName() string {
+	if reflect.ValueOf(x.Spec.Networkinstance.Name).IsZero() {
+		return ""
+	}
+	return *x.Spec.Networkinstance.Name
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceProtocols() []*NetworkinstanceProtocols {
+	if reflect.ValueOf(x.Spec.Networkinstance.Protocols).IsZero() {
+		return nil
+	}
+	return x.Spec.Networkinstance.Protocols
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceRouterId() string {
+	if reflect.ValueOf(x.Spec.Networkinstance.Routerid).IsZero() {
+		return ""
+	}
+	return *x.Spec.Networkinstance.Routerid
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceSegmentRouting() []*NetworkinstanceSegmentrouting {
+	if reflect.ValueOf(x.Spec.Networkinstance.Segmentrouting).IsZero() {
+		return nil
+	}
+	return x.Spec.Networkinstance.Segmentrouting
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceTePolicies() []*NetworkinstanceTepolicies {
+	if reflect.ValueOf(x.Spec.Networkinstance.Tepolicies).IsZero() {
+		return nil
+	}
+	return x.Spec.Networkinstance.Tepolicies
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceTrafficEngineering() []*NetworkinstanceTrafficengineering {
+	if reflect.ValueOf(x.Spec.Networkinstance.Trafficengineering).IsZero() {
+		return nil
+	}
+	return x.Spec.Networkinstance.Trafficengineering
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceType() string {
+	if reflect.ValueOf(x.Spec.Networkinstance.Type).IsZero() {
+		return ""
+	}
+	return *x.Spec.Networkinstance.Type
+}
+func (x *SrlNetworkinstance) GetNetworkinstanceVxlanInterface() []*NetworkinstanceVxlaninterface {
+	if reflect.ValueOf(x.Spec.Networkinstance.Vxlaninterface).IsZero() {
+		return nil
+	}
+	return x.Spec.Networkinstance.Vxlaninterface
+}
+func (x *SrlNetworkinstance) AddNetworkinstanceBridgeTable(a *NetworkinstanceBridgetable) {
+	x.Spec.Networkinstance.Bridgetable = append(x.Spec.Networkinstance.Bridgetable, a)
+}
+func (x *SrlNetworkinstance) AddNetworkinstanceInterface(a *NetworkinstanceInterface) {
+	x.Spec.Networkinstance.Interface = append(x.Spec.Networkinstance.Interface, a)
+}
+func (x *SrlNetworkinstance) AddNetworkinstanceIpForwarding(a *NetworkinstanceIpforwarding) {
+	x.Spec.Networkinstance.Ipforwarding = append(x.Spec.Networkinstance.Ipforwarding, a)
+}
+func (x *SrlNetworkinstance) AddNetworkinstanceIpLoadBalancing(a *NetworkinstanceIploadbalancing) {
+	x.Spec.Networkinstance.Iploadbalancing = append(x.Spec.Networkinstance.Iploadbalancing, a)
+}
+func (x *SrlNetworkinstance) AddNetworkinstanceMpls(a *NetworkinstanceMpls) {
+	x.Spec.Networkinstance.Mpls = append(x.Spec.Networkinstance.Mpls, a)
+}
+func (x *SrlNetworkinstance) AddNetworkinstanceMtu(a *NetworkinstanceMtu) {
+	x.Spec.Networkinstance.Mtu = append(x.Spec.Networkinstance.Mtu, a)
+}
+func (x *SrlNetworkinstance) AddNetworkinstanceProtocols(a *NetworkinstanceProtocols) {
+	x.Spec.Networkinstance.Protocols = append(x.Spec.Networkinstance.Protocols, a)
+}
+func (x *SrlNetworkinstance) AddNetworkinstanceSegmentRouting(a *NetworkinstanceSegmentrouting) {
+	x.Spec.Networkinstance.Segmentrouting = append(x.Spec.Networkinstance.Segmentrouting, a)
+}
+func (x *SrlNetworkinstance) AddNetworkinstanceTePolicies(a *NetworkinstanceTepolicies) {
+	x.Spec.Networkinstance.Tepolicies = append(x.Spec.Networkinstance.Tepolicies, a)
+}
+func (x *SrlNetworkinstance) AddNetworkinstanceTrafficEngineering(a *NetworkinstanceTrafficengineering) {
+	x.Spec.Networkinstance.Trafficengineering = append(x.Spec.Networkinstance.Trafficengineering, a)
+}
+func (x *SrlNetworkinstance) AddNetworkinstanceVxlanInterface(a *NetworkinstanceVxlaninterface) {
+	x.Spec.Networkinstance.Vxlaninterface = append(x.Spec.Networkinstance.Vxlaninterface, a)
 }

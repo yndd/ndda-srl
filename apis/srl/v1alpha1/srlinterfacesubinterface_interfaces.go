@@ -61,6 +61,31 @@ type IFSrlInterfaceSubinterface interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetSubinterfaceAcl() []*InterfaceSubinterfaceAcl
+	GetSubinterfaceAdminState() E_InterfaceSubinterfaceAdminstate
+	GetSubinterfaceAnycastGw() []*InterfaceSubinterfaceAnycastgw
+	GetSubinterfaceBridgeTable() []*InterfaceSubinterfaceBridgetable
+	GetSubinterfaceDescription() string
+	GetSubinterfaceIndex() uint32
+	GetSubinterfaceIpMtu() uint16
+	GetSubinterfaceIpv4() []*InterfaceSubinterfaceIpv4
+	GetSubinterfaceIpv6() []*InterfaceSubinterfaceIpv6
+	GetSubinterfaceL2Mtu() uint16
+	GetSubinterfaceLocalMirrorDestination() []*InterfaceSubinterfaceLocalmirrordestination
+	GetSubinterfaceMplsMtu() uint16
+	GetSubinterfaceQos() []*InterfaceSubinterfaceQos
+	GetSubinterfaceRaGuard() []*InterfaceSubinterfaceRaguard
+	GetSubinterfaceType() string
+	GetSubinterfaceVlan() []*InterfaceSubinterfaceVlan
+	// add based on type
+	AddSubinterfaceAcl(a *InterfaceSubinterfaceAcl)
+	AddSubinterfaceAnycastGw(a *InterfaceSubinterfaceAnycastgw)
+	AddSubinterfaceBridgeTable(a *InterfaceSubinterfaceBridgetable)
+	AddSubinterfaceIpv4(a *InterfaceSubinterfaceIpv4)
+	AddSubinterfaceIpv6(a *InterfaceSubinterfaceIpv6)
+	AddSubinterfaceLocalMirrorDestination(a *InterfaceSubinterfaceLocalmirrordestination)
+	AddSubinterfaceQos(a *InterfaceSubinterfaceQos)
+	AddSubinterfaceRaGuard(a *InterfaceSubinterfaceRaguard)
+	AddSubinterfaceVlan(a *InterfaceSubinterfaceVlan)
 }
 
 // GetCondition
@@ -133,4 +158,121 @@ func (x *SrlInterfaceSubinterface) GetSubinterfaceAcl() []*InterfaceSubinterface
 		return nil
 	}
 	return x.Spec.InterfaceSubinterface.Acl
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceAdminState() E_InterfaceSubinterfaceAdminstate {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Adminstate).IsZero() {
+		return ""
+	}
+	return E_InterfaceSubinterfaceAdminstate(x.Spec.InterfaceSubinterface.Adminstate)
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceAnycastGw() []*InterfaceSubinterfaceAnycastgw {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Anycastgw).IsZero() {
+		return nil
+	}
+	return x.Spec.InterfaceSubinterface.Anycastgw
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceBridgeTable() []*InterfaceSubinterfaceBridgetable {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Bridgetable).IsZero() {
+		return nil
+	}
+	return x.Spec.InterfaceSubinterface.Bridgetable
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceDescription() string {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Description).IsZero() {
+		return ""
+	}
+	return *x.Spec.InterfaceSubinterface.Description
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceIndex() uint32 {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Index).IsZero() {
+		return 0
+	}
+	return *x.Spec.InterfaceSubinterface.Index
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceIpMtu() uint16 {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Ipmtu).IsZero() {
+		return 0
+	}
+	return *x.Spec.InterfaceSubinterface.Ipmtu
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceIpv4() []*InterfaceSubinterfaceIpv4 {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Ipv4).IsZero() {
+		return nil
+	}
+	return x.Spec.InterfaceSubinterface.Ipv4
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceIpv6() []*InterfaceSubinterfaceIpv6 {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Ipv6).IsZero() {
+		return nil
+	}
+	return x.Spec.InterfaceSubinterface.Ipv6
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceL2Mtu() uint16 {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.L2mtu).IsZero() {
+		return 0
+	}
+	return *x.Spec.InterfaceSubinterface.L2mtu
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceLocalMirrorDestination() []*InterfaceSubinterfaceLocalmirrordestination {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Localmirrordestination).IsZero() {
+		return nil
+	}
+	return x.Spec.InterfaceSubinterface.Localmirrordestination
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceMplsMtu() uint16 {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Mplsmtu).IsZero() {
+		return 0
+	}
+	return *x.Spec.InterfaceSubinterface.Mplsmtu
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceQos() []*InterfaceSubinterfaceQos {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Qos).IsZero() {
+		return nil
+	}
+	return x.Spec.InterfaceSubinterface.Qos
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceRaGuard() []*InterfaceSubinterfaceRaguard {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Raguard).IsZero() {
+		return nil
+	}
+	return x.Spec.InterfaceSubinterface.Raguard
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceType() string {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Type).IsZero() {
+		return ""
+	}
+	return *x.Spec.InterfaceSubinterface.Type
+}
+func (x *SrlInterfaceSubinterface) GetSubinterfaceVlan() []*InterfaceSubinterfaceVlan {
+	if reflect.ValueOf(x.Spec.InterfaceSubinterface.Vlan).IsZero() {
+		return nil
+	}
+	return x.Spec.InterfaceSubinterface.Vlan
+}
+func (x *SrlInterfaceSubinterface) AddSubinterfaceAcl(a *InterfaceSubinterfaceAcl) {
+	x.Spec.InterfaceSubinterface.Acl = append(x.Spec.InterfaceSubinterface.Acl, a)
+}
+func (x *SrlInterfaceSubinterface) AddSubinterfaceAnycastGw(a *InterfaceSubinterfaceAnycastgw) {
+	x.Spec.InterfaceSubinterface.Anycastgw = append(x.Spec.InterfaceSubinterface.Anycastgw, a)
+}
+func (x *SrlInterfaceSubinterface) AddSubinterfaceBridgeTable(a *InterfaceSubinterfaceBridgetable) {
+	x.Spec.InterfaceSubinterface.Bridgetable = append(x.Spec.InterfaceSubinterface.Bridgetable, a)
+}
+func (x *SrlInterfaceSubinterface) AddSubinterfaceIpv4(a *InterfaceSubinterfaceIpv4) {
+	x.Spec.InterfaceSubinterface.Ipv4 = append(x.Spec.InterfaceSubinterface.Ipv4, a)
+}
+func (x *SrlInterfaceSubinterface) AddSubinterfaceIpv6(a *InterfaceSubinterfaceIpv6) {
+	x.Spec.InterfaceSubinterface.Ipv6 = append(x.Spec.InterfaceSubinterface.Ipv6, a)
+}
+func (x *SrlInterfaceSubinterface) AddSubinterfaceLocalMirrorDestination(a *InterfaceSubinterfaceLocalmirrordestination) {
+	x.Spec.InterfaceSubinterface.Localmirrordestination = append(x.Spec.InterfaceSubinterface.Localmirrordestination, a)
+}
+func (x *SrlInterfaceSubinterface) AddSubinterfaceQos(a *InterfaceSubinterfaceQos) {
+	x.Spec.InterfaceSubinterface.Qos = append(x.Spec.InterfaceSubinterface.Qos, a)
+}
+func (x *SrlInterfaceSubinterface) AddSubinterfaceRaGuard(a *InterfaceSubinterfaceRaguard) {
+	x.Spec.InterfaceSubinterface.Raguard = append(x.Spec.InterfaceSubinterface.Raguard, a)
+}
+func (x *SrlInterfaceSubinterface) AddSubinterfaceVlan(a *InterfaceSubinterfaceVlan) {
+	x.Spec.InterfaceSubinterface.Vlan = append(x.Spec.InterfaceSubinterface.Vlan, a)
 }

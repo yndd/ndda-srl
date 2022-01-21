@@ -61,6 +61,8 @@ type IFSrlNetworkinstanceAggregateroutes interface {
 	GetAvailabilityZone() string
 	// getters based on type
 	GetAggregateroutesRoute() []*NetworkinstanceAggregateroutesRoute
+	// add based on type
+	AddAggregateroutesRoute(a *NetworkinstanceAggregateroutesRoute)
 }
 
 // GetCondition
@@ -133,4 +135,7 @@ func (x *SrlNetworkinstanceAggregateroutes) GetAggregateroutesRoute() []*Network
 		return nil
 	}
 	return x.Spec.NetworkinstanceAggregateroutes.Route
+}
+func (x *SrlNetworkinstanceAggregateroutes) AddAggregateroutesRoute(a *NetworkinstanceAggregateroutesRoute) {
+	x.Spec.NetworkinstanceAggregateroutes.Route = append(x.Spec.NetworkinstanceAggregateroutes.Route, a)
 }
