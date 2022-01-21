@@ -2,10 +2,11 @@ package ndda
 
 import (
 	"fmt"
+	"strings"
 
+	networkv1alpha1 "github.com/yndd/ndda-network/apis/network/v1alpha1"
 	"github.com/yndd/ndda-network/pkg/ndda/itfceinfo"
 	srlv1alpha1 "github.com/yndd/ndda-srl/apis/srl/v1alpha1"
-	networkv1alpha1 "github.com/yndd/ndda-network/apis/network/v1alpha1"
 	nddov1 "github.com/yndd/nddo-runtime/apis/common/v1"
 	"github.com/yndd/nddo-runtime/pkg/odns"
 	"github.com/yndd/nddo-runtime/pkg/resource"
@@ -109,8 +110,17 @@ func (x *selectedNodeItfces) GetNodeItfcesByNodeItfceSelector(nodeItfceSelectors
 	for _, nddaItfce := range nddaItfceList.GetInterfaces() {
 		for deviceName, itfceInfo := range nodeItfceSelectors {
 			fmt.Printf("getNodeItfcesByNodeItfceSelector: nodename: %s, itfcename: %s, lagmember: %v, nodename: %s\n", nddaItfce.GetDeviceName(), nddaItfce.GetInterfaceName(), nddaItfce.GetInterfaceLag(), deviceName)
+
+			var itfceName string
+			if strings.Contains(itfceInfo.ItfceName, "lag") {
+				itfceName = strings.ReplaceAll(itfceInfo.ItfceName, "-", "")
+			}
+			if strings.Contains(itfceInfo.ItfceName, "int") {
+				itfceName = strings.ReplaceAll(itfceInfo.ItfceName, "int", "ethernet")
+			}
+
 			// avoid selecting lag members
-			if (nddaItfce.GetInterfaceLag() == nil || len(nddaItfce.GetInterfaceLag()) == 0) && deviceName == nddaItfce.GetDeviceName() && itfceInfo.ItfceName == nddaItfce.GetInterfaceName() {
+			if (nddaItfce.GetInterfaceLag() == nil || len(nddaItfce.GetInterfaceLag()) == 0) && deviceName == nddaItfce.GetDeviceName() && itfceName == nddaItfce.GetInterfaceName() {
 				fmt.Printf("getNodeItfcesByNodeItfceSelector: nodename: %s, itfcename: %s, lagmember: %v, nodename: %s\n", nddaItfce.GetDeviceName(), nddaItfce.GetInterfaceName(), nddaItfce.GetInterfaceLag(), deviceName)
 				x.addNodeItfce(nddaItfce.GetDeviceName(), nddaItfce.GetInterfaceName(), itfceinfo.NewItfceInfo(
 					itfceinfo.WithInnerVlanId(itfceInfo.InnerVlanId),
