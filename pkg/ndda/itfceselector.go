@@ -120,7 +120,9 @@ func (x *selectedNodeItfces) GetNodeItfcesByNodeItfceSelector(nodeItfceSelectors
 			}
 
 			// avoid selecting lag members
-			if (nddaItfce.GetInterfaceLag() == nil || len(nddaItfce.GetInterfaceLag()) == 0) && deviceName == nddaItfce.GetDeviceName() && itfceName == nddaItfce.GetInterfaceName() {
+			if (nddaItfce.GetInterfaceLag() == nil || len(nddaItfce.GetInterfaceLag()) == 0) &&
+				deviceName == nddaItfce.GetDeviceName() &&
+				itfceName == nddaItfce.GetInterfaceName() {
 				fmt.Printf("getNodeItfcesByNodeItfceSelector: nodename: %s, itfcename: %s, lagmember: %v, nodename: %s\n", nddaItfce.GetDeviceName(), nddaItfce.GetInterfaceName(), nddaItfce.GetInterfaceLag(), deviceName)
 				x.addNodeItfce(nddaItfce.GetDeviceName(), nddaItfce.GetInterfaceName(), itfceinfo.NewItfceInfo(
 					itfceinfo.WithInnerVlanId(itfceInfo.InnerVlanId),
