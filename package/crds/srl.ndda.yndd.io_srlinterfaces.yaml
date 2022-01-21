@@ -10,6 +10,9 @@ metadata:
 spec:
   group: srl.ndda.yndd.io
   names:
+    categories:
+    - ndda
+    - srl
     kind: SrlInterface
     listKind: SrlInterfaceList
     plural: srlinterfaces
@@ -51,12 +54,16 @@ spec:
                 properties:
                   admin-state:
                     default: enable
+                    description: "import ( \t\"reflect\" \n \tmetav1 \"k8s.io/apimachinery/pkg/apis/meta/v1\"
+                      \tnddv1 \"github.com/yndd/ndd-runtime/apis/common/v1\" \t\"k8s.io/apimachinery/pkg/runtime/schema\"
+                      ) \n Interface"
                     enum:
                     - disable
                     - enable
                     type: string
                   breakout-mode:
-                    description: InterfaceBreakoutmode
+                    description: Adminstate *string `json:"admin-state,omitempty"`
+                      InterfaceBreakoutmode
                     items:
                       description: InterfaceBreakoutmode struct
                       properties:
@@ -90,12 +97,14 @@ spec:
                         auto-negotiate:
                           type: boolean
                         duplex-mode:
+                          description: Interface
                           enum:
                           - full
                           - half
                           type: string
                         flow-control:
-                          description: InterfaceEthernetFlowcontrol
+                          description: Duplexmode *string `json:"duplex-mode,omitempty"`
+                            InterfaceEthernetFlowcontrol
                           items:
                             description: InterfaceEthernetFlowcontrol struct
                             properties:
@@ -124,6 +133,7 @@ spec:
                           description: kubebuilder:validation:Minimum=0 kubebuilder:validation:Maximum=65535
                           type: integer
                         port-speed:
+                          description: Interface
                           enum:
                           - 100G
                           - 100M
@@ -138,16 +148,19 @@ spec:
                           - 50G
                           type: string
                         reload-delay:
-                          description: kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=86400
+                          description: Portspeed *string `json:"port-speed,omitempty"`
+                            kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=86400
                           format: int32
                           type: integer
                         standby-signaling:
+                          description: Interface
                           enum:
                           - lacp
                           - power-off
                           type: string
                         storm-control:
-                          description: InterfaceEthernetStormcontrol
+                          description: Standbysignaling *string `json:"standby-signaling,omitempty"`
+                            InterfaceEthernetStormcontrol
                           items:
                             description: InterfaceEthernetStormcontrol struct
                             properties:
@@ -161,16 +174,24 @@ spec:
                                 type: integer
                               units:
                                 default: percentage
+                                description: Interface
                                 enum:
                                 - kbps
                                 - percentage
                                 type: string
                               unknown-unicast-rate:
-                                description: kubebuilder:validation:Minimum=0 kubebuilder:validation:Maximum=100000000
+                                description: Units *string `json:"units,omitempty"`
+                                  kubebuilder:validation:Minimum=0 kubebuilder:validation:Maximum=100000000
                                 format: int32
                                 type: integer
+                            required:
+                            - units
                             type: object
                           type: array
+                      required:
+                      - duplex-mode
+                      - port-speed
+                      - standby-signaling
                       type: object
                     type: array
                   lag:
@@ -188,38 +209,48 @@ spec:
                                 type: integer
                               interval:
                                 default: SLOW
+                                description: Interface
                                 enum:
                                 - FAST
                                 - SLOW
                                 type: string
                               lacp-mode:
                                 default: ACTIVE
+                                description: Interval *string `json:"interval,omitempty"`
                                 enum:
                                 - ACTIVE
                                 - PASSIVE
                                 type: string
                               system-id-mac:
+                                description: Lacpmode *string `json:"lacp-mode,omitempty"`
                                 pattern: '[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}'
                                 type: string
                               system-priority:
                                 description: kubebuilder:validation:Minimum=0 kubebuilder:validation:Maximum=65535
                                 type: integer
+                            required:
+                            - interval
+                            - lacp-mode
                             type: object
                           type: array
                         lacp-fallback-mode:
+                          description: Interface
                           enum:
                           - static
                           type: string
                         lacp-fallback-timeout:
-                          description: kubebuilder:validation:Minimum=4 kubebuilder:validation:Maximum=3600
+                          description: Lacpfallbackmode *string `json:"lacp-fallback-mode,omitempty"`
+                            kubebuilder:validation:Minimum=4 kubebuilder:validation:Maximum=3600
                           type: integer
                         lag-type:
                           default: static
+                          description: Interface
                           enum:
                           - lacp
                           - static
                           type: string
                         member-speed:
+                          description: Lagtype *string `json:"lag-type,omitempty"`
                           enum:
                           - 100G
                           - 100M
@@ -232,8 +263,13 @@ spec:
                           type: string
                         min-links:
                           default: 1
-                          description: kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=64
+                          description: Memberspeed *string `json:"member-speed,omitempty"`
+                            kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=64
                           type: integer
+                      required:
+                      - lacp-fallback-mode
+                      - lag-type
+                      - member-speed
                       type: object
                     type: array
                   loopback-mode:
@@ -381,10 +417,13 @@ spec:
                       description: InterfaceSflow struct
                       properties:
                         admin-state:
+                          description: Interface
                           enum:
                           - disable
                           - enable
                           type: string
+                      required:
+                      - admin-state
                       type: object
                     type: array
                   transceiver:
@@ -395,6 +434,7 @@ spec:
                         ddm-events:
                           type: boolean
                         forward-error-correction:
+                          description: Interface
                           enum:
                           - base-r
                           - disabled
@@ -403,12 +443,16 @@ spec:
                           - rs-544
                           type: string
                         tx-laser:
+                          description: Forwarderrorcorrection *string `json:"forward-error-correction,omitempty"`
                           type: boolean
+                      required:
+                      - forward-error-correction
                       type: object
                     type: array
                   vlan-tagging:
                     type: boolean
                 required:
+                - admin-state
                 - name
                 type: object
             type: object

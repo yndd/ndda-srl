@@ -10,6 +10,9 @@ metadata:
 spec:
   group: srl.ndda.yndd.io
   names:
+    categories:
+    - ndda
+    - srl
     kind: SrlNetworkinstanceAggregateroutes
     listKind: SrlNetworkinstanceAggregateroutesList
     plural: srlnetworkinstanceaggregateroutes
@@ -58,12 +61,16 @@ spec:
                       properties:
                         admin-state:
                           default: enable
+                          description: "import ( \t\"reflect\" \n \tmetav1 \"k8s.io/apimachinery/pkg/apis/meta/v1\"
+                            \tnddv1 \"github.com/yndd/ndd-runtime/apis/common/v1\"
+                            \t\"k8s.io/apimachinery/pkg/runtime/schema\" ) \n Aggregateroutes"
                           enum:
                           - disable
                           - enable
                           type: string
                         aggregator:
-                          description: AggregateroutesRouteAggregator
+                          description: Adminstate *string `json:"admin-state,omitempty"`
+                            AggregateroutesRouteAggregator
                           items:
                             description: NetworkinstanceAggregateroutesRouteAggregator
                               struct
@@ -106,6 +113,8 @@ spec:
                         summary-only:
                           default: false
                           type: boolean
+                      required:
+                      - admin-state
                       type: object
                     maxItems: 16384
                     minItems: 0

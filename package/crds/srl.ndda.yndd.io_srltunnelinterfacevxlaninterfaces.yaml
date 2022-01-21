@@ -10,6 +10,9 @@ metadata:
 spec:
   group: srl.ndda.yndd.io
   names:
+    categories:
+    - ndda
+    - srl
     kind: SrlTunnelinterfaceVxlaninterface
     listKind: SrlTunnelinterfaceVxlaninterfaceList
     plural: srltunnelinterfacevxlaninterfaces
@@ -78,25 +81,32 @@ spec:
                                   properties:
                                     admin-state:
                                       default: enable
+                                      description: "import ( \t\"reflect\" \n \tmetav1
+                                        \"k8s.io/apimachinery/pkg/apis/meta/v1\" \tnddv1
+                                        \"github.com/yndd/ndd-runtime/apis/common/v1\"
+                                        \t\"k8s.io/apimachinery/pkg/runtime/schema\"
+                                        ) \n Vxlaninterface"
                                       enum:
                                       - disable
                                       - enable
                                       type: string
                                     destination:
-                                      description: VxlaninterfaceEgressDestinationgroupsGroupDestination
+                                      description: Adminstate *string `json:"admin-state,omitempty"`
+                                        VxlaninterfaceEgressDestinationgroupsGroupDestination
                                       items:
                                         description: TunnelinterfaceVxlaninterfaceEgressDestinationgroupsGroupDestination
                                           struct
                                         properties:
                                           admin-state:
                                             default: enable
+                                            description: Vxlaninterface
                                             enum:
                                             - disable
                                             - enable
                                             type: string
                                           index:
-                                            description: kubebuilder:validation:Minimum=0
-                                              kubebuilder:validation:Maximum=65535
+                                            description: Adminstate *string `json:"admin-state,omitempty"`
+                                              kubebuilder:validation:Minimum=0 kubebuilder:validation:Maximum=65535
                                             type: integer
                                           inner-ethernet-header:
                                             description: VxlaninterfaceEgressDestinationgroupsGroupDestinationInnerethernetheader
@@ -115,6 +125,7 @@ spec:
                                             format: int32
                                             type: integer
                                         required:
+                                        - admin-state
                                         - index
                                         type: object
                                       maxItems: 128
@@ -129,6 +140,7 @@ spec:
                                       pattern: '[A-Za-z0-9 !@#$^&()|+=`~.,''/_:;?-]*'
                                       type: string
                                   required:
+                                  - admin-state
                                   - name
                                   type: object
                                 maxItems: 1024

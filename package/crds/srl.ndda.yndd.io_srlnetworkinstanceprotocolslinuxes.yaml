@@ -10,6 +10,9 @@ metadata:
 spec:
   group: srl.ndda.yndd.io
   names:
+    categories:
+    - ndda
+    - srl
     kind: SrlNetworkinstanceProtocolsLinux
     listKind: SrlNetworkinstanceProtocolsLinuxList
     plural: srlnetworkinstanceprotocolslinuxes

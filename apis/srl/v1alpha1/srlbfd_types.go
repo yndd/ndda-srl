@@ -46,7 +46,8 @@ type BfdMicrobfdsessions struct {
 type BfdMicrobfdsessionsLaginterface struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_BfdMicrobfdsessionsLaginterfaceAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=10000
 	// kubebuilder:validation:Maximum=100000000
 	// +kubebuilder:default:=1000000
@@ -72,7 +73,8 @@ type BfdMicrobfdsessionsLaginterface struct {
 type BfdSubinterface struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_BfdSubinterfaceAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=10000
 	// kubebuilder:validation:Maximum=100000000
 	// +kubebuilder:default:=1000000
@@ -113,6 +115,7 @@ type BfdStatus struct {
 // +kubebuilder:printcolumn:name="STATUS",type="string",JSONPath=".status.conditions[?(@.kind=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNC",type="string",JSONPath=".status.conditions[?(@.kind=='Synced')].status"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
+// +kubebuilder:resource:categories={ndda,srl}
 type SrlBfd struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

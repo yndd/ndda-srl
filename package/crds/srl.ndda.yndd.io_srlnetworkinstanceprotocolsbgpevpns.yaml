@@ -10,6 +10,9 @@ metadata:
 spec:
   group: srl.ndda.yndd.io
   names:
+    categories:
+    - ndda
+    - srl
     kind: SrlNetworkinstanceProtocolsBgpevpn
     listKind: SrlNetworkinstanceProtocolsBgpevpnList
     plural: srlnetworkinstanceprotocolsbgpevpns
@@ -58,13 +61,17 @@ spec:
                       properties:
                         admin-state:
                           default: enable
+                          description: "import ( \t\"reflect\" \n \tmetav1 \"k8s.io/apimachinery/pkg/apis/meta/v1\"
+                            \tnddv1 \"github.com/yndd/ndd-runtime/apis/common/v1\"
+                            \t\"k8s.io/apimachinery/pkg/runtime/schema\" ) \n Bgpevpn"
                           enum:
                           - disable
                           - enable
                           type: string
                         default-admin-tag:
                           default: 0
-                          description: kubebuilder:validation:Minimum=0 kubebuilder:validation:Maximum=4294967295
+                          description: Adminstate *string `json:"admin-state,omitempty"`
+                            kubebuilder:validation:Minimum=0 kubebuilder:validation:Maximum=4294967295
                           format: int32
                           type: integer
                         ecmp:
@@ -73,11 +80,13 @@ spec:
                           type: integer
                         encapsulation-type:
                           default: vxlan
+                          description: Bgpevpn
                           enum:
                           - vxlan
                           type: string
                         evi:
-                          description: kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=65535
+                          description: Encapsulationtype *string `json:"encapsulation-type,omitempty"`
+                            kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=65535
                           format: int32
                           type: integer
                         id:
@@ -148,6 +157,8 @@ spec:
                         vxlan-interface:
                           type: string
                       required:
+                      - admin-state
+                      - encapsulation-type
                       - evi
                       - id
                       type: object

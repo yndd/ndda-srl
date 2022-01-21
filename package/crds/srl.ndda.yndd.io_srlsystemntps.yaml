@@ -10,6 +10,9 @@ metadata:
 spec:
   group: srl.ndda.yndd.io
   names:
+    categories:
+    - ndda
+    - srl
     kind: SrlSystemNtp
     listKind: SrlSystemNtpList
     plural: srlsystemntps
@@ -50,11 +53,15 @@ spec:
                 description: SystemNtp struct
                 properties:
                   admin-state:
+                    description: "import ( \t\"reflect\" \n \tmetav1 \"k8s.io/apimachinery/pkg/apis/meta/v1\"
+                      \tnddv1 \"github.com/yndd/ndd-runtime/apis/common/v1\" \t\"k8s.io/apimachinery/pkg/runtime/schema\"
+                      ) \n Ntp"
                     enum:
                     - disable
                     - enable
                     type: string
                   network-instance:
+                    description: Adminstate *string `json:"admin-state,omitempty"`
                     type: string
                   server:
                     description: NtpServer
@@ -75,6 +82,7 @@ spec:
                     minItems: 0
                     type: array
                 required:
+                - admin-state
                 - network-instance
                 type: object
             type: object

@@ -37,7 +37,8 @@ type NetworkinstanceProtocolsIsis struct {
 type NetworkinstanceProtocolsIsisInstance struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_NetworkinstanceProtocolsIsisInstanceAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	// IsisInstanceAttachedbit
 	Attachedbit []*NetworkinstanceProtocolsIsisInstanceAttachedbit `json:"attached-bit,omitempty"`
 	// IsisInstanceAuthentication
@@ -65,7 +66,8 @@ type NetworkinstanceProtocolsIsisInstance struct {
 	Level []*NetworkinstanceProtocolsIsisInstanceLevel `json:"level,omitempty"`
 	// +kubebuilder:validation:Enum=`L1`;`L1L2`;`L2`
 	// +kubebuilder:default:="L2"
-	Levelcapability *string `json:"level-capability,omitempty"`
+	Levelcapability E_NetworkinstanceProtocolsIsisInstanceLevelcapability `json:"level-capability"`
+	//Levelcapability *string `json:"level-capability,omitempty"`
 	// kubebuilder:validation:Minimum=1
 	// kubebuilder:validation:Maximum=64
 	// +kubebuilder:default:=1
@@ -154,14 +156,17 @@ type NetworkinstanceProtocolsIsisInstanceInterlevelpropagationpoliciesLevel1tole
 type NetworkinstanceProtocolsIsisInstanceInterface struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_NetworkinstanceProtocolsIsisInstanceInterfaceAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	// IsisInstanceInterfaceAuthentication
 	Authentication []*NetworkinstanceProtocolsIsisInstanceInterfaceAuthentication `json:"authentication,omitempty"`
 	// +kubebuilder:validation:Enum=`broadcast`;`point-to-point`
-	Circuittype *string `json:"circuit-type,omitempty"`
+	Circuittype E_NetworkinstanceProtocolsIsisInstanceInterfaceCircuittype `json:"circuit-type"`
+	//Circuittype *string `json:"circuit-type,omitempty"`
 	// +kubebuilder:validation:Enum=`adaptive`;`disable`;`loose`;`strict`
 	// +kubebuilder:default:="disable"
-	Hellopadding  *string `json:"hello-padding,omitempty"`
+	Hellopadding E_NetworkinstanceProtocolsIsisInstanceInterfaceHellopadding `json:"hello-padding"`
+	//Hellopadding *string `json:"hello-padding,omitempty"`
 	Interfacename *string `json:"interface-name"`
 	// IsisInstanceInterfaceIpv4unicast
 	Ipv4unicast []*NetworkinstanceProtocolsIsisInstanceInterfaceIpv4unicast `json:"ipv4-unicast,omitempty"`
@@ -193,7 +198,8 @@ type NetworkinstanceProtocolsIsisInstanceInterfaceAuthentication struct {
 type NetworkinstanceProtocolsIsisInstanceInterfaceIpv4unicast struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_NetworkinstanceProtocolsIsisInstanceInterfaceIpv4unicastAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	// +kubebuilder:default:=false
 	Enablebfd *bool `json:"enable-bfd,omitempty"`
 	// +kubebuilder:default:=false
@@ -204,7 +210,8 @@ type NetworkinstanceProtocolsIsisInstanceInterfaceIpv4unicast struct {
 type NetworkinstanceProtocolsIsisInstanceInterfaceIpv6unicast struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_NetworkinstanceProtocolsIsisInstanceInterfaceIpv6unicastAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	// +kubebuilder:default:=false
 	Enablebfd *bool `json:"enable-bfd,omitempty"`
 	// +kubebuilder:default:=false
@@ -311,21 +318,24 @@ type NetworkinstanceProtocolsIsisInstanceInterfaceTraceoptions struct {
 // NetworkinstanceProtocolsIsisInstanceInterfaceTraceoptionsTrace struct
 type NetworkinstanceProtocolsIsisInstanceInterfaceTraceoptionsTrace struct {
 	// +kubebuilder:validation:Enum=`adjacencies`;`packets-all`;`packets-l1-csnp`;`packets-l1-hello`;`packets-l1-lsp`;`packets-l1-psnp`;`packets-l2-csnp`;`packets-l2-hello`;`packets-l2-lsp`;`packets-l2-psnp`;`packets-p2p-hello`
-	Trace *string `json:"trace,omitempty"`
+	Trace E_NetworkinstanceProtocolsIsisInstanceInterfaceTraceoptionsTraceTrace `json:"trace"`
+	//Trace *string `json:"trace,omitempty"`
 }
 
 // NetworkinstanceProtocolsIsisInstanceIpv4unicast struct
 type NetworkinstanceProtocolsIsisInstanceIpv4unicast struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_NetworkinstanceProtocolsIsisInstanceIpv4unicastAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 }
 
 // NetworkinstanceProtocolsIsisInstanceIpv6unicast struct
 type NetworkinstanceProtocolsIsisInstanceIpv6unicast struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_NetworkinstanceProtocolsIsisInstanceIpv6unicastAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	// +kubebuilder:default:=false
 	Multitopology *bool `json:"multi-topology,omitempty"`
 }
@@ -351,7 +361,8 @@ type NetworkinstanceProtocolsIsisInstanceLevel struct {
 	Levelnumber *uint8 `json:"level-number"`
 	// +kubebuilder:validation:Enum=`narrow`;`wide`
 	// +kubebuilder:default:="wide"
-	Metricstyle *string `json:"metric-style,omitempty"`
+	Metricstyle E_NetworkinstanceProtocolsIsisInstanceLevelMetricstyle `json:"metric-style"`
+	//Metricstyle *string `json:"metric-style,omitempty"`
 	// IsisInstanceLevelRoutepreference
 	Routepreference []*NetworkinstanceProtocolsIsisInstanceLevelRoutepreference `json:"route-preference,omitempty"`
 	// IsisInstanceLevelTraceoptions
@@ -387,7 +398,8 @@ type NetworkinstanceProtocolsIsisInstanceLevelTraceoptions struct {
 // NetworkinstanceProtocolsIsisInstanceLevelTraceoptionsTrace struct
 type NetworkinstanceProtocolsIsisInstanceLevelTraceoptionsTrace struct {
 	// +kubebuilder:validation:Enum=`adjacencies`;`lsdb`;`routes`;`spf`
-	Trace *string `json:"trace,omitempty"`
+	Trace E_NetworkinstanceProtocolsIsisInstanceLevelTraceoptionsTraceTrace `json:"trace"`
+	//Trace *string `json:"trace,omitempty"`
 }
 
 // NetworkinstanceProtocolsIsisInstanceNet struct
@@ -522,7 +534,8 @@ type NetworkinstanceProtocolsIsisInstanceTraceoptions struct {
 // NetworkinstanceProtocolsIsisInstanceTraceoptionsTrace struct
 type NetworkinstanceProtocolsIsisInstanceTraceoptionsTrace struct {
 	// +kubebuilder:validation:Enum=`adjacencies`;`graceful-restart`;`interfaces`;`packets-all`;`packets-l1-csnp`;`packets-l1-hello`;`packets-l1-lsp`;`packets-l1-psnp`;`packets-l2-csnp`;`packets-l2-hello`;`packets-l2-lsp`;`packets-l2-psnp`;`packets-p2p-hello`;`routes`;`summary-addresses`
-	Trace *string `json:"trace,omitempty"`
+	Trace E_NetworkinstanceProtocolsIsisInstanceTraceoptionsTraceTrace `json:"trace"`
+	//Trace *string `json:"trace,omitempty"`
 }
 
 // NetworkinstanceProtocolsIsisInstanceTrafficengineering struct
@@ -559,6 +572,7 @@ type NetworkinstanceProtocolsIsisStatus struct {
 // +kubebuilder:printcolumn:name="STATUS",type="string",JSONPath=".status.conditions[?(@.kind=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNC",type="string",JSONPath=".status.conditions[?(@.kind=='Synced')].status"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
+// +kubebuilder:resource:categories={ndda,srl}
 type SrlNetworkinstanceProtocolsIsis struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

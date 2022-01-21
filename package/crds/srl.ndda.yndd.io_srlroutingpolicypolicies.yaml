@@ -10,6 +10,9 @@ metadata:
 spec:
   group: srl.ndda.yndd.io
   names:
+    categories:
+    - ndda
+    - srl
     kind: SrlRoutingpolicyPolicy
     listKind: SrlRoutingpolicyPolicyList
     plural: srlroutingpolicypolicies
@@ -141,11 +144,18 @@ spec:
                                           struct
                                         properties:
                                           set:
+                                            description: "import ( \t\"reflect\" \n
+                                              \tmetav1 \"k8s.io/apimachinery/pkg/apis/meta/v1\"
+                                              \tnddv1 \"github.com/yndd/ndd-runtime/apis/common/v1\"
+                                              \t\"k8s.io/apimachinery/pkg/runtime/schema\"
+                                              ) \n Policy"
                                             enum:
                                             - egp
                                             - igp
                                             - incomplete
                                             type: string
+                                        required:
+                                        - set
                                         type: object
                                       type: array
                                   type: object
@@ -274,11 +284,14 @@ spec:
                                                 struct
                                               properties:
                                                 set:
+                                                  description: Policy
                                                   enum:
                                                   - egp
                                                   - igp
                                                   - incomplete
                                                   type: string
+                                              required:
+                                              - set
                                               type: object
                                             type: array
                                         type: object
@@ -327,6 +340,7 @@ spec:
                                         properties:
                                           operator:
                                             default: eq
+                                            description: Policy
                                             enum:
                                             - eq
                                             - ge
@@ -334,12 +348,14 @@ spec:
                                             type: string
                                           unique:
                                             default: false
+                                            description: Operator *string `json:"operator,omitempty"`
                                             type: boolean
                                           value:
                                             description: kubebuilder:validation:Minimum=0
                                               kubebuilder:validation:Maximum=255
                                             type: integer
                                         required:
+                                        - operator
                                         - value
                                         type: object
                                       type: array
@@ -384,10 +400,13 @@ spec:
                                         kubebuilder:validation:Maximum=2
                                       type: integer
                                     route-type:
+                                      description: Policy
                                       enum:
                                       - external
                                       - internal
                                       type: string
+                                  required:
+                                  - route-type
                                   type: object
                                 type: array
                               ospf:

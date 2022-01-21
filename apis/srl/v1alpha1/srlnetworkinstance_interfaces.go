@@ -133,7 +133,7 @@ func (x *SrlNetworkinstance) GetNetworkinstanceAdminState() E_NetworkinstanceAdm
 	if reflect.ValueOf(x.Spec.Networkinstance.Adminstate).IsZero() {
 		return ""
 	}
-	return E_NetworkinstanceAdminstate(*x.Spec.Networkinstance.Adminstate)
+	return E_NetworkinstanceAdminstate(x.Spec.Networkinstance.Adminstate)
 }
 func (x *SrlNetworkinstance) GetNetworkinstanceBridgeTable() []*NetworkinstanceBridgetable {
 	if reflect.ValueOf(x.Spec.Networkinstance.Bridgetable).IsZero() {

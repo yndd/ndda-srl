@@ -10,6 +10,9 @@ metadata:
 spec:
   group: srl.ndda.yndd.io
   names:
+    categories:
+    - ndda
+    - srl
     kind: SrlNetworkinstanceProtocolsIsis
     listKind: SrlNetworkinstanceProtocolsIsisList
     plural: srlnetworkinstanceprotocolsises
@@ -60,12 +63,16 @@ spec:
                       properties:
                         admin-state:
                           default: disable
+                          description: "import ( \t\"reflect\" \n \tmetav1 \"k8s.io/apimachinery/pkg/apis/meta/v1\"
+                            \tnddv1 \"github.com/yndd/ndd-runtime/apis/common/v1\"
+                            \t\"k8s.io/apimachinery/pkg/runtime/schema\" ) \n Isis"
                           enum:
                           - disable
                           - enable
                           type: string
                         attached-bit:
-                          description: IsisInstanceAttachedbit
+                          description: Adminstate *string `json:"admin-state,omitempty"`
+                            IsisInstanceAttachedbit
                           items:
                             description: NetworkinstanceProtocolsIsisInstanceAttachedbit
                               struct
@@ -161,12 +168,14 @@ spec:
                             properties:
                               admin-state:
                                 default: enable
+                                description: Isis
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               authentication:
-                                description: IsisInstanceInterfaceAuthentication
+                                description: Adminstate *string `json:"admin-state,omitempty"`
+                                  IsisInstanceInterfaceAuthentication
                                 items:
                                   description: NetworkinstanceProtocolsIsisInstanceInterfaceAuthentication
                                     struct
@@ -178,12 +187,14 @@ spec:
                                   type: object
                                 type: array
                               circuit-type:
+                                description: Isis
                                 enum:
                                 - broadcast
                                 - point-to-point
                                 type: string
                               hello-padding:
                                 default: disable
+                                description: Circuittype *string `json:"circuit-type,omitempty"`
                                 enum:
                                 - adaptive
                                 - disable
@@ -191,6 +202,7 @@ spec:
                                 - strict
                                 type: string
                               interface-name:
+                                description: Hellopadding *string `json:"hello-padding,omitempty"`
                                 type: string
                               ipv4-unicast:
                                 description: IsisInstanceInterfaceIpv4unicast
@@ -200,16 +212,20 @@ spec:
                                   properties:
                                     admin-state:
                                       default: enable
+                                      description: Isis
                                       enum:
                                       - disable
                                       - enable
                                       type: string
                                     enable-bfd:
                                       default: false
+                                      description: Adminstate *string `json:"admin-state,omitempty"`
                                       type: boolean
                                     include-bfd-tlv:
                                       default: false
                                       type: boolean
+                                  required:
+                                  - admin-state
                                   type: object
                                 type: array
                               ipv6-unicast:
@@ -220,16 +236,20 @@ spec:
                                   properties:
                                     admin-state:
                                       default: enable
+                                      description: Isis
                                       enum:
                                       - disable
                                       - enable
                                       type: string
                                     enable-bfd:
                                       default: false
+                                      description: Adminstate *string `json:"admin-state,omitempty"`
                                       type: boolean
                                     include-bfd-tlv:
                                       default: false
                                       type: boolean
+                                  required:
+                                  - admin-state
                                   type: object
                                 type: array
                               ldp-synchronization:
@@ -390,6 +410,7 @@ spec:
                                           struct
                                         properties:
                                           trace:
+                                            description: Isis
                                             enum:
                                             - adjacencies
                                             - packets-all
@@ -403,6 +424,8 @@ spec:
                                             - packets-l2-psnp
                                             - packets-p2p-hello
                                             type: string
+                                        required:
+                                        - trace
                                         type: object
                                       maxItems: 1024
                                       minItems: 0
@@ -410,6 +433,9 @@ spec:
                                   type: object
                                 type: array
                             required:
+                            - admin-state
+                            - circuit-type
+                            - hello-padding
                             - interface-name
                             type: object
                           maxItems: 1024
@@ -423,10 +449,13 @@ spec:
                             properties:
                               admin-state:
                                 default: enable
+                                description: Isis
                                 enum:
                                 - disable
                                 - enable
                                 type: string
+                            required:
+                            - admin-state
                             type: object
                           type: array
                         ipv6-unicast:
@@ -437,13 +466,17 @@ spec:
                             properties:
                               admin-state:
                                 default: enable
+                                description: Isis
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               multi-topology:
                                 default: false
+                                description: Adminstate *string `json:"admin-state,omitempty"`
                                 type: boolean
+                            required:
+                            - admin-state
                             type: object
                           type: array
                         ldp-synchronization:
@@ -491,12 +524,14 @@ spec:
                                 type: integer
                               metric-style:
                                 default: wide
+                                description: Isis
                                 enum:
                                 - narrow
                                 - wide
                                 type: string
                               route-preference:
-                                description: IsisInstanceLevelRoutepreference
+                                description: Metricstyle *string `json:"metric-style,omitempty"`
+                                  IsisInstanceLevelRoutepreference
                                 items:
                                   description: NetworkinstanceProtocolsIsisInstanceLevelRoutepreference
                                     struct
@@ -524,12 +559,15 @@ spec:
                                           struct
                                         properties:
                                           trace:
+                                            description: Isis
                                             enum:
                                             - adjacencies
                                             - lsdb
                                             - routes
                                             - spf
                                             type: string
+                                        required:
+                                        - trace
                                         type: object
                                       maxItems: 1024
                                       minItems: 0
@@ -538,12 +576,14 @@ spec:
                                 type: array
                             required:
                             - level-number
+                            - metric-style
                             type: object
                           maxItems: 2
                           minItems: 0
                           type: array
                         level-capability:
                           default: L2
+                          description: Isis
                           enum:
                           - L1
                           - L1L2
@@ -551,7 +591,8 @@ spec:
                           type: string
                         max-ecmp-paths:
                           default: 1
-                          description: kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=64
+                          description: Levelcapability *string `json:"level-capability,omitempty"`
+                            kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=64
                           type: integer
                         name:
                           description: kubebuilder:validation:MinLength=1 kubebuilder:validation:MaxLength=255
@@ -756,6 +797,7 @@ spec:
                                     struct
                                   properties:
                                     trace:
+                                      description: Isis
                                       enum:
                                       - adjacencies
                                       - graceful-restart
@@ -773,6 +815,8 @@ spec:
                                       - routes
                                       - summary-addresses
                                       type: string
+                                  required:
+                                  - trace
                                   type: object
                                 maxItems: 1024
                                 minItems: 0
@@ -806,6 +850,8 @@ spec:
                             type: object
                           type: array
                       required:
+                      - admin-state
+                      - level-capability
                       - name
                       type: object
                     maxItems: 1

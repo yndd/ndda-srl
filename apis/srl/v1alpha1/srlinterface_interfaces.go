@@ -133,7 +133,7 @@ func (x *SrlInterface) GetInterfaceAdminState() E_InterfaceAdminstate {
 	if reflect.ValueOf(x.Spec.Interface.Adminstate).IsZero() {
 		return ""
 	}
-	return E_InterfaceAdminstate(*x.Spec.Interface.Adminstate)
+	return E_InterfaceAdminstate(x.Spec.Interface.Adminstate)
 }
 func (x *SrlInterface) GetInterfaceBreakoutMode() []*InterfaceBreakoutmode {
 	if reflect.ValueOf(x.Spec.Interface.Breakoutmode).IsZero() {

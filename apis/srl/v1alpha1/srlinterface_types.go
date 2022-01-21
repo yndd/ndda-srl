@@ -28,7 +28,8 @@ import (
 type Interface struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_InterfaceAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	// InterfaceBreakoutmode
 	Breakoutmode []*InterfaceBreakoutmode `json:"breakout-mode,omitempty"`
 	// kubebuilder:validation:MinLength=1
@@ -71,7 +72,8 @@ type InterfaceEthernet struct {
 	Aggregateid   *string `json:"aggregate-id,omitempty"`
 	Autonegotiate *bool   `json:"auto-negotiate,omitempty"`
 	// +kubebuilder:validation:Enum=`full`;`half`
-	Duplexmode *string `json:"duplex-mode,omitempty"`
+	Duplexmode E_InterfaceEthernetDuplexmode `json:"duplex-mode"`
+	//Duplexmode *string `json:"duplex-mode,omitempty"`
 	// InterfaceEthernetFlowcontrol
 	Flowcontrol []*InterfaceEthernetFlowcontrol `json:"flow-control,omitempty"`
 	// InterfaceEthernetHoldtime
@@ -80,12 +82,14 @@ type InterfaceEthernet struct {
 	// kubebuilder:validation:Maximum=65535
 	Lacpportpriority *uint16 `json:"lacp-port-priority,omitempty"`
 	// +kubebuilder:validation:Enum=`100G`;`100M`;`10G`;`10M`;`1G`;`1T`;`200G`;`25G`;`400G`;`40G`;`50G`
-	Portspeed *string `json:"port-speed,omitempty"`
+	Portspeed E_InterfaceEthernetPortspeed `json:"port-speed"`
+	//Portspeed *string `json:"port-speed,omitempty"`
 	// kubebuilder:validation:Minimum=1
 	// kubebuilder:validation:Maximum=86400
 	Reloaddelay *uint32 `json:"reload-delay,omitempty"`
 	// +kubebuilder:validation:Enum=`lacp`;`power-off`
-	Standbysignaling *string `json:"standby-signaling,omitempty"`
+	Standbysignaling E_InterfaceEthernetStandbysignaling `json:"standby-signaling"`
+	//Standbysignaling *string `json:"standby-signaling,omitempty"`
 	// InterfaceEthernetStormcontrol
 	Stormcontrol []*InterfaceEthernetStormcontrol `json:"storm-control,omitempty"`
 }
@@ -116,7 +120,8 @@ type InterfaceEthernetStormcontrol struct {
 	Multicastrate *uint32 `json:"multicast-rate,omitempty"`
 	// +kubebuilder:validation:Enum=`kbps`;`percentage`
 	// +kubebuilder:default:="percentage"
-	Units *string `json:"units,omitempty"`
+	Units E_InterfaceEthernetStormcontrolUnits `json:"units"`
+	//Units *string `json:"units,omitempty"`
 	// kubebuilder:validation:Minimum=0
 	// kubebuilder:validation:Maximum=100000000
 	Unknownunicastrate *uint32 `json:"unknown-unicast-rate,omitempty"`
@@ -127,15 +132,18 @@ type InterfaceLag struct {
 	// InterfaceLagLacp
 	Lacp []*InterfaceLagLacp `json:"lacp,omitempty"`
 	// +kubebuilder:validation:Enum=`static`
-	Lacpfallbackmode *string `json:"lacp-fallback-mode,omitempty"`
+	Lacpfallbackmode E_InterfaceLagLacpfallbackmode `json:"lacp-fallback-mode"`
+	//Lacpfallbackmode *string `json:"lacp-fallback-mode,omitempty"`
 	// kubebuilder:validation:Minimum=4
 	// kubebuilder:validation:Maximum=3600
 	Lacpfallbacktimeout *uint16 `json:"lacp-fallback-timeout,omitempty"`
 	// +kubebuilder:validation:Enum=`lacp`;`static`
 	// +kubebuilder:default:="static"
-	Lagtype *string `json:"lag-type,omitempty"`
+	Lagtype E_InterfaceLagLagtype `json:"lag-type"`
+	//Lagtype *string `json:"lag-type,omitempty"`
 	// +kubebuilder:validation:Enum=`100G`;`100M`;`10G`;`10M`;`1G`;`25G`;`400G`;`40G`
-	Memberspeed *string `json:"member-speed,omitempty"`
+	Memberspeed E_InterfaceLagMemberspeed `json:"member-speed"`
+	//Memberspeed *string `json:"member-speed,omitempty"`
 	// kubebuilder:validation:Minimum=1
 	// kubebuilder:validation:Maximum=64
 	// +kubebuilder:default:=1
@@ -149,10 +157,12 @@ type InterfaceLagLacp struct {
 	Adminkey *uint16 `json:"admin-key,omitempty"`
 	// +kubebuilder:validation:Enum=`FAST`;`SLOW`
 	// +kubebuilder:default:="SLOW"
-	Interval *string `json:"interval,omitempty"`
+	Interval E_InterfaceLagLacpInterval `json:"interval"`
+	//Interval *string `json:"interval,omitempty"`
 	// +kubebuilder:validation:Enum=`ACTIVE`;`PASSIVE`
 	// +kubebuilder:default:="ACTIVE"
-	Lacpmode *string `json:"lacp-mode,omitempty"`
+	Lacpmode E_InterfaceLagLacpLacpmode `json:"lacp-mode"`
+	//Lacpmode *string `json:"lacp-mode,omitempty"`
 	// +kubebuilder:validation:Required
 	// +kubebuilder:validation:Pattern=`[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}`
 	Systemidmac *string `json:"system-id-mac,omitempty"`
@@ -258,15 +268,17 @@ type InterfaceQosOutputUnicastqueueScheduling struct {
 // InterfaceSflow struct
 type InterfaceSflow struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_InterfaceSflowAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 }
 
 // InterfaceTransceiver struct
 type InterfaceTransceiver struct {
 	Ddmevents *bool `json:"ddm-events,omitempty"`
 	// +kubebuilder:validation:Enum=`base-r`;`disabled`;`rs-108`;`rs-528`;`rs-544`
-	Forwarderrorcorrection *string `json:"forward-error-correction,omitempty"`
-	Txlaser                *bool   `json:"tx-laser,omitempty"`
+	Forwarderrorcorrection E_InterfaceTransceiverForwarderrorcorrection `json:"forward-error-correction"`
+	//Forwarderrorcorrection *string `json:"forward-error-correction,omitempty"`
+	Txlaser *bool `json:"tx-laser,omitempty"`
 }
 
 // A InterfaceSpec defines the desired state of a Interface.
@@ -286,6 +298,7 @@ type InterfaceStatus struct {
 // +kubebuilder:printcolumn:name="STATUS",type="string",JSONPath=".status.conditions[?(@.kind=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNC",type="string",JSONPath=".status.conditions[?(@.kind=='Synced')].status"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
+// +kubebuilder:resource:categories={ndda,srl}
 type SrlInterface struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

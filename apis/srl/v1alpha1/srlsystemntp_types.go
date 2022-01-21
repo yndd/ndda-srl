@@ -27,7 +27,8 @@ import (
 // SystemNtp struct
 type SystemNtp struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
-	Adminstate      *string `json:"admin-state,omitempty"`
+	Adminstate E_SystemNtpAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	Networkinstance *string `json:"network-instance"`
 	//+kubebuilder:validation:MinItems=0
 	//+kubebuilder:validation:MaxItems=1024
@@ -63,6 +64,7 @@ type SystemNtpStatus struct {
 // +kubebuilder:printcolumn:name="STATUS",type="string",JSONPath=".status.conditions[?(@.kind=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNC",type="string",JSONPath=".status.conditions[?(@.kind=='Synced')].status"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
+// +kubebuilder:resource:categories={ndda,srl}
 type SrlSystemNtp struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

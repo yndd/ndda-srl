@@ -113,7 +113,8 @@ type RoutingpolicyPolicyDefaultactionAcceptBgpLocalpreference struct {
 // RoutingpolicyPolicyDefaultactionAcceptBgpOrigin struct
 type RoutingpolicyPolicyDefaultactionAcceptBgpOrigin struct {
 	// +kubebuilder:validation:Enum=`egp`;`igp`;`incomplete`
-	Set *string `json:"set,omitempty"`
+	Set E_RoutingpolicyPolicyDefaultactionAcceptBgpOriginSet `json:"set"`
+	//Set *string `json:"set,omitempty"`
 }
 
 // RoutingpolicyPolicyDefaultactionNextentry struct
@@ -213,7 +214,8 @@ type RoutingpolicyPolicyStatementActionAcceptBgpLocalpreference struct {
 // RoutingpolicyPolicyStatementActionAcceptBgpOrigin struct
 type RoutingpolicyPolicyStatementActionAcceptBgpOrigin struct {
 	// +kubebuilder:validation:Enum=`egp`;`igp`;`incomplete`
-	Set *string `json:"set,omitempty"`
+	Set E_RoutingpolicyPolicyStatementActionAcceptBgpOriginSet `json:"set"`
+	//Set *string `json:"set,omitempty"`
 }
 
 // RoutingpolicyPolicyStatementActionNextentry struct
@@ -255,7 +257,8 @@ type RoutingpolicyPolicyStatementMatchBgp struct {
 type RoutingpolicyPolicyStatementMatchBgpAspathlength struct {
 	// +kubebuilder:validation:Enum=`eq`;`ge`;`le`
 	// +kubebuilder:default:="eq"
-	Operator *string `json:"operator,omitempty"`
+	Operator E_RoutingpolicyPolicyStatementMatchBgpAspathlengthOperator `json:"operator"`
+	//Operator *string `json:"operator,omitempty"`
 	// +kubebuilder:default:=false
 	Unique *bool `json:"unique,omitempty"`
 	// kubebuilder:validation:Minimum=0
@@ -284,7 +287,8 @@ type RoutingpolicyPolicyStatementMatchIsis struct {
 	// kubebuilder:validation:Maximum=2
 	Level *uint8 `json:"level,omitempty"`
 	// +kubebuilder:validation:Enum=`external`;`internal`
-	Routetype *string `json:"route-type,omitempty"`
+	Routetype E_RoutingpolicyPolicyStatementMatchIsisRoutetype `json:"route-type"`
+	//Routetype *string `json:"route-type,omitempty"`
 }
 
 // RoutingpolicyPolicyStatementMatchOspf struct
@@ -315,6 +319,7 @@ type RoutingpolicyPolicyStatus struct {
 // +kubebuilder:printcolumn:name="STATUS",type="string",JSONPath=".status.conditions[?(@.kind=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNC",type="string",JSONPath=".status.conditions[?(@.kind=='Synced')].status"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
+// +kubebuilder:resource:categories={ndda,srl}
 type SrlRoutingpolicyPolicy struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

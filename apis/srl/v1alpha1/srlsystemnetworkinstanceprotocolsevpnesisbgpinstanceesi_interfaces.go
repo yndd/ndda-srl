@@ -133,7 +133,7 @@ func (x *SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi) GetEthernetseg
 	if reflect.ValueOf(x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Adminstate).IsZero() {
 		return ""
 	}
-	return E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiAdminstate(*x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Adminstate)
+	return E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiAdminstate(x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Adminstate)
 }
 func (x *SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi) GetEthernetsegmentDfElection() []*SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelection {
 	if reflect.ValueOf(x.Spec.SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.Dfelection).IsZero() {

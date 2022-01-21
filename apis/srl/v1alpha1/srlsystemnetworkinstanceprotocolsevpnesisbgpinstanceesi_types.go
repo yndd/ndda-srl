@@ -28,7 +28,8 @@ import (
 type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="disable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	// EthernetsegmentDfelection
 	Dfelection []*SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelection `json:"df-election,omitempty"`
 	// +kubebuilder:validation:Required
@@ -37,7 +38,8 @@ type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi struct {
 	Interface *string `json:"interface,omitempty"`
 	// +kubebuilder:validation:Enum=`all-active`;`single-active`
 	// +kubebuilder:default:="all-active"
-	Multihomingmode *string `json:"multi-homing-mode,omitempty"`
+	Multihomingmode E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiMultihomingmode `json:"multi-homing-mode"`
+	//Multihomingmode *string `json:"multi-homing-mode,omitempty"`
 	// kubebuilder:validation:MinLength=1
 	// kubebuilder:validation:MaxLength=255
 	// +kubebuilder:validation:Required
@@ -63,7 +65,8 @@ type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithm str
 	Preferencealg []*SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmPreferencealg `json:"preference-alg,omitempty"`
 	// +kubebuilder:validation:Enum=`default`;`preference`
 	// +kubebuilder:default:="default"
-	Type *string `json:"type,omitempty"`
+	Type E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmType `json:"type"`
+	//Type *string `json:"type,omitempty"`
 }
 
 // SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmPreferencealg struct
@@ -80,7 +83,8 @@ type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmPref
 type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmPreferencealgCapabilities struct {
 	// +kubebuilder:validation:Enum=`exclude`;`include`
 	// +kubebuilder:default:="include"
-	Acdf *string `json:"ac-df,omitempty"`
+	Acdf E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelectionAlgorithmPreferencealgCapabilitiesAcdf `json:"ac-df"`
+	//Acdf *string `json:"ac-df,omitempty"`
 	// +kubebuilder:default:=false
 	Nonrevertive *bool `json:"non-revertive,omitempty"`
 }
@@ -102,14 +106,16 @@ type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutes struct {
 	Esi []*SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutesEthernetsegment `json:"esi,omitempty"`
 	// +kubebuilder:validation:Enum=`use-system-ipv4-address`
 	// +kubebuilder:default:="use-system-ipv4-address"
-	Nexthop *string `json:"next-hop,omitempty"`
+	Nexthop E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutesNexthop `json:"next-hop"`
+	//Nexthop *string `json:"next-hop,omitempty"`
 }
 
 // SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutesEthernetsegment struct
 type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutesEthernetsegment struct {
 	// +kubebuilder:validation:Enum=`use-system-ipv4-address`
 	// +kubebuilder:default:="use-system-ipv4-address"
-	Originatingip *string `json:"originating-ip,omitempty"`
+	Originatingip E_SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiRoutesEthernetsegmentOriginatingip `json:"originating-ip"`
+	//Originatingip *string `json:"originating-ip,omitempty"`
 }
 
 // A SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiSpec defines the desired state of a SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi.
@@ -130,6 +136,7 @@ type SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiStatus struct {
 // +kubebuilder:printcolumn:name="STATUS",type="string",JSONPath=".status.conditions[?(@.kind=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNC",type="string",JSONPath=".status.conditions[?(@.kind=='Synced')].status"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
+// +kubebuilder:resource:categories={ndda,srl}
 type SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

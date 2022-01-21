@@ -36,7 +36,8 @@ type NetworkinstanceProtocolsBgpevpn struct {
 type NetworkinstanceProtocolsBgpevpnBgpinstance struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_NetworkinstanceProtocolsBgpevpnBgpinstanceAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	// kubebuilder:validation:Minimum=0
 	// kubebuilder:validation:Maximum=4294967295
 	// +kubebuilder:default:=0
@@ -47,7 +48,8 @@ type NetworkinstanceProtocolsBgpevpnBgpinstance struct {
 	Ecmp *uint8 `json:"ecmp,omitempty"`
 	// +kubebuilder:validation:Enum=`vxlan`
 	// +kubebuilder:default:="vxlan"
-	Encapsulationtype *string `json:"encapsulation-type,omitempty"`
+	Encapsulationtype E_NetworkinstanceProtocolsBgpevpnBgpinstanceEncapsulationtype `json:"encapsulation-type"`
+	//Encapsulationtype *string `json:"encapsulation-type,omitempty"`
 	// kubebuilder:validation:Minimum=1
 	// kubebuilder:validation:Maximum=65535
 	Evi *uint32 `json:"evi"`
@@ -120,6 +122,7 @@ type NetworkinstanceProtocolsBgpevpnStatus struct {
 // +kubebuilder:printcolumn:name="STATUS",type="string",JSONPath=".status.conditions[?(@.kind=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNC",type="string",JSONPath=".status.conditions[?(@.kind=='Synced')].status"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
+// +kubebuilder:resource:categories={ndda,srl}
 type SrlNetworkinstanceProtocolsBgpevpn struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

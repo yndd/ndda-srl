@@ -36,7 +36,8 @@ type NetworkinstanceNexthopgroups struct {
 type NetworkinstanceNexthopgroupsGroup struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_NetworkinstanceNexthopgroupsGroupAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	// NexthopgroupsGroupBlackhole
 	Blackhole []*NetworkinstanceNexthopgroupsGroupBlackhole `json:"blackhole,omitempty"`
 	// kubebuilder:validation:MinLength=1
@@ -60,7 +61,8 @@ type NetworkinstanceNexthopgroupsGroupBlackhole struct {
 type NetworkinstanceNexthopgroupsGroupNexthop struct {
 	// +kubebuilder:validation:Enum=`disable`;`enable`
 	// +kubebuilder:default:="enable"
-	Adminstate *string `json:"admin-state,omitempty"`
+	Adminstate E_NetworkinstanceNexthopgroupsGroupNexthopAdminstate `json:"admin-state"`
+	//Adminstate *string `json:"admin-state,omitempty"`
 	// NexthopgroupsGroupNexthopFailuredetection
 	Failuredetection []*NetworkinstanceNexthopgroupsGroupNexthopFailuredetection `json:"failure-detection,omitempty"`
 	// kubebuilder:validation:Minimum=0
@@ -119,6 +121,7 @@ type NetworkinstanceNexthopgroupsStatus struct {
 // +kubebuilder:printcolumn:name="STATUS",type="string",JSONPath=".status.conditions[?(@.kind=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNC",type="string",JSONPath=".status.conditions[?(@.kind=='Synced')].status"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
+// +kubebuilder:resource:categories={ndda,srl}
 type SrlNetworkinstanceNexthopgroups struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

@@ -10,6 +10,9 @@ metadata:
 spec:
   group: srl.ndda.yndd.io
   names:
+    categories:
+    - ndda
+    - srl
     kind: SrlBfd
     listKind: SrlBfdList
     plural: srlbfds
@@ -61,14 +64,18 @@ spec:
                             properties:
                               admin-state:
                                 default: disable
+                                description: "import ( \t\"reflect\" \n \tmetav1 \"k8s.io/apimachinery/pkg/apis/meta/v1\"
+                                  \tnddv1 \"github.com/yndd/ndd-runtime/apis/common/v1\"
+                                  \t\"k8s.io/apimachinery/pkg/runtime/schema\" ) \n
+                                  Bfd"
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               desired-minimum-transmit-interval:
                                 default: 1000000
-                                description: kubebuilder:validation:Minimum=10000
-                                  kubebuilder:validation:Maximum=100000000
+                                description: Adminstate *string `json:"admin-state,omitempty"`
+                                  kubebuilder:validation:Minimum=10000 kubebuilder:validation:Maximum=100000000
                                 format: int32
                                 type: integer
                               detection-multiplier:
@@ -90,6 +97,7 @@ spec:
                                 format: int32
                                 type: integer
                             required:
+                            - admin-state
                             - name
                             type: object
                           maxItems: 1024
@@ -104,13 +112,15 @@ spec:
                       properties:
                         admin-state:
                           default: disable
+                          description: Bfd
                           enum:
                           - disable
                           - enable
                           type: string
                         desired-minimum-transmit-interval:
                           default: 1000000
-                          description: kubebuilder:validation:Minimum=10000 kubebuilder:validation:Maximum=100000000
+                          description: Adminstate *string `json:"admin-state,omitempty"`
+                            kubebuilder:validation:Minimum=10000 kubebuilder:validation:Maximum=100000000
                           format: int32
                           type: integer
                         detection-multiplier:
@@ -132,6 +142,7 @@ spec:
                           format: int32
                           type: integer
                       required:
+                      - admin-state
                       - id
                       type: object
                     maxItems: 1024

@@ -10,6 +10,9 @@ metadata:
 spec:
   group: srl.ndda.yndd.io
   names:
+    categories:
+    - ndda
+    - srl
     kind: SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsi
     listKind: SrlSystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiList
     plural: srlsystemnetworkinstanceprotocolsevpnesisbgpinstanceesis
@@ -56,12 +59,16 @@ spec:
                 properties:
                   admin-state:
                     default: disable
+                    description: "import ( \t\"reflect\" \n \tmetav1 \"k8s.io/apimachinery/pkg/apis/meta/v1\"
+                      \tnddv1 \"github.com/yndd/ndd-runtime/apis/common/v1\" \t\"k8s.io/apimachinery/pkg/runtime/schema\"
+                      ) \n Ethernetsegment"
                     enum:
                     - disable
                     - enable
                     type: string
                   df-election:
-                    description: EthernetsegmentDfelection
+                    description: Adminstate *string `json:"admin-state,omitempty"`
+                      EthernetsegmentDfelection
                     items:
                       description: SystemNetworkinstanceProtocolsEvpnEsisBgpinstanceEsiDfelection
                         struct
@@ -86,13 +93,17 @@ spec:
                                         properties:
                                           ac-df:
                                             default: include
+                                            description: Ethernetsegment
                                             enum:
                                             - exclude
                                             - include
                                             type: string
                                           non-revertive:
                                             default: false
+                                            description: Acdf *string `json:"ac-df,omitempty"`
                                             type: boolean
+                                        required:
+                                        - ac-df
                                         type: object
                                       type: array
                                     preference-value:
@@ -105,10 +116,13 @@ spec:
                                 type: array
                               type:
                                 default: default
+                                description: Ethernetsegment
                                 enum:
                                 - default
                                 - preference
                                 type: string
+                            required:
+                            - type
                             type: object
                           type: array
                         interface-standby-signaling-on-non-df:
@@ -139,12 +153,14 @@ spec:
                     type: string
                   multi-homing-mode:
                     default: all-active
+                    description: Ethernetsegment
                     enum:
                     - all-active
                     - single-active
                     type: string
                   name:
-                    description: kubebuilder:validation:MinLength=1 kubebuilder:validation:MaxLength=255
+                    description: Multihomingmode *string `json:"multi-homing-mode,omitempty"`
+                      kubebuilder:validation:MinLength=1 kubebuilder:validation:MaxLength=255
                     pattern: '[A-Za-z0-9 !@#$^&()|+=`~.,''/_:;?-]*'
                     type: string
                   routes:
@@ -161,19 +177,27 @@ spec:
                             properties:
                               originating-ip:
                                 default: use-system-ipv4-address
+                                description: Ethernetsegment
                                 enum:
                                 - use-system-ipv4-address
                                 type: string
+                            required:
+                            - originating-ip
                             type: object
                           type: array
                         next-hop:
                           default: use-system-ipv4-address
+                          description: Ethernetsegment
                           enum:
                           - use-system-ipv4-address
                           type: string
+                      required:
+                      - next-hop
                       type: object
                     type: array
                 required:
+                - admin-state
+                - multi-homing-mode
                 - name
                 type: object
             required:

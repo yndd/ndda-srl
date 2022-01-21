@@ -134,7 +134,7 @@ func (x *SrlSystemNtp) GetNtpAdminState() E_SystemNtpAdminstate {
 	if reflect.ValueOf(x.Spec.SystemNtp.Adminstate).IsZero() {
 		return ""
 	}
-	return E_SystemNtpAdminstate(*x.Spec.SystemNtp.Adminstate)
+	return E_SystemNtpAdminstate(x.Spec.SystemNtp.Adminstate)
 }
 func (x *SrlSystemNtp) GetNtpNetworkInstance() string {
 	if reflect.ValueOf(x.Spec.SystemNtp.Networkinstance).IsZero() {

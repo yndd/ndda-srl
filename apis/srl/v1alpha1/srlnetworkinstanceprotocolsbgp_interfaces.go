@@ -133,7 +133,7 @@ func (x *SrlNetworkinstanceProtocolsBgp) GetBgpAdminState() E_NetworkinstancePro
 	if reflect.ValueOf(x.Spec.NetworkinstanceProtocolsBgp.Adminstate).IsZero() {
 		return ""
 	}
-	return E_NetworkinstanceProtocolsBgpAdminstate(*x.Spec.NetworkinstanceProtocolsBgp.Adminstate)
+	return E_NetworkinstanceProtocolsBgpAdminstate(x.Spec.NetworkinstanceProtocolsBgp.Adminstate)
 }
 func (x *SrlNetworkinstanceProtocolsBgp) GetBgpAsPathOptions() []*NetworkinstanceProtocolsBgpAspathoptions {
 	if reflect.ValueOf(x.Spec.NetworkinstanceProtocolsBgp.Aspathoptions).IsZero() {

@@ -10,6 +10,9 @@ metadata:
 spec:
   group: srl.ndda.yndd.io
   names:
+    categories:
+    - ndda
+    - srl
     kind: SrlNetworkinstance
     listKind: SrlNetworkinstanceList
     plural: srlnetworkinstances
@@ -51,12 +54,16 @@ spec:
                 properties:
                   admin-state:
                     default: enable
+                    description: "import ( \t\"reflect\" \n \tmetav1 \"k8s.io/apimachinery/pkg/apis/meta/v1\"
+                      \tnddv1 \"github.com/yndd/ndd-runtime/apis/common/v1\" \t\"k8s.io/apimachinery/pkg/runtime/schema\"
+                      ) \n Networkinstance"
                     enum:
                     - disable
                     - enable
                     type: string
                   bridge-table:
-                    description: NetworkinstanceBridgetable
+                    description: Adminstate *string `json:"admin-state,omitempty"`
+                      NetworkinstanceBridgetable
                     items:
                       description: NetworkinstanceBridgetable struct
                       properties:
@@ -71,6 +78,7 @@ spec:
                             properties:
                               action:
                                 default: stop-learning
+                                description: Networkinstance
                                 enum:
                                 - blackhole
                                 - oper-down
@@ -78,12 +86,14 @@ spec:
                                 type: string
                               admin-state:
                                 default: enable
+                                description: Action *string `json:"action,omitempty"`
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               hold-down-time:
                                 default: 9
+                                description: Adminstate *string `json:"admin-state,omitempty"`
                                 format: int32
                                 type: integer
                               monitoring-window:
@@ -96,6 +106,9 @@ spec:
                                 description: kubebuilder:validation:Minimum=3 kubebuilder:validation:Maximum=10
                                 format: int32
                                 type: integer
+                            required:
+                            - action
+                            - admin-state
                             type: object
                           type: array
                         mac-learning:
@@ -105,30 +118,37 @@ spec:
                             properties:
                               admin-state:
                                 default: enable
+                                description: Networkinstance
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               aging:
-                                description: NetworkinstanceBridgetableMaclearningAging
+                                description: Adminstate *string `json:"admin-state,omitempty"`
+                                  NetworkinstanceBridgetableMaclearningAging
                                 items:
                                   description: NetworkinstanceBridgetableMaclearningAging
                                     struct
                                   properties:
                                     admin-state:
                                       default: enable
+                                      description: Networkinstance
                                       enum:
                                       - disable
                                       - enable
                                       type: string
                                     age-time:
                                       default: 300
-                                      description: kubebuilder:validation:Minimum=60
-                                        kubebuilder:validation:Maximum=86400
+                                      description: Adminstate *string `json:"admin-state,omitempty"`
+                                        kubebuilder:validation:Minimum=60 kubebuilder:validation:Maximum=86400
                                       format: int32
                                       type: integer
+                                  required:
+                                  - admin-state
                                   type: object
                                 type: array
+                            required:
+                            - admin-state
                             type: object
                           type: array
                         mac-limit:
@@ -243,38 +263,46 @@ spec:
                       properties:
                         admin-state:
                           default: disable
+                          description: Networkinstance
                           enum:
                           - disable
                           - enable
                           type: string
                         static-entry:
-                          description: NetworkinstanceMplsStaticentry
+                          description: Adminstate *string `json:"admin-state,omitempty"`
+                            NetworkinstanceMplsStaticentry
                           items:
                             description: NetworkinstanceMplsStaticentry struct
                             properties:
                               admin-state:
                                 default: enable
+                                description: Networkinstance
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               collect-stats:
                                 default: false
+                                description: Adminstate *string `json:"admin-state,omitempty"`
                                 type: boolean
                               next-hop-group:
                                 type: string
                               operation:
                                 default: swap
+                                description: Networkinstance
                                 enum:
                                 - pop
                                 - swap
                                 type: string
                               preference:
-                                description: kubebuilder:validation:Minimum=0 kubebuilder:validation:Maximum=255
+                                description: Operation *string `json:"operation,omitempty"`
+                                  kubebuilder:validation:Minimum=0 kubebuilder:validation:Maximum=255
                                 type: integer
                               top-label:
                                 type: string
                             required:
+                            - admin-state
+                            - operation
                             - preference
                             - top-label
                             type: object
@@ -283,6 +311,8 @@ spec:
                           type: array
                         static-label-block:
                           type: string
+                      required:
+                      - admin-state
                       type: object
                     type: array
                   mtu:
@@ -344,12 +374,14 @@ spec:
                             properties:
                               admin-state:
                                 default: disable
+                                description: Networkinstance
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               discovery:
-                                description: NetworkinstanceProtocolsLdpDiscovery
+                                description: Adminstate *string `json:"admin-state,omitempty"`
+                                  NetworkinstanceProtocolsLdpDiscovery
                                 items:
                                   description: NetworkinstanceProtocolsLdpDiscovery
                                     struct
@@ -393,12 +425,15 @@ spec:
                                                       struct
                                                     properties:
                                                       admin-state:
+                                                        description: Networkinstance
                                                         enum:
                                                         - disable
                                                         - enable
                                                         type: string
                                                       statistics:
-                                                        description: NetworkinstanceProtocolsLdpDiscoveryInterfacesInterfaceIpv4Statistics
+                                                        description: Adminstate *string
+                                                          `json:"admin-state,omitempty"`
+                                                          NetworkinstanceProtocolsLdpDiscoveryInterfacesInterfaceIpv4Statistics
                                                         items:
                                                           description: NetworkinstanceProtocolsLdpDiscoveryInterfacesInterfaceIpv4Statistics
                                                             struct
@@ -443,6 +478,8 @@ spec:
                                                               type: integer
                                                           type: object
                                                         type: array
+                                                    required:
+                                                    - admin-state
                                                     type: object
                                                   type: array
                                                 name:
@@ -690,6 +727,7 @@ spec:
                                   type: object
                                 type: array
                             required:
+                            - admin-state
                             - dynamic-label-block
                             type: object
                           type: array
@@ -766,12 +804,14 @@ spec:
                             properties:
                               admin-state:
                                 default: enable
+                                description: Networkinstance
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               color:
-                                description: kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=4294967295
+                                description: Adminstate *string `json:"admin-state,omitempty"`
+                                  kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=4294967295
                                 format: int32
                                 type: integer
                               description:
@@ -817,6 +857,7 @@ spec:
                                               type: object
                                             type: array
                                           type:
+                                            description: Networkinstance
                                             enum:
                                             - segment-type-1
                                             - segment-type-10
@@ -832,6 +873,7 @@ spec:
                                             type: string
                                         required:
                                         - segment-index
+                                        - type
                                         type: object
                                       maxItems: 1024
                                       minItems: 0
@@ -847,6 +889,7 @@ spec:
                                 minItems: 0
                                 type: array
                             required:
+                            - admin-state
                             - name
                             type: object
                           maxItems: 1024
@@ -1028,6 +1071,7 @@ spec:
                     minItems: 0
                     type: array
                 required:
+                - admin-state
                 - name
                 type: object
             type: object

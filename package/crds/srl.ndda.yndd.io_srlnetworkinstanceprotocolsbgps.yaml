@@ -10,6 +10,9 @@ metadata:
 spec:
   group: srl.ndda.yndd.io
   names:
+    categories:
+    - ndda
+    - srl
     kind: SrlNetworkinstanceProtocolsBgp
     listKind: SrlNetworkinstanceProtocolsBgpList
     plural: srlnetworkinstanceprotocolsbgps
@@ -53,12 +56,16 @@ spec:
                 properties:
                   admin-state:
                     default: enable
+                    description: "import ( \t\"reflect\" \n \tmetav1 \"k8s.io/apimachinery/pkg/apis/meta/v1\"
+                      \tnddv1 \"github.com/yndd/ndd-runtime/apis/common/v1\" \t\"k8s.io/apimachinery/pkg/runtime/schema\"
+                      ) \n Bgp"
                     enum:
                     - disable
                     - enable
                     type: string
                   as-path-options:
-                    description: BgpAspathoptions
+                    description: Adminstate *string `json:"admin-state,omitempty"`
+                      BgpAspathoptions
                     items:
                       description: NetworkinstanceProtocolsBgpAspathoptions struct
                       properties:
@@ -80,11 +87,14 @@ spec:
                                 type: boolean
                               mode:
                                 default: disabled
+                                description: Bgp
                                 enum:
                                 - delete
                                 - disabled
                                 - replace
                                 type: string
+                            required:
+                            - mode
                             type: object
                           type: array
                       type: object
@@ -182,18 +192,22 @@ spec:
                       properties:
                         admin-state:
                           default: disable
+                          description: Bgp
                           enum:
                           - disable
                           - enable
                           type: string
                         advertise-ipv6-next-hops:
                           default: false
+                          description: Adminstate *string `json:"admin-state,omitempty"`
                           type: boolean
                         keep-all-routes:
                           type: boolean
                         rapid-update:
                           default: false
                           type: boolean
+                      required:
+                      - admin-state
                       type: object
                     type: array
                   export-policy:
@@ -218,14 +232,18 @@ spec:
                       properties:
                         admin-state:
                           default: disable
+                          description: Bgp
                           enum:
                           - disable
                           - enable
                           type: string
                         stale-routes-time:
                           default: 360
-                          description: kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=3600
+                          description: Adminstate *string `json:"admin-state,omitempty"`
+                            kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=3600
                           type: integer
+                      required:
+                      - admin-state
                       type: object
                     type: array
                   group:
@@ -235,12 +253,14 @@ spec:
                       properties:
                         admin-state:
                           default: enable
+                          description: Bgp
                           enum:
                           - disable
                           - enable
                           type: string
                         as-path-options:
-                          description: BgpGroupAspathoptions
+                          description: Adminstate *string `json:"admin-state,omitempty"`
+                            BgpGroupAspathoptions
                           items:
                             description: NetworkinstanceProtocolsBgpGroupAspathoptions
                               struct
@@ -295,11 +315,13 @@ spec:
                             description: NetworkinstanceProtocolsBgpGroupEvpn struct
                             properties:
                               admin-state:
+                                description: Bgp
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               advertise-ipv6-next-hops:
+                                description: Adminstate *string `json:"admin-state,omitempty"`
                                 type: boolean
                               prefix-limit:
                                 description: BgpGroupEvpnPrefixlimit
@@ -320,6 +342,8 @@ spec:
                                       type: integer
                                   type: object
                                 type: array
+                            required:
+                            - admin-state
                             type: object
                           type: array
                         export-policy:
@@ -343,13 +367,17 @@ spec:
                               struct
                             properties:
                               admin-state:
+                                description: Bgp
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               stale-routes-time:
-                                description: kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=3600
+                                description: Adminstate *string `json:"admin-state,omitempty"`
+                                  kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=3600
                                 type: integer
+                            required:
+                            - admin-state
                             type: object
                           type: array
                         group-name:
@@ -365,11 +393,13 @@ spec:
                               struct
                             properties:
                               admin-state:
+                                description: Bgp
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               advertise-ipv6-next-hops:
+                                description: Adminstate *string `json:"admin-state,omitempty"`
                                 type: boolean
                               prefix-limit:
                                 description: BgpGroupIpv4unicastPrefixlimit
@@ -392,6 +422,8 @@ spec:
                                 type: array
                               receive-ipv6-next-hops:
                                 type: boolean
+                            required:
+                            - admin-state
                             type: object
                           type: array
                         ipv6-unicast:
@@ -401,12 +433,14 @@ spec:
                               struct
                             properties:
                               admin-state:
+                                description: Bgp
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               prefix-limit:
-                                description: BgpGroupIpv6unicastPrefixlimit
+                                description: Adminstate *string `json:"admin-state,omitempty"`
+                                  BgpGroupIpv6unicastPrefixlimit
                                 items:
                                   description: NetworkinstanceProtocolsBgpGroupIpv6unicastPrefixlimit
                                     struct
@@ -424,6 +458,8 @@ spec:
                                       type: integer
                                   type: object
                                 type: array
+                            required:
+                            - admin-state
                             type: object
                           type: array
                         local-as:
@@ -534,13 +570,14 @@ spec:
                                     struct
                                   properties:
                                     modifier:
+                                      description: Bgp
                                       enum:
                                       - detail
                                       - receive
                                       - send
                                       type: string
                                     name:
-                                      description: Bgp
+                                      description: Modifier *string `json:"modifier,omitempty"`
                                       enum:
                                       - events
                                       - graceful-restart
@@ -554,6 +591,7 @@ spec:
                                       - update
                                       type: string
                                   required:
+                                  - modifier
                                   - name
                                   type: object
                                 maxItems: 1024
@@ -579,6 +617,7 @@ spec:
                             type: object
                           type: array
                       required:
+                      - admin-state
                       - group-name
                       type: object
                     maxItems: 1024
@@ -593,12 +632,14 @@ spec:
                       properties:
                         admin-state:
                           default: enable
+                          description: Bgp
                           enum:
                           - disable
                           - enable
                           type: string
                         advertise-ipv6-next-hops:
                           default: false
+                          description: Adminstate *string `json:"admin-state,omitempty"`
                           type: boolean
                         convergence:
                           description: BgpIpv4unicastConvergence
@@ -665,11 +706,14 @@ spec:
                                             type: array
                                           mode:
                                             default: disabled
+                                            description: Bgp
                                             enum:
                                             - disabled
                                             - prefer
                                             - require
                                             type: string
+                                        required:
+                                        - mode
                                         type: object
                                       type: array
                                   type: object
@@ -679,6 +723,8 @@ spec:
                         receive-ipv6-next-hops:
                           default: false
                           type: boolean
+                      required:
+                      - admin-state
                       type: object
                     type: array
                   ipv6-unicast:
@@ -688,12 +734,14 @@ spec:
                       properties:
                         admin-state:
                           default: disable
+                          description: Bgp
                           enum:
                           - disable
                           - enable
                           type: string
                         convergence:
-                          description: BgpIpv6unicastConvergence
+                          description: Adminstate *string `json:"admin-state,omitempty"`
+                            BgpIpv6unicastConvergence
                           items:
                             description: NetworkinstanceProtocolsBgpIpv6unicastConvergence
                               struct
@@ -757,17 +805,22 @@ spec:
                                             type: array
                                           mode:
                                             default: disabled
+                                            description: Bgp
                                             enum:
                                             - disabled
                                             - prefer
                                             - require
                                             type: string
+                                        required:
+                                        - mode
                                         type: object
                                       type: array
                                   type: object
                                 type: array
                             type: object
                           type: array
+                      required:
+                      - admin-state
                       type: object
                     type: array
                   local-preference:
@@ -782,12 +835,14 @@ spec:
                       properties:
                         admin-state:
                           default: enable
+                          description: Bgp
                           enum:
                           - disable
                           - enable
                           type: string
                         as-path-options:
-                          description: BgpNeighborAspathoptions
+                          description: Adminstate *string `json:"admin-state,omitempty"`
+                            BgpNeighborAspathoptions
                           items:
                             description: NetworkinstanceProtocolsBgpNeighborAspathoptions
                               struct
@@ -842,11 +897,13 @@ spec:
                             description: NetworkinstanceProtocolsBgpNeighborEvpn struct
                             properties:
                               admin-state:
+                                description: Bgp
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               advertise-ipv6-next-hops:
+                                description: Adminstate *string `json:"admin-state,omitempty"`
                                 type: boolean
                               prefix-limit:
                                 description: BgpNeighborEvpnPrefixlimit
@@ -865,6 +922,8 @@ spec:
                                       type: integer
                                   type: object
                                 type: array
+                            required:
+                            - admin-state
                             type: object
                           type: array
                         export-policy:
@@ -888,13 +947,17 @@ spec:
                               struct
                             properties:
                               admin-state:
+                                description: Bgp
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               stale-routes-time:
-                                description: kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=3600
+                                description: Adminstate *string `json:"admin-state,omitempty"`
+                                  kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=3600
                                 type: integer
+                            required:
+                            - admin-state
                             type: object
                           type: array
                         import-policy:
@@ -906,11 +969,13 @@ spec:
                               struct
                             properties:
                               admin-state:
+                                description: Bgp
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               advertise-ipv6-next-hops:
+                                description: Adminstate *string `json:"admin-state,omitempty"`
                                 type: boolean
                               prefix-limit:
                                 description: BgpNeighborIpv4unicastPrefixlimit
@@ -931,6 +996,8 @@ spec:
                                 type: array
                               receive-ipv6-next-hops:
                                 type: boolean
+                            required:
+                            - admin-state
                             type: object
                           type: array
                         ipv6-unicast:
@@ -940,12 +1007,14 @@ spec:
                               struct
                             properties:
                               admin-state:
+                                description: Bgp
                                 enum:
                                 - disable
                                 - enable
                                 type: string
                               prefix-limit:
-                                description: BgpNeighborIpv6unicastPrefixlimit
+                                description: Adminstate *string `json:"admin-state,omitempty"`
+                                  BgpNeighborIpv6unicastPrefixlimit
                                 items:
                                   description: NetworkinstanceProtocolsBgpNeighborIpv6unicastPrefixlimit
                                     struct
@@ -961,6 +1030,8 @@ spec:
                                       type: integer
                                   type: object
                                 type: array
+                            required:
+                            - admin-state
                             type: object
                           type: array
                         local-as:
@@ -990,7 +1061,7 @@ spec:
                         next-hop-self:
                           type: boolean
                         peer-address:
-                          pattern: (([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])|((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(.+)?
+                          pattern: (([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])|((:|[0-9a-fA-F]{0,4}):)([0-9a-fA-F]{0,4}:){0,5}((([0-9a-fA-F]{0,4}:)?(:|[0-9a-fA-F]{0,4}))|(((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])))(.+)?|(([^:]+:){6}(([^:]+:[^:]+)|(.*\..*)))|((([^:]+:)*[^:]+)?::(([^:]+:)*[^:]+)?)(.+)?|([^]+)((mgmt0\.0|system0\.0|lo(0|1[0-9][0-9]|2([0-4][0-9]|5[0-5])|[1-9][0-9]|[1-9])\.(0|[1-9](\d){0,3})|ethernet-([1-9](\d){0,1}(/[abcd])?(/[1-9](\d){0,1})?/(([1-9](\d){0,1})|(1[0-1]\d)|(12[0-8])))\.([0]|[1-9](\d){0,3})|irb(0|1[0-9][0-9]|2([0-4][0-9]|5[0-5])|[1-9][0-9]|[1-9])\.(0|[1-9](\d){0,3})|lag(([1-9](\d){0,1})|(1[0-1]\d)|(12[0-8]))\.(0|[1-9](\d){0,3})))?
                           type: string
                         peer-as:
                           description: kubebuilder:validation:Minimum=1 kubebuilder:validation:Maximum=4294967295
@@ -1070,13 +1141,14 @@ spec:
                                     struct
                                   properties:
                                     modifier:
+                                      description: Bgp
                                       enum:
                                       - detail
                                       - receive
                                       - send
                                       type: string
                                     name:
-                                      description: Bgp
+                                      description: Modifier *string `json:"modifier,omitempty"`
                                       enum:
                                       - events
                                       - graceful-restart
@@ -1090,6 +1162,7 @@ spec:
                                       - update
                                       type: string
                                   required:
+                                  - modifier
                                   - name
                                   type: object
                                 maxItems: 1024
@@ -1114,6 +1187,7 @@ spec:
                             type: object
                           type: array
                       required:
+                      - admin-state
                       - peer-group
                       type: object
                     maxItems: 1024
@@ -1188,13 +1262,14 @@ spec:
                               struct
                             properties:
                               modifier:
+                                description: Bgp
                                 enum:
                                 - detail
                                 - receive
                                 - send
                                 type: string
                               name:
-                                description: Bgp
+                                description: Modifier *string `json:"modifier,omitempty"`
                                 enum:
                                 - events
                                 - graceful-restart
@@ -1208,6 +1283,7 @@ spec:
                                 - update
                                 type: string
                             required:
+                            - modifier
                             - name
                             type: object
                           maxItems: 1024
@@ -1227,6 +1303,7 @@ spec:
                       type: object
                     type: array
                 required:
+                - admin-state
                 - autonomous-system
                 type: object
               network-instance-name:
